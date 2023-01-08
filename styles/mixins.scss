@@ -1,0 +1,43 @@
+////////// CSS 변수 지정 //////////
+$mainColor: #4e77fb;
+$mobile: 767px;
+$tablet: 1023px;
+$desktop: 1024px;
+
+////////// CSS Mixins //////////
+
+////////// Media Query //////////
+@mixin mobile {
+  @media all and (max-width: $mobile) {
+    @content;
+  }
+}
+@mixin tablet {
+  @media all and (min-width: ($mobile + 1)) and (max-width: $tablet) {
+    @content;
+  }
+}
+@mixin desktop {
+  @media all and (min-width: $desktop) {
+    @content;
+  }
+}
+
+////////// Flex //////////
+@mixin flex-row {
+  display: flex;
+}
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+@mixin flex-row-pos($justify: flex-start, $align: stretch) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+}
+@mixin flex-column-pos($justify: flex-start, $align: stretch) {
+  @include flex-column;
+  justify-content: $justify;
+  align-items: $align;
+}
