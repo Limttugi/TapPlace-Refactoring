@@ -1,9 +1,12 @@
 import { configureStore, Reducer, AnyAction, ThunkAction, Action, CombinedState } from '@reduxjs/toolkit';
 import { HYDRATE, createWrapper } from 'next-redux-wrapper';
 import { combineReducers } from 'redux';
+import common, { commonStateI } from './slices/common';
 
 // 리듀서 State 타입 정의
-export interface ReducerStates {}
+export interface ReducerStates {
+  common: commonStateI;
+}
 
 // ### 루트 리듀서 생성
 const rootReducer = (state: ReducerStates, action: AnyAction): CombinedState<ReducerStates> => {
@@ -14,7 +17,7 @@ const rootReducer = (state: ReducerStates, action: AnyAction): CombinedState<Red
     // 슬라이스 통합
     default: {
       const combinedReducer = combineReducers({
-        // counter: couterSlice.reducer,
+        common: common.reducer,
       });
       return combinedReducer(state, action);
     }

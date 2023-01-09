@@ -1,10 +1,10 @@
 import Header from '../Header/Header';
 
-interface childrenI {
+interface Props {
   children: React.ReactNode;
 }
 
-const AppLayout = ({ children }: childrenI) => {
+const AppLayout = ({ children }: Props) => {
   return (
     <>
       <Header />

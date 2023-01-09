@@ -1,0 +1,83 @@
+@import '@/styles/mixins.scss';
+
+@mixin headerLayout {
+  @include flex-row-pos(space-between, center);
+  width: 100vw;
+  height: 6rem;
+  padding: 2rem 2.4rem;
+}
+
+@mixin mobileMenuList {
+  @include height-lineheight(6rem);
+  padding: 0 2.4rem;
+  font-size: 1.6rem;
+}
+
+///////////////////////////////////
+
+@include mobile {
+  .container {
+    @include headerLayout;
+    .logo {
+      @include width-height(12rem, 1.8rem);
+      margin-top: 0.4rem;
+    }
+    .menuToggleButton {
+      width: 1.4rem;
+      color: #b8bdcc;
+      z-index: 1;
+    }
+    .menuContainer {
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      padding-top: 6rem;
+      width: 100vw;
+      box-shadow: rgba(0, 0, 0, 0.5) 0 0 0 9999px;
+      .menuList {
+        @include mobileMenuList;
+        border-top: 1px solid lightgray;
+        background: white;
+        &:last-of-type {
+          border-bottom: 1px solid lightgray;
+        }
+      }
+    }
+  }
+}
+
+@include tablet {
+  .container {
+    @include headerLayout;
+    .logo {
+      @include width-height(13rem, 2rem);
+      margin-top: 0.4rem;
+    }
+    .menuContainer {
+      @include flex-row-pos(space-between, center);
+      width: 36rem;
+      .menuList {
+        font-size: 1.5rem;
+      }
+    }
+  }
+}
+
+@include desktop {
+  .container {
+    @include headerLayout;
+    padding: 0 36rem;
+    .logo {
+      @include width-height(13rem, 2rem);
+      margin-top: 0.4rem;
+    }
+    .menuContainer {
+      @include flex-row-pos(space-between, center);
+      width: 36rem;
+      .menuList {
+        font-size: 1.5rem;
+      }
+    }
+  }
+}
