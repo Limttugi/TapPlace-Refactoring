@@ -62,3 +62,20 @@ $white: white;
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+// Text
+@mixin text_line_1($fontSize, $textalign: left) {
+  font-size: $fontSize;
+  font-weight: 400;
+  line-height: 135%;
+  color: $black;
+  text-align: $textalign;
+}
+
+@mixin text_line_2($fontSize, $textalign: left) {
+  font-size: $fontSize;
+  font-weight: 400;
+  line-height: 145%;
+  color: $sub_black;
+  text-align: $textalign;
+}
