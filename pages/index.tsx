@@ -35,7 +35,7 @@ const Index = () => {
             <Download />
           )}
         </div>
-        <Image src={viewType === 'MOBILE' ? mock_1_mobile : mock_1_desktop} alt='mockup_1' />
+        <Image className={s.mockImage} src={viewType === 'MOBILE' ? mock_1_mobile : mock_1_desktop} alt='mockup_1' />
       </article>
     </main>
   );

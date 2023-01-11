@@ -39,6 +39,9 @@
         color: $mainColor;
       }
     }
+    .mockImage {
+      @include width-height(38rem, 69rem);
+    }
   }
 }
 
@@ -46,12 +49,17 @@
   .mainDescriptionContainer {
     @include flex-column-pos(flex-start, center);
     margin-top: 8rem;
-    .text_line_1 {
-      @include text_line_1(4rem, center);
+    .textBtnContainer {
+      .text_line_1 {
+        @include text_line_1(4rem, center);
+      }
+      .text_line_2 {
+        @include text_line_2(1.8rem, center);
+        margin: 2.4rem 0 4.8rem 0;
+      }
     }
-    .text_line_2 {
-      @include text_line_2(1.8rem, center);
-      margin: 2.4rem 0 4.8rem 0;
+    .mockImage {
+      @include width-height(57rem, 59rem);
     }
   }
 }
@@ -60,12 +68,17 @@
   .mainDescriptionContainer {
     @include flex-row-pos(center, center);
     margin-top: 11rem;
-    .text_line_1 {
-      @include text_line_1(6rem);
+    .textBtnContainer {
+      .text_line_1 {
+        @include text_line_1(6rem);
+      }
+      .text_line_2 {
+        @include text_line_2(2rem);
+        margin: 2.4rem 0 8rem 0;
+      }
     }
-    .text_line_2 {
-      @include text_line_2(2rem);
-      margin: 2.4rem 0 8rem 0;
+    .mockImage {
+      @include width-height(67rem, 70rem);
     }
   }
 }
