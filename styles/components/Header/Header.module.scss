@@ -13,8 +13,6 @@
   font-size: 1.6rem;
 }
 
-///////////////////////////////////
-
 @include mobile {
   .container {
     @include headerLayout;
@@ -28,12 +26,12 @@
       z-index: 1;
     }
     .menuContainer {
-      width: 100%;
+      @include flex-column;
       position: absolute;
       top: 0;
       left: 0;
+      width: 100%;
       padding-top: 6rem;
-      width: 100vw;
       box-shadow: rgba(0, 0, 0, 0.5) 0 0 0 9999px;
       .menuList {
         @include mobileMenuList;

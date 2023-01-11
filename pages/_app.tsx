@@ -7,6 +7,7 @@ import wrapper from '@/redux/store';
 import { useAppDispatch } from '@/redux/hooks';
 import { useEffect } from 'react';
 import { SET_VIEW_TYPE } from '@/redux/slices/common';
+import setViewType from '@/utils/setViewType';
 
 function App({ Component, pageProps }: AppProps) {
   const dispatch = useAppDispatch();
@@ -14,15 +15,11 @@ function App({ Component, pageProps }: AppProps) {
   // Window Reszie 이벤트 추가
   useEffect(() => {
     const width = window.innerWidth;
-    // 첫 렌더링 시 모바일 | 태블릿 | 데스크톱 구분
-    if (width <= 375) dispatch(SET_VIEW_TYPE('MOBILE'));
-    else if (width <= 768) dispatch(SET_VIEW_TYPE('TABLET'));
-    else dispatch(SET_VIEW_TYPE('DESKTOP'));
+    dispatch(SET_VIEW_TYPE(setViewType(width)));
 
     const resizeWindow = () => {
-      if (width <= 375) dispatch(SET_VIEW_TYPE('MOBILE'));
-      else if (width <= 768) dispatch(SET_VIEW_TYPE('TABLET'));
-      else dispatch(SET_VIEW_TYPE('DESKTOP'));
+      const width = window.innerWidth;
+      dispatch(SET_VIEW_TYPE(setViewType(width)));
     };
 
     window.addEventListener('resize', resizeWindow);
