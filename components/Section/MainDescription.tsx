@@ -1,4 +1,4 @@
-import s from '@/styles/components/Container/MainDescription.module.scss';
+import s from '@/styles/components/Section/MainDescription.module.scss';
 
 import { useAppSelector } from '@/redux/hooks';
 import Image from 'next/image';

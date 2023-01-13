@@ -1,5 +1,5 @@
 import { useAppSelector } from '@/redux/hooks';
-import s from '@/styles/components/Container/DisplayPayment.module.scss';
+import s from '@/styles/components/Section/DisplayPayment.module.scss';
 import PaymentGroup from '../Payment/PaymentGroup';
 
 const DisplayPayment = () => {
