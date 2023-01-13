@@ -1,16 +1,16 @@
 @import '@/styles/mixins.scss';
 
 @include mobile {
-  .mainDescriptionContainer {
+  .container {
     @include flex-column-pos(center, center);
     margin-top: 4rem;
     .textBtnContainer {
       @include flex-column-pos(center, center);
       .text_line_1 {
-        @include text_line_1(2.5rem, center);
+        @include text_line_1(2.5rem);
       }
       .text_line_2 {
-        @include text_line_2(1.6rem, center);
+        @include text_line_2(1.6rem);
         margin: 2rem 0 3.2rem 0;
       }
       .goWebButton {
@@ -30,15 +30,15 @@
 }
 
 @include tablet {
-  .mainDescriptionContainer {
+  .container {
     @include flex-column-pos(flex-start, center);
     margin-top: 8rem;
     .textBtnContainer {
       .text_line_1 {
-        @include text_line_1(4rem, center);
+        @include text_line_1(4rem);
       }
       .text_line_2 {
-        @include text_line_2(1.8rem, center);
+        @include text_line_2(1.8rem);
         margin: 2.4rem 0 4.8rem 0;
       }
     }
@@ -49,7 +49,7 @@
 }
 
 @include desktop {
-  .mainDescriptionContainer {
+  .container {
     @include flex-row-pos(center, center);
     margin-top: 11rem;
     .textBtnContainer {

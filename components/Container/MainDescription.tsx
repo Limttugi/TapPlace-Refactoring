@@ -1,8 +1,9 @@
-import { useAppSelector } from '@/redux/hooks';
 import s from '@/styles/components/Container/MainDescription.module.scss';
+
+import { useAppSelector } from '@/redux/hooks';
 import Image from 'next/image';
-import Download from '../Button/Download';
-import DownloadMobile from '../Button/DownloadMobile';
+import DownloadButton from '../Button/DownloadButton';
+import DownloadMobileButton from '../Button/DownloadMobileButton';
 import mock_1_mobile from '@/img/MockUp/mock_1_mobile.webp';
 import mock_1_desktop from '@/img/MockUp/mock_1_desktop.webp';
 
@@ -10,7 +11,7 @@ const MainDescription = () => {
   const { viewType } = useAppSelector(state => state.common);
 
   return (
-    <article className={s.mainDescriptionContainer}>
+    <article className={s.container}>
       <div className={s.textBtnContainer}>
         <h1 className={s.text_line_1}>
           간편결제 가맹점 확인
@@ -26,11 +27,11 @@ const MainDescription = () => {
         </p>
         {viewType === 'MOBILE' ? (
           <>
-            <DownloadMobile />
+            <DownloadMobileButton />
             <button className={s.goWebButton}>웹으로 이용하기</button>
           </>
         ) : (
-          <Download />
+          <DownloadButton />
         )}
       </div>
       <Image className={s.mockImage} src={viewType === 'MOBILE' ? mock_1_mobile : mock_1_desktop} alt='mockup_1' />

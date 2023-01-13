@@ -64,7 +64,7 @@ $white: white;
 }
 
 // Text
-@mixin text_line_1($fontSize, $textalign: left) {
+@mixin text_line_1($fontSize, $textalign: center) {
   font-size: $fontSize;
   font-weight: 400;
   line-height: 135%;
@@ -72,7 +72,7 @@ $white: white;
   text-align: $textalign;
 }
 
-@mixin text_line_2($fontSize, $textalign: left) {
+@mixin text_line_2($fontSize, $textalign: center) {
   font-size: $fontSize;
   font-weight: 400;
   line-height: 145%;

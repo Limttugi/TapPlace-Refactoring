@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useAppSelector } from '@/redux/hooks';
 import Image from 'next/image';
 import Link from 'next/link';
-import tapplaceLogo from '@/img/Logo/TapPlaceLogo/tapplace_logo.webp';
+import tapplaceLogo from '@/img/Logo/TapPlace/tapplace_logo.webp';
 
 const Header = () => {
   const { viewType } = useAppSelector(state => state.common);
