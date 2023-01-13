@@ -17,7 +17,7 @@ const StoreInquiry = () => {
           <div className={s.descriptionContainer}>
             <h1 className={s.line_0}>
               <Image src={titleImage} alt='titleImage' />
-              가맹점조회
+              가맹점 조회
             </h1>
             <h1 className={s.line_1}>
               내 주변 간편결제 가맹점을
