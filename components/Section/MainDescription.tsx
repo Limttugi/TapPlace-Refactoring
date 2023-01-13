@@ -11,7 +11,7 @@ const MainDescription = () => {
   const { viewType } = useAppSelector(state => state.common);
 
   return (
-    <article className={s.container}>
+    <section className={s.container}>
       <div className={s.textBtnContainer}>
         <h1 className={s.text_line_1}>
           간편결제 가맹점 확인
@@ -35,7 +35,7 @@ const MainDescription = () => {
         )}
       </div>
       <Image className={s.mockImage} src={viewType === 'MOBILE' ? mock_1_mobile : mock_1_desktop} alt='mockup_1' />
-    </article>
+    </section>
   );
 };
 

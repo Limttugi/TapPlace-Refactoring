@@ -1,5 +1,5 @@
-import DisplayPayment from '@/components/Container/DisplayPayment';
-import MainDescription from '@/components/Container/MainDescription';
+import DisplayPayment from '@/components/Section/DisplayPayment';
+import MainDescription from '@/components/Section/MainDescription';
 
 const Index = () => {
   return (

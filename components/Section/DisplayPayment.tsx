@@ -6,7 +6,7 @@ const DisplayPayment = () => {
   const { viewType } = useAppSelector(state => state.common);
 
   return (
-    <article className={s.container}>
+    <section className={s.container}>
       <p className={s.text_line_2}>
         {viewType === 'MOBILE' ? (
           <>
@@ -25,7 +25,7 @@ const DisplayPayment = () => {
         )}
       </p>
       <PaymentGroup />
-    </article>
+    </section>
   );
 };
 
