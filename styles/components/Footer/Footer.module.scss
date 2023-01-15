@@ -16,6 +16,7 @@
     .logo {
       @include width-height(12rem, 1.8rem);
       opacity: 0.4;
+      cursor: pointer;
     }
     .shortcutContainer {
       @include flex-column;
@@ -46,6 +47,7 @@
       .logo {
         @include width-height(13.5rem, 2rem);
         opacity: 0.4;
+        cursor: pointer;
       }
       .shortcutContainer {
         @include flex-row;
@@ -108,6 +110,7 @@
       .logo {
         @include width-height(13.5rem, 2rem);
         opacity: 0.4;
+        cursor: pointer;
       }
       .shortcutContainer {
         @include flex-row;

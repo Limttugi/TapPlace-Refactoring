@@ -54,10 +54,10 @@
     margin-top: 11rem;
     .textBtnContainer {
       .text_line_1 {
-        @include text_line_1(6rem);
+        @include text_line_1(6rem, left);
       }
       .text_line_2 {
-        @include text_line_2(2rem);
+        @include text_line_2(2rem, left);
         margin: 2.4rem 0 8rem 0;
       }
     }
