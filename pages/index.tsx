@@ -1,3 +1,4 @@
+import MemberIntroduction from '@/components/Section/\bMemberIntroduction';
 import DisplayPayment from '@/components/Section/DisplayPayment';
 import MainDescription from '@/components/Section/MainDescription';
 import PaymentFeedback from '@/components/Section/PaymentFeedback';
@@ -12,6 +13,7 @@ const Index = () => {
       <StoreInquiry />
       <PaymentFeedback />
       <StoreRegistering />
+      <MemberIntroduction />
     </main>
   );
 };

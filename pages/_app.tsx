@@ -31,7 +31,7 @@ function App({ Component, pageProps }: AppProps) {
     <AppLayout>
       <Head>
         <title>TapPlace</title>
-        <link rel='icon' href='/tapplace_icon.webp' />
+        <link rel='icon' href='/img/Logo/tapplace_icon.webp' />
       </Head>
       <Component {...pageProps} />
     </AppLayout>

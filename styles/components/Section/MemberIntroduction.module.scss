@@ -1,0 +1,71 @@
+@import '@/styles/mixins.scss';
+
+@include mobile {
+  .container {
+    @include flex-column-pos(center, center);
+    margin: 6rem 0 8rem 0;
+    .title {
+      @include text_line_1(2.5rem, center);
+    }
+    .memberSlider {
+      @include flex-row;
+      @include width-height(26rem, 48rem);
+      margin-top: 1.6rem;
+      overflow-x: auto;
+      padding: 0 2rem;
+      &::-webkit-scrollbar {
+        background-color: #eff2f5;
+        height: 0.4rem;
+      }
+      &::-webkit-scrollbar-thumb {
+        background-color: $mainColor;
+      }
+    }
+  }
+}
+
+@include tablet {
+  .container {
+    @include flex-column-pos(center, center);
+    margin: 15rem 0;
+    .title {
+      @include text_line_1(3.5rem, center);
+    }
+    .memberSlider {
+      @include flex-row;
+      @include width-height(94%, 50rem);
+      margin-top: 1.6rem;
+      overflow-x: auto;
+      &::-webkit-scrollbar {
+        height: 0.4rem;
+        background-color: #eff2f5;
+      }
+      &::-webkit-scrollbar-thumb {
+        background-color: $mainColor;
+      }
+    }
+  }
+}
+
+@include desktop {
+  .container {
+    @include flex-column-pos(center, center);
+    margin: 15rem 0;
+    .title {
+      @include text_line_1(5rem, center);
+    }
+    .memberSlider {
+      @include flex-row;
+      @include width-height(80%, 70rem);
+      margin-top: 1.6rem;
+      overflow-x: auto;
+      &::-webkit-scrollbar {
+        height: 0.5rem;
+        background-color: #eff2f5;
+      }
+      &::-webkit-scrollbar-thumb {
+        background-color: $mainColor;
+      }
+    }
+  }
+}

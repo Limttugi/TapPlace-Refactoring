@@ -1,0 +1,99 @@
+@import '@/styles/mixins.scss';
+
+@include mobile {
+  .container {
+    @include flex-column-pos(center, center);
+    &:not(:first-child) {
+      margin-left: 2rem;
+    }
+    .memberImage {
+      border: 1px solid lightgray;
+      @include width-height(22rem, 22rem);
+      margin-bottom: 1.6rem;
+    }
+    .infoContainer {
+      .line_0 {
+        @include text_line_1(2.5rem);
+      }
+      .line_1 {
+        font-size: 2rem;
+        font-weight: 400;
+        color: #a1a7b0;
+        margin: 0.4rem 0 1.6rem 0;
+        text-align: center;
+      }
+      .line_2 {
+        @include text_line_2(1.6rem);
+        margin-bottom: 2.4rem;
+      }
+    }
+  }
+}
+
+@include tablet {
+  .container {
+    @include flex-column-pos(center, center);
+    &:not(:first-child) {
+      margin-left: 2.4rem;
+    }
+    .memberImage {
+      border: 1px solid lightgray;
+      @include width-height(22rem, 22rem);
+      margin-bottom: 1.6rem;
+    }
+    .infoContainer {
+      .line_0 {
+        @include text_line_1(2.5rem);
+      }
+      .line_1 {
+        font-size: 2rem;
+        font-weight: 400;
+        color: #a1a7b0;
+        margin: 0.4rem 0 1.6rem 0;
+        text-align: center;
+      }
+      .line_2 {
+        @include text_line_2(1.6rem);
+        margin-bottom: 2.4rem;
+      }
+    }
+  }
+}
+
+@include desktop {
+  .container {
+    position: relative;
+    @include flex-column-pos(center, center);
+    &:not(:first-child) {
+      margin-left: 6rem;
+    }
+    .memberImage {
+      border: 1px solid lightgray;
+      @include width-height(32rem, 32rem);
+      margin-bottom: 1.6rem;
+    }
+    .line_0 {
+      @include text_line_1(3rem);
+      margin: 2rem 0 0.4rem 0;
+    }
+    .line_1 {
+      font-size: 2.5rem;
+      font-weight: 400;
+      color: #a1a7b0;
+    }
+    .hover {
+      position: absolute;
+      left: 0;
+      top: 13.3rem;
+      @include flex-column-pos(center, center);
+      @include width-height(32rem, 32rem);
+      background: rgba(78, 119, 251, 0.8);
+      .line_2 {
+        width: 20rem;
+        @include text_line_2(1.6rem);
+        color: white;
+        margin-bottom: 3rem;
+      }
+    }
+  }
+}
