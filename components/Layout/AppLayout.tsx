@@ -1,3 +1,4 @@
+import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 
 interface Props {
@@ -9,6 +10,7 @@ const AppLayout = ({ children }: Props) => {
     <>
       <Header />
       {children}
+      <Footer />
     </>
   );
 };

@@ -1,0 +1,161 @@
+@import '@/styles/mixins.scss';
+
+@mixin footerLi($fontSize) {
+  font-size: $fontSize;
+  font-weight: 400;
+  line-height: 2rem;
+  color: #9fa1a9;
+}
+
+@include mobile {
+  .container {
+    @include flex-column-pos(space-between, stretch);
+    height: 37rem;
+    background-color: #3f4353;
+    padding: 5.5rem 2.4rem 6.5rem 2.4rem;
+    .logo {
+      @include width-height(12rem, 1.8rem);
+      opacity: 0.4;
+    }
+    .shortcutContainer {
+      @include flex-column;
+      li {
+        @include footerLi(1.4rem);
+      }
+    }
+    .tapplaceInfoContainer {
+      li {
+        @include footerLi(1.4rem);
+      }
+    }
+    .copyright {
+      font-size: 1.4rem;
+      font-weight: 400;
+      color: #6e717d;
+    }
+  }
+}
+
+@include tablet {
+  .container {
+    height: 25.5rem;
+    background-color: #3f4353;
+    padding: 6rem 2.4rem 5.5rem 2.4rem;
+    .topContainer {
+      @include flex-row-pos(space-between, flex-start);
+      .logo {
+        @include width-height(13.5rem, 2rem);
+        opacity: 0.4;
+      }
+      .shortcutContainer {
+        @include flex-row;
+        li {
+          @include footerLi(1.5rem);
+          margin-right: 1rem;
+          &:last-child {
+            border: none;
+          }
+          &:not(:last-child) {
+            &:after {
+              content: '';
+              height: 100%;
+              border-right: 1px solid #9fa1a9;
+              margin-left: 1rem;
+            }
+          }
+        }
+      }
+    }
+    hr {
+      border: 1px solid rgba(120, 123, 134, 0.5);
+      margin: 2.8rem 0;
+    }
+    .tapplaceInfoContainer {
+      @include flex-row-pos(space-between, flex-start);
+      width: 61rem;
+      margin-bottom: 2.8rem;
+      li {
+        @include footerLi(1.4rem);
+        margin-right: 1.2rem;
+        &:last-child {
+          border: none;
+        }
+        &:not(:last-child) {
+          &:after {
+            content: '';
+            height: 100%;
+            border-right: 1px solid #9fa1a9;
+            margin-left: 1rem;
+          }
+        }
+      }
+    }
+    .copyright {
+      font-size: 1.4rem;
+      font-weight: 400;
+      color: #6e717d;
+    }
+  }
+}
+
+@include desktop {
+  .container {
+    height: 25.5rem;
+    background-color: #3f4353;
+    padding: 6.6rem 36rem;
+    .topContainer {
+      @include flex-row-pos(space-between, flex-start);
+      .logo {
+        @include width-height(13.5rem, 2rem);
+        opacity: 0.4;
+      }
+      .shortcutContainer {
+        @include flex-row;
+        li {
+          @include footerLi(1.5rem);
+          margin-right: 1rem;
+          &:last-child {
+            border: none;
+          }
+          &:not(:last-child) {
+            &:after {
+              content: '';
+              height: 100%;
+              border-right: 1px solid #9fa1a9;
+              margin-left: 1rem;
+            }
+          }
+        }
+      }
+    }
+    hr {
+      border: 1px solid rgba(120, 123, 134, 0.5);
+      margin: 2.8rem 0;
+    }
+    .tapplaceInfoContainer {
+      @include flex-row-pos(space-between, flex-start);
+      width: 61rem;
+      margin-bottom: 2.8rem;
+      li {
+        @include footerLi(1.4rem);
+        margin-right: 1.2rem;
+        &:last-child {
+          border: none;
+        }
+        &:not(:last-child) {
+          &:after {
+            content: '';
+            height: 100%;
+            border-right: 1px solid #9fa1a9;
+            margin-left: 1rem;
+          }
+        }
+      }
+    }
+    .copyright {
+      font-size: 1.4rem;
+      font-weight: 400;
+      color: #6e717d;
+    }
+  }
+}
