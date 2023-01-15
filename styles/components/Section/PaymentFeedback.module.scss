@@ -12,6 +12,7 @@
     padding: 6rem 0 5rem 0;
     .textContainer {
       @include flex-column-pos(center, flex-start);
+      width: 32rem;
       .line_0 {
         @include flex-row-pos(flex-start, baseline);
         @include text_line_0(1.6rem, left);
