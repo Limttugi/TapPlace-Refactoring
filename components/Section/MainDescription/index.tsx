@@ -2,7 +2,7 @@ import s from './index.module.scss';
 
 import { useAppSelector } from '@/redux/hooks';
 import Image from 'next/image';
-import DownloadMobileButton from '../../Button/Download/MobileVersion';
+import DownloadMobileButton from '../../Button/Download/MobileVer';
 import mock_1_mobile from '@/img/MockUp/mock_1_mobile.webp';
 import mock_1_desktop from '@/img/MockUp/mock_1_desktop.webp';
 import DownloadButton from '../../Button/Download';

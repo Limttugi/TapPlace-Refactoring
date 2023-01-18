@@ -1,0 +1,15 @@
+@import '@/styles/mixins';
+
+.container {
+  @include flex-row-pos(space-between, center);
+  .snsImage {
+    @include width-height(1.6rem, 1.6rem);
+    cursor: pointer;
+  }
+}
+
+@include desktop {
+  .container {
+    width: 20rem;
+  }
+}

@@ -1,6 +1,6 @@
 @import '@/styles/mixins.scss';
 
-.memberSlider {
+@mixin containerCS {
   @include flex-row;
   overflow-x: auto;
   margin-top: 1.6rem;
@@ -13,7 +13,8 @@
 }
 
 @include mobile {
-  .memberSlider {
+  .container {
+    @include containerCS;
     @include width-height(26rem, 48rem);
     padding: 0 2rem;
     &::-webkit-scrollbar {
@@ -23,7 +24,8 @@
 }
 
 @include tablet {
-  .memberSlider {
+  .container {
+    @include containerCS;
     @include width-height(94%, 50rem);
     &::-webkit-scrollbar {
       height: 0.4rem;
@@ -32,7 +34,8 @@
 }
 
 @include desktop {
-  .memberSlider {
+  .container {
+    @include containerCS;
     @include width-height(80%, 70rem);
     &::-webkit-scrollbar {
       height: 0.5rem;

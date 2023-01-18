@@ -1,0 +1,13 @@
+@import '@/styles/mixins.scss';
+
+.container {
+  @include flex-column-pos(center, center);
+  padding: 4rem 0 12rem 0;
+  .line_0 {
+    @include text_line_1(2.5rem);
+  }
+  .line_1 {
+    @include text_line_2(1.7rem);
+    margin: 2rem 0 4rem 0;
+  }
+}

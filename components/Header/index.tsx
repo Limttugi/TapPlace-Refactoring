@@ -7,7 +7,7 @@ import { useAppSelector } from '@/redux/hooks';
 import Image from 'next/image';
 import Link from 'next/link';
 import tapplaceLogo from '@/img/Logo/TapPlace/tapplace_logo.webp';
-import HamburgerMenu from './HamburgerMenu';
+import MobileHeader from './MobileVer';
 
 const Header = () => {
   const { viewType } = useAppSelector(state => state.common);
@@ -19,13 +19,11 @@ const Header = () => {
 
   return (
     <>
-      <header className={s.container}>
-        <Image className={s.logo} src={tapplaceLogo} alt='tapplceLogo' placeholder='blur' />
-        {viewType === 'MOBILE' ? (
-          // 모바일 화면일 시 햄버거 메뉴
-          <HamburgerMenu />
-        ) : (
-          // 모바일 화면이 아닐 시 (tablet, desktop) 리스트 메뉴
+      {viewType === 'MOBILE' ? (
+        <MobileHeader />
+      ) : (
+        <header className={s.container}>
+          <Image className={s.logo} src={tapplaceLogo} alt='tapplceLogo' placeholder='blur' />
           <ul className={s.menuContainer}>
             <Link href='/' className={s.menuList} onClick={() => setHref('/')}>
               서비스 소개
@@ -40,8 +38,8 @@ const Header = () => {
               웹으로 이용하기
             </Link>
           </ul>
-        )}
-      </header>
+        </header>
+      )}
     </>
   );
 };

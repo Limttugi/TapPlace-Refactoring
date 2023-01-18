@@ -4,7 +4,7 @@ import MemberInfo from './MemberInfo';
 
 const MemberSlider = () => {
   return (
-    <ul className={s.memberSlider}>
+    <ul className={s.container}>
       <MemberInfo name='박상현' imgSrc='img/Memoji/ios1.webp' position='IOS 개발' />
       <MemberInfo name='이상준' imgSrc='img/Memoji/ios2.webp' position='IOS 개발' />
       <MemberInfo name='지경희' imgSrc='img/Memoji/android1.webp' position='Android 개발' />

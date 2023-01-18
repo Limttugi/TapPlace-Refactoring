@@ -1,7 +1,7 @@
 import s from './index.module.scss';
 
 import { useAppSelector } from '@/redux/hooks';
-import MemberSlider from '@/components/Slider/MemberSlider';
+import MemberSlider from '@/components/Slider/Member';
 
 const MemberIntroduction = () => {
   const { viewType } = useAppSelector(state => state.common);

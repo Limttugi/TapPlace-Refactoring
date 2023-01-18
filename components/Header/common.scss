@@ -1,4 +1,4 @@
-@mixin headerLayout {
+@mixin containerCS {
   @include flex-row-pos(space-between, center);
   width: 100vw;
   height: 6rem;

@@ -1,18 +1,30 @@
 @import '@/styles/mixins.scss';
 @import './common.scss';
 
+@mixin logoCS {
+  @include width-height(13rem, 2rem);
+  margin: 0.4rem;
+}
+
+@mixin menuContainerCS {
+  @include flex-row-pos(space-between, center);
+  width: 36rem;
+}
+
+@mixin menuListCS {
+  font-size: 1.5rem;
+}
+
 @include tablet {
   .container {
-    @include headerLayout;
+    @include containerCS;
     .logo {
-      @include width-height(13rem, 2rem);
-      margin-top: 0.4rem;
+      @include logoCS;
     }
     .menuContainer {
-      @include flex-row-pos(space-between, center);
-      width: 36rem;
+      @include menuContainerCS;
       .menuList {
-        font-size: 1.5rem;
+        @include menuListCS;
       }
     }
   }
@@ -20,17 +32,15 @@
 
 @include desktop {
   .container {
-    @include headerLayout;
+    @include containerCS;
     padding: 0 36rem;
     .logo {
-      @include width-height(13rem, 2rem);
-      margin-top: 0.4rem;
+      @include logoCS;
     }
     .menuContainer {
-      @include flex-row-pos(space-between, center);
-      width: 36rem;
+      @include menuContainerCS;
       .menuList {
-        font-size: 1.5rem;
+        @include menuListCS;
       }
     }
   }

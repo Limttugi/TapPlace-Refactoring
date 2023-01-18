@@ -11,7 +11,7 @@ import naver from '@/img/Logo/Payment/naver.webp';
 import master from '@/img/Logo/Payment/master.webp';
 import { useAppSelector } from '@/redux/hooks';
 
-const PaymentGroup = () => {
+const PaymentSlider = () => {
   const { viewType } = useAppSelector(state => state.common);
 
   return (
@@ -40,4 +40,4 @@ const PaymentGroup = () => {
   );
 };
 
-export default PaymentGroup;
+export default PaymentSlider;

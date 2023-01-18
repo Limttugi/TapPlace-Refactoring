@@ -1,5 +1,11 @@
 @import '@/styles/mixins.scss';
 
+// 모바일 환경에는 없는 스타일
+@mixin containerCS {
+  white-space: nowrap;
+  overflow: hidden;
+}
+
 @include mobile {
   .container {
     display: grid;
@@ -18,10 +24,10 @@
 
 @include tablet {
   .container {
+    @include containerCS;
     height: 6rem;
-    white-space: nowrap;
     margin-top: 2.4rem;
-    img {
+    .image {
       animation: slider_tablet 12s linear infinite;
       @include width-height(15rem, 6rem);
       padding: 1.6rem 1.8rem;
@@ -31,10 +37,10 @@
 
 @include desktop {
   .container {
+    @include containerCS;
     height: 9rem;
-    white-space: nowrap;
     margin-top: 4rem;
-    img {
+    .image {
       animation: slider_desktop 12s linear infinite;
       @include width-height(23rem, 9rem);
       padding: 2.4rem 2.6rem;

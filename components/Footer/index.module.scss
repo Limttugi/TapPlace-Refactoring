@@ -1,164 +1,153 @@
 @import '@/styles/mixins.scss';
 
-@mixin footerLi($fontSize) {
-  font-size: $fontSize;
+@mixin containerCS {
+  background-color: #3f4353;
+}
+
+@mixin logoCS {
+  opacity: 0.4;
+  cursor: pointer;
+}
+
+@mixin listItemCS {
   font-weight: 400;
   line-height: 2rem;
   color: #9fa1a9;
 }
 
+@mixin copyrightCS {
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: #6e717d;
+}
+
+// 모바일 환경에는 없는 스타일
+@mixin listItemDivideCS {
+  &:last-child {
+    border: none;
+  }
+  &:not(:last-child) {
+    &:after {
+      content: '';
+      height: 100%;
+      border-right: 1px solid #9fa1a9;
+      margin-left: 1rem;
+    }
+  }
+}
+
+@mixin hrCS {
+  border: 1px solid rgba(120, 123, 134, 0.5);
+  margin: 2.8rem 0;
+}
+
 @include mobile {
   .container {
+    @include containerCS;
     @include flex-column-pos(space-between, stretch);
     height: 37rem;
-    background-color: #3f4353;
     padding: 5.5rem 2.4rem 6.5rem 2.4rem;
     .logo {
+      @include logoCS;
       @include width-height(12rem, 1.8rem);
-      opacity: 0.4;
-      cursor: pointer;
     }
     .shortcutContainer {
       @include flex-column;
-      li {
-        @include footerLi(1.4rem);
+      .listItem {
+        @include listItemCS;
+        font-size: 1.4rem;
       }
     }
     .tapplaceInfoContainer {
-      li {
-        @include footerLi(1.4rem);
+      .listItem {
+        @include listItemCS;
+        font-size: 1.4rem;
       }
     }
     .copyright {
-      font-size: 1.4rem;
-      font-weight: 400;
-      color: #6e717d;
+      @include copyrightCS;
     }
   }
 }
 
 @include tablet {
   .container {
+    @include containerCS;
     height: 25.5rem;
-    background-color: #3f4353;
     padding: 6rem 2.4rem 5.5rem 2.4rem;
     .topContainer {
       @include flex-row-pos(space-between, flex-start);
       .logo {
+        @include logoCS;
         @include width-height(13.5rem, 2rem);
-        opacity: 0.4;
-        cursor: pointer;
       }
       .shortcutContainer {
         @include flex-row;
-        li {
-          @include footerLi(1.5rem);
+        .listItem {
+          @include listItemCS;
+          font-size: 1.5rem;
           margin-right: 1rem;
-          &:last-child {
-            border: none;
-          }
-          &:not(:last-child) {
-            &:after {
-              content: '';
-              height: 100%;
-              border-right: 1px solid #9fa1a9;
-              margin-left: 1rem;
-            }
-          }
+          @include listItemDivideCS;
         }
       }
     }
     hr {
-      border: 1px solid rgba(120, 123, 134, 0.5);
-      margin: 2.8rem 0;
+      @include hrCS;
     }
     .tapplaceInfoContainer {
       @include flex-row-pos(space-between, flex-start);
       width: 61rem;
       margin-bottom: 2.8rem;
-      li {
-        @include footerLi(1.4rem);
+      .listItem {
+        @include listItemCS;
+        font-size: 1.4rem;
         margin-right: 1.2rem;
-        &:last-child {
-          border: none;
-        }
-        &:not(:last-child) {
-          &:after {
-            content: '';
-            height: 100%;
-            border-right: 1px solid #9fa1a9;
-            margin-left: 1rem;
-          }
-        }
+        @include listItemDivideCS;
       }
     }
     .copyright {
-      font-size: 1.4rem;
-      font-weight: 400;
-      color: #6e717d;
+      @include copyrightCS;
     }
   }
 }
 
 @include desktop {
   .container {
+    @include containerCS;
     height: 25.5rem;
-    background-color: #3f4353;
     padding: 6.6rem 36rem;
     .topContainer {
       @include flex-row-pos(space-between, flex-start);
       .logo {
+        @include logoCS;
         @include width-height(13.5rem, 2rem);
-        opacity: 0.4;
-        cursor: pointer;
       }
       .shortcutContainer {
         @include flex-row;
-        li {
-          @include footerLi(1.5rem);
+        .listItem {
+          @include listItemCS;
+          font-size: 1.5rem;
           margin-right: 1rem;
-          &:last-child {
-            border: none;
-          }
-          &:not(:last-child) {
-            &:after {
-              content: '';
-              height: 100%;
-              border-right: 1px solid #9fa1a9;
-              margin-left: 1rem;
-            }
-          }
+          @include listItemDivideCS;
         }
       }
     }
     hr {
-      border: 1px solid rgba(120, 123, 134, 0.5);
-      margin: 2.8rem 0;
+      @include hrCS;
     }
     .tapplaceInfoContainer {
       @include flex-row-pos(space-between, flex-start);
       width: 61rem;
       margin-bottom: 2.8rem;
-      li {
-        @include footerLi(1.4rem);
+      .listItem {
+        @include listItemCS;
+        font-size: 1.4rem;
         margin-right: 1.2rem;
-        &:last-child {
-          border: none;
-        }
-        &:not(:last-child) {
-          &:after {
-            content: '';
-            height: 100%;
-            border-right: 1px solid #9fa1a9;
-            margin-left: 1rem;
-          }
-        }
+        @include listItemDivideCS;
       }
     }
     .copyright {
-      font-size: 1.4rem;
-      font-weight: 400;
-      color: #6e717d;
+      @include copyrightCS;
     }
   }
 }

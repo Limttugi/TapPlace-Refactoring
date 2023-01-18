@@ -1,41 +1,58 @@
 @import '@/styles/mixins.scss';
 
-.buttonText {
+@mixin buttonContainerCS {
+  @include flex-row-pos(space-between, center);
+  margin-bottom: 8rem;
+}
+
+@mixin buttonCS {
+  @include flex-row-pos(center, center);
+  background: $black;
+  border-radius: 1.2rem;
+}
+
+@mixin buttonTextCS {
   font-size: 1.7rem;
   font-weight: 400;
   line-height: 2.4rem;
   color: $white;
 }
 
-.buttonImage {
+@mixin buttonImageCS {
   @include width-height(2.4rem, 2.4rem);
   margin-right: 0.4rem;
 }
 
 @include tablet {
   .buttonContainer {
-    @include flex-row-pos(space-between, center);
+    @include buttonContainerCS;
     width: 35.2rem;
-    margin-bottom: 8rem;
     .button {
-      @include flex-row-pos(center, center);
+      @include buttonCS;
       @include width-height(17rem, 6rem);
-      background: $black;
-      border-radius: 1.2rem;
+      .buttonImage {
+        @include buttonImageCS;
+      }
+      .buttonText {
+        @include buttonTextCS;
+      }
     }
   }
 }
 
 @include desktop {
   .buttonContainer {
-    @include flex-row-pos(space-between, center);
+    @include buttonContainerCS;
     width: 37.6rem;
-    margin-bottom: 8rem;
     .button {
-      @include flex-row-pos(center, center);
+      @include buttonCS;
       @include width-height(18rem, 6rem);
-      background: $black;
-      border-radius: 1.2rem;
+      .buttonImage {
+        @include buttonImageCS;
+      }
+      .buttonText {
+        @include buttonTextCS;
+      }
     }
   }
 }

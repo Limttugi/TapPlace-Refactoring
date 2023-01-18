@@ -1,7 +1,7 @@
 import s from './index.module.scss';
 
 import { useAppSelector } from '@/redux/hooks';
-import PaymentGroup from '../../Payment';
+import PaymentSlider from '@/components/Slider/Payment';
 
 const DisplayPayment = () => {
   const { viewType } = useAppSelector(state => state.common);
@@ -25,7 +25,7 @@ const DisplayPayment = () => {
           viewType === 'DESKTOP' && '탭플레이스와 함께라면 이 모든 간편결제 가맹점을 쉽게 확인할 수 있어요'
         )}
       </p>
-      <PaymentGroup />
+      <PaymentSlider />
     </section>
   );
 };

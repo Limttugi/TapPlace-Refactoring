@@ -1,14 +1,8 @@
 @import '@/styles/mixins.scss';
 @import '../common.scss';
 
-@mixin mobileMenuList {
-  @include height-lineheight(6rem);
-  padding: 0 2.4rem;
-  font-size: 1.6rem;
-}
-
 .container {
-  @include headerLayout;
+  @include containerCS;
   .logo {
     @include width-height(12rem, 1.8rem);
     margin-top: 0.4rem;
@@ -27,7 +21,9 @@
     padding-top: 6rem;
     box-shadow: rgba(0, 0, 0, 0.5) 0 0 0 9999px;
     .menuList {
-      @include mobileMenuList;
+      @include height-lineheight(6rem);
+      padding: 0 2.4rem;
+      font-size: 1.6rem;
       border-top: 1px solid lightgray;
       background: white;
       &:last-of-type {
