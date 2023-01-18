@@ -1,5 +1,5 @@
-import MemberIntroduction from '@/components/Section/\bMemberIntroduction';
-import CheckAfterDownlaod from '@/components/Section/CheckAfterDownlaod';
+import MemberIntroduction from '@/components/Section/MemberIntroduction';
+import CheckAfterDownlaod from '@/components/Section/CheckAfterDownload';
 import DisplayPayment from '@/components/Section/DisplayPayment';
 import MainDescription from '@/components/Section/MainDescription';
 import PaymentFeedback from '@/components/Section/PaymentFeedback';

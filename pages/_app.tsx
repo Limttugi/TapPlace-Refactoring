@@ -2,12 +2,12 @@ import '@/styles/globals.scss';
 
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
-import AppLayout from '@/components/Layout/AppLayout';
 import { useAppDispatch } from '@/redux/hooks';
 import { useEffect } from 'react';
 import { SET_VIEW_TYPE } from '@/redux/slices/common';
 import setViewType from '@/utils/setViewType';
 import wrapper from '@/redux/store';
+import AppLayout from '@/components/Layout';
 
 function App({ Component, pageProps }: AppProps) {
   const dispatch = useAppDispatch();

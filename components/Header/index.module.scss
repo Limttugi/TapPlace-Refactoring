@@ -1,0 +1,37 @@
+@import '@/styles/mixins.scss';
+@import './common.scss';
+
+@include tablet {
+  .container {
+    @include headerLayout;
+    .logo {
+      @include width-height(13rem, 2rem);
+      margin-top: 0.4rem;
+    }
+    .menuContainer {
+      @include flex-row-pos(space-between, center);
+      width: 36rem;
+      .menuList {
+        font-size: 1.5rem;
+      }
+    }
+  }
+}
+
+@include desktop {
+  .container {
+    @include headerLayout;
+    padding: 0 36rem;
+    .logo {
+      @include width-height(13rem, 2rem);
+      margin-top: 0.4rem;
+    }
+    .menuContainer {
+      @include flex-row-pos(space-between, center);
+      width: 36rem;
+      .menuList {
+        font-size: 1.5rem;
+      }
+    }
+  }
+}

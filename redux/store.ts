@@ -46,7 +46,8 @@ const makeStore = () => {
 
 // ### 타입 익스포트
 export type AppStore = ReturnType<typeof makeStore>; // store 타입
-// export type RootState = ReturnType<typeof rootReducer>; // RootState 타입
+export type RootState = ReturnType<typeof rootReducer>; // RootState 타입
+export type AppDispatch = AppStore['dispatch']; // dispatch 타입
 // export type RootState = ReturnType<AppStore['getState']>; // RootState 타입(위와 동일함)
 // export type AppThunk<ReturnType = void> = ThunkAction<ReturnType, RootState, unknown, Action>; // Thunk 를 위한 타입
 

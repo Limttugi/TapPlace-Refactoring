@@ -1,0 +1,41 @@
+@import '@/styles/mixins.scss';
+
+.memberSlider {
+  @include flex-row;
+  overflow-x: auto;
+  margin-top: 1.6rem;
+  &::-webkit-scrollbar {
+    background-color: #eff2f5;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: $mainColor;
+  }
+}
+
+@include mobile {
+  .memberSlider {
+    @include width-height(26rem, 48rem);
+    padding: 0 2rem;
+    &::-webkit-scrollbar {
+      height: 0.4rem;
+    }
+  }
+}
+
+@include tablet {
+  .memberSlider {
+    @include width-height(94%, 50rem);
+    &::-webkit-scrollbar {
+      height: 0.4rem;
+    }
+  }
+}
+
+@include desktop {
+  .memberSlider {
+    @include width-height(80%, 70rem);
+    &::-webkit-scrollbar {
+      height: 0.5rem;
+    }
+  }
+}
