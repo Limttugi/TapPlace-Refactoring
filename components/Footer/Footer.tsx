@@ -1,4 +1,4 @@
-import s from './index.module.scss';
+import s from './Footer.module.scss';
 
 import Image from 'next/image';
 import logo from '@/img/Logo/TapPlace/tapplace_logo_black.webp';

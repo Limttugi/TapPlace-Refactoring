@@ -1,8 +1,8 @@
-import s from './index.module.scss';
+import s from './CheckAfterDownload.module.scss';
 
 import { useAppSelector } from '@/redux/hooks';
-import DownloadButton from '../../Button/Download';
-import MobileCheckAfterDownload from './MobileVer';
+import DownloadButton from '../../Button/Download/DownloadButton';
+import CheckAfterDownload_Mobile from './MobileVer/CheckAfterDownload_Mobile';
 
 const CheckAfterDownlaod = () => {
   const { viewType } = useAppSelector(state => state.common);
@@ -10,7 +10,7 @@ const CheckAfterDownlaod = () => {
   return (
     <>
       {viewType === 'MOBILE' ? (
-        <MobileCheckAfterDownload />
+        <CheckAfterDownload_Mobile />
       ) : (
         <section className={s.container}>
           <h1 className={s.line_0}>

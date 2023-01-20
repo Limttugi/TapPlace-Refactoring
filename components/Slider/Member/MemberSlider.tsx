@@ -1,6 +1,6 @@
-import s from './index.module.scss';
+import s from './MemberSlider.module.scss';
 
-import MemberInfo from './MemberInfo';
+import MemberInfo from './MemberInfo/MemberInfo';
 
 const MemberSlider = () => {
   return (

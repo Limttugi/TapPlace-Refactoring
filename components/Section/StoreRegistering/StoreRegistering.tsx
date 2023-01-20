@@ -1,4 +1,4 @@
-import s from './index.module.scss';
+import s from './StoreRegistering.module.scss';
 
 import Image from 'next/image';
 import titleImage from '@/img/MockUp/mock_4_titleImg.webp';

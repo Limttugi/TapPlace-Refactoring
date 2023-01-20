@@ -1,4 +1,4 @@
-import s from './index.module.scss';
+import s from './StoreInquiry_Mobile.module.scss';
 
 import Image from 'next/image';
 import titleImage from '@/img/MockUp/mock_2_titleImg.webp';
@@ -6,7 +6,7 @@ import mockup from '@/img/MockUp/mock_2.webp';
 import ex_1 from '@/img/MockUp/mock_2_ex1.webp';
 import ex_2 from '@/img/MockUp/mock_2_ex2.webp';
 
-const MobileStoreInquiry = () => {
+const StoreInquiry_Mobile = () => {
   return (
     <section className={s.container}>
       <div className={s.descriptionContainer}>
@@ -34,4 +34,4 @@ const MobileStoreInquiry = () => {
   );
 };
 
-export default MobileStoreInquiry;
+export default StoreInquiry_Mobile;

@@ -7,7 +7,7 @@ import { useAppSelector } from '@/redux/hooks';
 import Image from 'next/image';
 import Link from 'next/link';
 import tapplaceLogo from '@/img/Logo/TapPlace/tapplace_logo.webp';
-import MobileHeader from './MobileVer';
+import Header_Mobile from './MobileVer/Header_Mobile';
 
 const Header = () => {
   const { viewType } = useAppSelector(state => state.common);
@@ -20,7 +20,7 @@ const Header = () => {
   return (
     <>
       {viewType === 'MOBILE' ? (
-        <MobileHeader />
+        <Header_Mobile />
       ) : (
         <header className={s.container}>
           <Image className={s.logo} src={tapplaceLogo} alt='tapplceLogo' placeholder='blur' />

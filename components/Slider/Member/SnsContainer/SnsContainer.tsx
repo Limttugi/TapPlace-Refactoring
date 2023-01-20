@@ -1,4 +1,4 @@
-import s from './index.module.scss';
+import s from './SnsContainer.module.scss';
 
 import Image from 'next/image';
 import sns from '@/img/Logo/SNS/sns.png';

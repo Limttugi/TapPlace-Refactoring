@@ -1,4 +1,4 @@
-import s from './index.module.scss';
+import s from './DownloadButton.module.scss';
 
 import store_apple from '@/img/StoreButton/store_apple.webp';
 import store_google from '@/img/StoreButton/store_google.webp';

@@ -1,8 +1,8 @@
-import s from './index.module.scss';
+import s from './CheckAfterDownload_Mobile.module.scss';
 
-import DownloadMobileButton from '@/components/Button/Download/MobileVer';
+import DownloadMobileButton from '@/components/Button/Download/MobileVersion/DownloadButton_Mobile';
 
-const MobileCheckAfterDownload = () => {
+const CheckAfterDownload_Mobile = () => {
   return (
     <section className={s.container}>
       <h1 className={s.line_0}>
@@ -18,4 +18,4 @@ const MobileCheckAfterDownload = () => {
   );
 };
 
-export default MobileCheckAfterDownload;
+export default CheckAfterDownload_Mobile;

@@ -1,10 +1,10 @@
-import MemberIntroduction from '@/components/Section/MemberIntroduction';
-import CheckAfterDownlaod from '@/components/Section/CheckAfterDownload';
-import DisplayPayment from '@/components/Section/DisplayPayment';
-import MainDescription from '@/components/Section/MainDescription';
-import PaymentFeedback from '@/components/Section/PaymentFeedback';
-import StoreInquiry from '@/components/Section/StoreInquiry';
-import StoreRegistering from '@/components/Section/StoreRegistering';
+import CheckAfterDownlaod from '@/components/Section/CheckAfterDownload/CheckAfterDownload';
+import DisplayPayment from '@/components/Section/DisplayPayment/DisplayPayment';
+import MainDescription from '@/components/Section/MainDescription/MainDescription';
+import MemberIntroduction from '@/components/Section/MemberIntroduction/MemberIntroduction';
+import PaymentFeedback from '@/components/Section/PaymentFeedback/PaymentFeedback';
+import StoreInquiry from '@/components/Section/StoreInquiry/StoreInquiry';
+import StoreRegistering from '@/components/Section/StoreRegistering/StoreRegistering';
 
 const Index = () => {
   return (

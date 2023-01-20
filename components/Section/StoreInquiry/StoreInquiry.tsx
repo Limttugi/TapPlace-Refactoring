@@ -1,4 +1,4 @@
-import s from './index.module.scss';
+import s from './StoreInquiry.module.scss';
 
 import Image from 'next/image';
 import titleImage from '@/img/MockUp/mock_2_titleImg.webp';
@@ -6,7 +6,7 @@ import mockup from '@/img/MockUp/mock_2.webp';
 import ex_1 from '@/img/MockUp/mock_2_ex1.webp';
 import ex_2 from '@/img/MockUp/mock_2_ex2.webp';
 import { useAppSelector } from '@/redux/hooks';
-import MobileStoreInquiry from './MobilerVer';
+import StoreInquiry_Mobile from './MobilerVer/StoreInquiry_Mobile';
 
 const StoreInquiry = () => {
   const { viewType } = useAppSelector(state => state.common);
@@ -14,7 +14,7 @@ const StoreInquiry = () => {
   return (
     <>
       {viewType === 'MOBILE' ? (
-        <MobileStoreInquiry />
+        <StoreInquiry_Mobile />
       ) : (
         <section className={s.container}>
           <Image className={s.mockupImage} src={mockup} alt='mock_2' />

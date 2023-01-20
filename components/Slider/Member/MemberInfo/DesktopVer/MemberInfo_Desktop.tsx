@@ -1,10 +1,10 @@
-import s from './index.module.scss';
+import s from './MemberInfo_Desktop.module.scss';
 
-import { MemberInfoI } from '..';
+import { MemberInfoI } from '../MemberInfo';
 import HoverEvent from '@/utils/hoverEvent';
-import SnsContainer from '../../SnsContainer';
+import SnsContainer from '../../SnsContainer/SnsContainer';
 
-const DesktopMemberInfo = ({ name, imgSrc, position }: MemberInfoI) => {
+const MemberInfo_Desktop = ({ name, imgSrc, position }: MemberInfoI) => {
   const { memberRef, hoverFlag, onMouseOver, onMouseOut } = HoverEvent();
 
   return (
@@ -22,4 +22,4 @@ const DesktopMemberInfo = ({ name, imgSrc, position }: MemberInfoI) => {
   );
 };
 
-export default DesktopMemberInfo;
+export default MemberInfo_Desktop;

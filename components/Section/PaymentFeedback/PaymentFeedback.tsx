@@ -1,11 +1,11 @@
-import s from './index.module.scss';
+import s from './PaymentFeedback.module.scss';
 
 import { useAppSelector } from '@/redux/hooks';
 import Image from 'next/image';
 import mockup from '@/img/MockUp/mock_3.webp';
 import ex from '@/img/MockUp/mock_3_ex.webp';
 import titleImage from '@/img/MockUp/mock_3_titleImg.webp';
-import MobilePaymentFeedback from './MobileVer';
+import PaymentFeedback_Mobile from './MobileVer/PaymentFeedback_Mobile';
 
 const PaymentFeedback = () => {
   const { viewType } = useAppSelector(state => state.common);
@@ -13,7 +13,7 @@ const PaymentFeedback = () => {
   return (
     <>
       {viewType === 'MOBILE' ? (
-        <MobilePaymentFeedback />
+        <PaymentFeedback_Mobile />
       ) : (
         <section className={s.container}>
           <div className={s.leftContainer}>

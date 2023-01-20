@@ -1,4 +1,4 @@
-import s from './index.module.scss';
+import s from './Header_Mobile.module.scss';
 
 import { faBars, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -7,7 +7,7 @@ import { useEffect, useRef, useState } from 'react';
 import tapplaceLogo from '@/img/Logo/TapPlace/tapplace_logo.webp';
 import Image from 'next/image';
 
-const MobileHeader = () => {
+const Header_Mobile = () => {
   const menuRef = useRef<HTMLUListElement>(null);
   const [menuToggle, setMenuToggle] = useState<boolean>(false);
 
@@ -53,4 +53,4 @@ const MobileHeader = () => {
   );
 };
 
-export default MobileHeader;
+export default Header_Mobile;

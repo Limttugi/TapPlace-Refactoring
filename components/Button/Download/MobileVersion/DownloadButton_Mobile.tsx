@@ -1,9 +1,9 @@
-import s from './index.module.scss';
+import s from './DownloadButton_Mobile.module.scss';
 
 import store_download from '@/img/StoreButton/store_download.webp';
 import Image from 'next/image';
 
-const DownloadMobileButton = () => {
+const DownloadMobile_Button = () => {
   return (
     <button className={s.buttonContainer}>
       <Image className={s.buttonImage} src={store_download} alt='store_download' />
@@ -12,4 +12,4 @@ const DownloadMobileButton = () => {
   );
 };
 
-export default DownloadMobileButton;
+export default DownloadMobile_Button;

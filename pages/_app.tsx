@@ -7,7 +7,7 @@ import { useEffect } from 'react';
 import { SET_VIEW_TYPE } from '@/redux/slices/common';
 import setViewType from '@/utils/setViewType';
 import wrapper from '@/redux/store';
-import AppLayout from '@/components/Layout';
+import AppLayout from '@/components/Layout/AppLayout';
 
 function App({ Component, pageProps }: AppProps) {
   const dispatch = useAppDispatch();

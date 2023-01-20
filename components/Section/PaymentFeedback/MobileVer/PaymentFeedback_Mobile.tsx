@@ -1,11 +1,11 @@
-import s from './index.module.scss';
+import s from './PaymentFeedback_Mobile.module.scss';
 
 import Image from 'next/image';
 import titleImage from '@/img/MockUp/mock_3_titleImg.webp';
 import mockup from '@/img/MockUp/mock_3.webp';
 import ex from '@/img/MockUp/mock_3_ex.webp';
 
-const MobilePaymentFeedback = () => {
+const PaymentFeedback_Mobile = () => {
   return (
     <section className={s.container}>
       <div className={s.textContainer}>
@@ -31,4 +31,4 @@ const MobilePaymentFeedback = () => {
   );
 };
 
-export default MobilePaymentFeedback;
+export default PaymentFeedback_Mobile;

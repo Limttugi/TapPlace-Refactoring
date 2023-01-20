@@ -1,4 +1,4 @@
-import s from './index.module.scss';
+import s from './PaymentSlider.module.scss';
 
 import Image from 'next/image';
 import visa from '@/img/Logo/Payment/visa.webp';

@@ -1,9 +1,9 @@
-import s from './index.module.scss';
+import s from './MemberInfo.module.scss';
 
 import { useAppSelector } from '@/redux/hooks';
-import SnsContainer from '../SnsContainer';
+import SnsContainer from '../SnsContainer/SnsContainer';
 import HoverEvent from '@/utils/hoverEvent';
-import DesktopMemberInfo from './DesktopVer';
+import DesktopMemberInfo from './DesktopVer/MemberInfo_Desktop';
 
 export interface MemberInfoI {
   name: string;
