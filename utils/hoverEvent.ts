@@ -2,7 +2,7 @@ import { useRef, useState } from 'react';
 
 const HoverEvent = () => {
   const memberRef = useRef<HTMLImageElement>(null);
-  const [hoverFlag, setHoverFlag] = useState(false);
+  const [hoverFlag, setHoverFlag] = useState<boolean>(false);
 
   const onMouseOver = () => {
     setHoverFlag(true);
