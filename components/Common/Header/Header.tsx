@@ -11,7 +11,7 @@ import { IMPLEMENTING_SERVICE } from '@/constants/ALERT';
 
 const Header = () => {
   const { viewType } = useAppSelector(state => state.common);
-  const pathname = useRouter().pathname;
+  const pathname: string = useRouter().pathname;
 
   const onClickAlert = () => {
     alert(IMPLEMENTING_SERVICE);

@@ -1,7 +1,7 @@
 import s from './DisplayPayment.module.scss';
 
 import { useAppSelector } from '@/redux/hooks';
-import PaymentSlider from '@/components/Slider/Payment/PaymentSlider';
+import PaymentSlider from '../../Slider/Payment/PaymentSlider';
 
 const DisplayPayment = () => {
   const { viewType } = useAppSelector(state => state.common);

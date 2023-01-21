@@ -1,6 +1,6 @@
 import s from './CheckAfterDownload_Mobile.module.scss';
 
-import DownloadMobileButton from '@/components/Button/Download/MobileVersion/DownloadButton_Mobile';
+import DownloadMobile_Button from '@/components/MainPage/Button/Download/MobileVersion/DownloadButton_Mobile';
 
 const CheckAfterDownload_Mobile = () => {
   return (
@@ -13,7 +13,7 @@ const CheckAfterDownload_Mobile = () => {
         바로 확인해보세요
       </h1>
       <p className={s.line_1}>지금 내 주변의 간편결제 가맹점을 찾아보세요</p>
-      <DownloadMobileButton />
+      <DownloadMobile_Button />
     </section>
   );
 };

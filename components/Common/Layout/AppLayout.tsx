@@ -9,7 +9,7 @@ interface Props {
 }
 
 const AppLayout = ({ children }: Props) => {
-  const pathname = useRouter().pathname;
+  const pathname: string = useRouter().pathname;
 
   return (
     <>
