@@ -8,7 +8,7 @@ import StoreRegistering from '@/components/Section/StoreRegistering/StoreRegiste
 
 const Index = () => {
   return (
-    <main>
+    <>
       <MainDescription />
       <DisplayPayment />
       <StoreInquiry />
@@ -16,7 +16,7 @@ const Index = () => {
       <StoreRegistering />
       <MemberIntroduction />
       <CheckAfterDownlaod />
-    </main>
+    </>
   );
 };
 

@@ -1,21 +1,16 @@
 import React from 'react';
-import s from './index.module.scss';
-
-import { useEffect, useState } from 'react';
+import s from './Header.module.scss';
 
 import { useAppSelector } from '@/redux/hooks';
 import Image from 'next/image';
 import Link from 'next/link';
 import tapplaceLogo from '@/img/Logo/TapPlace/tapplace_logo.webp';
 import Header_Mobile from './MobileVer/Header_Mobile';
+import { useRouter } from 'next/router';
 
 const Header = () => {
   const { viewType } = useAppSelector(state => state.common);
-  const [href, setHref] = useState('/');
-
-  useEffect(() => {
-    setHref(document.location.pathname);
-  }, []);
+  const pathname = useRouter().pathname;
 
   return (
     <>
@@ -25,16 +20,16 @@ const Header = () => {
         <header className={s.container}>
           <Image className={s.logo} src={tapplaceLogo} alt='tapplceLogo' placeholder='blur' />
           <ul className={s.menuContainer}>
-            <Link href='/' className={s.menuList} onClick={() => setHref('/')}>
+            <Link href='/' id={pathname === '/' ? `${s.active}` : ''} className={s.menuList}>
               서비스 소개
             </Link>
-            <Link href='/notice' className={s.menuList} onClick={() => setHref('/notice')}>
+            <Link href='/notice' id={pathname === '/notice' ? `${s.active}` : ''} className={s.menuList}>
               공지사항
             </Link>
-            <Link href='/faq' className={s.menuList} onClick={() => setHref('/faq')}>
+            <Link href='/faq' id={pathname === '/faq' ? `${s.active}` : ''} className={s.menuList}>
               FAQ
             </Link>
-            <Link href='/useweb' className={s.menuList} onClick={() => setHref('/useweb')}>
+            <Link href='/useweb' id={pathname === '/useweb' ? `${s.active}` : ''} className={s.menuList}>
               웹으로 이용하기
             </Link>
           </ul>
