@@ -22,7 +22,7 @@ const Header = () => {
       {viewType === 'MOBILE' ? (
         <Header_Mobile />
       ) : (
-        <header className={s.container}>
+        <header className={pathname === '/useweb' ? `${s.container} ${s.useWebVersion}` : s.container}>
           <Image className={s.logo} src={tapplaceLogo} alt='tapplceLogo' placeholder='blur' />
           <ul className={s.menuContainer}>
             <Link href='/' id={pathname === '/' ? `${s.active}` : ''} className={s.menuList}>
