@@ -7,7 +7,8 @@ import { useEffect } from 'react';
 import { SET_VIEW_TYPE } from '@/redux/slices/common';
 import setViewType from '@/utils/setViewType';
 import wrapper from '@/redux/store';
-import AppLayout from '@/components/Layout/AppLayout';
+import AppLayout from '@/components/Common/Layout/AppLayout';
+import Script from 'next/script';
 
 function App({ Component, pageProps }: AppProps) {
   const dispatch = useAppDispatch();
@@ -33,6 +34,10 @@ function App({ Component, pageProps }: AppProps) {
         <title>TapPlace</title>
         <link rel='icon' href='/img/Logo/tapplace_icon.webp' />
       </Head>
+      <Script
+        strategy='beforeInteractive'
+        src='https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=5iahchagdx&submodules=geocoder'
+      ></Script>
       <Component {...pageProps} />
     </AppLayout>
   );

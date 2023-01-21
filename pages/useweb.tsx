@@ -1,7 +1,9 @@
-import React from 'react';
+import useMap from '@/hooks/useMap';
 
 const Useweb = () => {
-  return <div>useweb</div>;
+  useMap();
+
+  return <div id='map' style={{ width: '100vw', height: 'calc(100vh - 6rem)' }}></div>;
 };
 
 export default Useweb;
