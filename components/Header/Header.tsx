@@ -7,10 +7,15 @@ import Link from 'next/link';
 import tapplaceLogo from '@/img/Logo/TapPlace/tapplace_logo.webp';
 import Header_Mobile from './MobileVer/Header_Mobile';
 import { useRouter } from 'next/router';
+import { IMPLEMENTING_SERVICE } from '@/constants/ALERT';
 
 const Header = () => {
   const { viewType } = useAppSelector(state => state.common);
   const pathname = useRouter().pathname;
+
+  const onClickAlert = () => {
+    alert(IMPLEMENTING_SERVICE);
+  };
 
   return (
     <>
@@ -23,10 +28,15 @@ const Header = () => {
             <Link href='/' id={pathname === '/' ? `${s.active}` : ''} className={s.menuList}>
               서비스 소개
             </Link>
-            <Link href='/notice' id={pathname === '/notice' ? `${s.active}` : ''} className={s.menuList}>
+            <Link
+              href='#'
+              id={pathname === '/notice' ? `${s.active}` : ''}
+              className={s.menuList}
+              onClick={onClickAlert}
+            >
               공지사항
             </Link>
-            <Link href='/faq' id={pathname === '/faq' ? `${s.active}` : ''} className={s.menuList}>
+            <Link href='#' id={pathname === '/faq' ? `${s.active}` : ''} className={s.menuList} onClick={onClickAlert}>
               FAQ
             </Link>
             <Link href='/useweb' id={pathname === '/useweb' ? `${s.active}` : ''} className={s.menuList}>
