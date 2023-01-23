@@ -1,0 +1,40 @@
+@import '@/styles/mixins.scss';
+
+.container {
+  @include transformCenter;
+  z-index: 1;
+}
+
+.spinnerWrapper {
+  @include width-height(10rem, 10rem);
+  border-radius: 50%;
+  border: 0.5rem solid #f3f3f3;
+  border-top-color: $mainColor;
+  animation: spin 0.6s linear infinite;
+}
+
+.spinner {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: $mainColor;
+  opacity: 0.6;
+}
+
+.text {
+  @include transformCenter;
+  font-size: 1.9rem;
+  border-radius: 50%;
+  text-align: center;
+  font-weight: bolder;
+  color: white;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

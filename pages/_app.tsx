@@ -9,9 +9,11 @@ import setViewType from '@/utils/setViewType';
 import wrapper from '@/redux/store';
 import AppLayout from '@/components/Common/Layout/AppLayout';
 import Script from 'next/script';
+import { Hydrate, QueryClient, QueryClientProvider } from 'react-query';
 
 function App({ Component, pageProps }: AppProps) {
   const dispatch = useAppDispatch();
+  const queryClient = new QueryClient();
 
   // Window Reszie 이벤트 추가
   useEffect(() => {
@@ -32,13 +34,16 @@ function App({ Component, pageProps }: AppProps) {
     <AppLayout>
       <Head>
         <title>TapPlace</title>
-        <link rel='icon' href='/img/Logo/tapplace_icon.webp' />
+        <link rel="icon" href="/img/Logo/tapplace_icon.webp" />
       </Head>
       <Script
-        strategy='beforeInteractive'
-        src='https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=5iahchagdx&submodules=geocoder'
-      ></Script>
-      <Component {...pageProps} />
+        strategy="beforeInteractive"
+        src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=5iahchagdx&submodules=geocoder"></Script>
+      <QueryClientProvider client={queryClient}>
+        <Hydrate state={pageProps.dehydratedState}>
+          <Component {...pageProps} />
+        </Hydrate>
+      </QueryClientProvider>
     </AppLayout>
   );
 }

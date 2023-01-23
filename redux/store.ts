@@ -1,11 +1,13 @@
-import { configureStore, Reducer, AnyAction, ThunkAction, Action, CombinedState } from '@reduxjs/toolkit';
+import { configureStore, Reducer, AnyAction, CombinedState } from '@reduxjs/toolkit';
 import { HYDRATE, createWrapper } from 'next-redux-wrapper';
 import { combineReducers } from 'redux';
 import common, { commonStateI } from './slices/common';
+import location, { locationI } from './slices/location';
 
 // 리듀서 State 타입 정의
 export interface ReducerStates {
   common: commonStateI;
+  location: locationI;
 }
 
 // 루트 리듀서 생성
@@ -18,6 +20,7 @@ const rootReducer = (state: ReducerStates, action: AnyAction): CombinedState<Red
     default: {
       const combinedReducer = combineReducers({
         common: common.reducer,
+        location: location.reducer,
       });
       return combinedReducer(state, action);
     }
