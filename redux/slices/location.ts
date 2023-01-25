@@ -1,5 +1,4 @@
-import useMap from '@/hooks/useMap';
-import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export interface locationI {
   LOADING_MY_LOCATION: boolean;
