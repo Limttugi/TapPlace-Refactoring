@@ -5,13 +5,13 @@ import { useDispatch } from 'react-redux';
 
 const useMap = () => {
   const dispatch = useDispatch();
-  const { myLocation, LOADING_MY_LOCATION } = useAppSelector(state => state.location);
+  const { myLocation, currentAddress, LOADING_MY_LOCATION } = useAppSelector(state => state.location);
   const mapRef = useRef<HTMLElement | null | any>(null);
 
   // 지도 렌더링
-  const mapRendering = async () => {
+  const mapRendering = () => {
     if (!LOADING_MY_LOCATION) {
-      mapRef.current = await new naver.maps.Map('map', {
+      mapRef.current = new naver.maps.Map('map', {
         center: new naver.maps.LatLng(myLocation.latitude, myLocation.longitude),
         scaleControl: false,
       });
@@ -29,11 +29,13 @@ const useMap = () => {
         if (status === naver.maps.Service.Status.ERROR) {
           return console.log('something wrong');
         }
-        let currentAddress = response.v2.address.jibunAddress;
-        const firstSpace = currentAddress.indexOf(' ') + 1;
-        const secondSpace = currentAddress.indexOf(' ', firstSpace);
-        currentAddress = currentAddress.substr(firstSpace, secondSpace);
-        dispatch(SET_CURRENT_ADDRESS(currentAddress));
+        let _currentAddress = response.v2.address.jibunAddress;
+        const firstSpace = _currentAddress.indexOf(' ') + 1;
+        const secondSpace = _currentAddress.indexOf(' ', firstSpace);
+        _currentAddress = _currentAddress.substr(firstSpace, secondSpace);
+        if (_currentAddress !== currentAddress) {
+          dispatch(SET_CURRENT_ADDRESS(_currentAddress));
+        }
       },
     );
   };
@@ -44,18 +46,19 @@ const useMap = () => {
       navigator.geolocation.getCurrentPosition(position => {
         const _latitude = position.coords.latitude;
         const _longitude = position.coords.longitude;
-        dispatch(
-          SET_MY_LOCATION({
-            latitude: _latitude,
-            longitude: _longitude,
-          }),
-        );
-        dispatch(LOADING_MY_LOCATION_SUCCESS());
+        if (myLocation.latitude !== _latitude && myLocation.longitude !== _longitude)
+          dispatch(
+            SET_MY_LOCATION({
+              latitude: _latitude,
+              longitude: _longitude,
+            }),
+          );
+        if (LOADING_MY_LOCATION) dispatch(LOADING_MY_LOCATION_SUCCESS());
         getCurrentAddress(mapRef.current?.center);
       });
     } else {
       alert('현재 위치를 알 수 없어 기본 위치로 지정합니다\n가급적이면 위치 정보 수집을 동의해주세요');
-      dispatch(LOADING_MY_LOCATION_SUCCESS());
+      if (LOADING_MY_LOCATION) dispatch(LOADING_MY_LOCATION_SUCCESS());
       getCurrentAddress(mapRef.current?.center);
     }
   };

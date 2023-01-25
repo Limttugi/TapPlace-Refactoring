@@ -8,9 +8,17 @@
 }
 
 @include mobile {
+  .list {
+    @include width-height(100%, 11rem);
+    padding: 1.6rem 2.4rem;
+  }
 }
 
 @include tablet {
+  .list {
+    @include width-height(100%, 15rem);
+    padding: 2.4rem;
+  }
 }
 
 @include desktop {

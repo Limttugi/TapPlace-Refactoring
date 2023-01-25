@@ -2,12 +2,25 @@
 
 .container {
   overflow-y: scroll;
+  background-color: white;
 }
 
 @include mobile {
+  .container {
+    width: 100%;
+    height: calc(100% - 22rem);
+    position: absolute;
+    bottom: 0;
+  }
 }
 
 @include tablet {
+  .container {
+    width: 100%;
+    height: calc(100% - 18rem);
+    position: absolute;
+    bottom: 0;
+  }
 }
 
 @include desktop {

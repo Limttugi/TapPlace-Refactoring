@@ -2,7 +2,7 @@
 
 @include mobile {
   .container {
-    @include flex-column-pos(space-between, center);
+    @include flex-column-pos(space-between, '');
     height: 10rem;
   }
 }

@@ -1,27 +1,44 @@
 @import '@/styles/mixins.scss';
 
+@mixin buttonCS {
+  border: 1px solid #dbdee8;
+  @include flex-row-pos(space-between, center);
+  @include width-height(10.6, 3.6rem);
+  padding: 1rem 1.6rem 0.8rem 1.6rem;
+  border-radius: 100rem;
+  background: none;
+  &:first-child {
+    margin-right: 0.4rem;
+  }
+  .buttonText {
+    font-size: 1.5rem;
+  }
+  .filterImg {
+    @include width-height(2rem, 2rem);
+  }
+}
+
 @include mobile {
+  .container {
+    @include flex-row-pos(flex-start, center);
+    position: absolute;
+    top: 16rem;
+    left: 0;
+    width: 100%;
+    height: 6rem;
+    padding: 0 2.8rem;
+    background-color: white;
+    .button {
+      @include buttonCS;
+    }
+  }
 }
 
 @include tablet {
   .container {
     @include flex-row;
     .button {
-      @include flex-row-pos(space-between, center);
-      border: 1px solid #dbdee8;
-      @include width-height(10.6, 3.6rem);
-      padding: 1rem 1.6rem 0.8rem 1.6rem;
-      border-radius: 100rem;
-      background: none;
-      &:first-child {
-        margin-right: 0.4rem;
-      }
-      .buttonText {
-        font-size: 1.5rem;
-      }
-      .filterImg {
-        @include width-height(2rem, 2rem);
-      }
+      @include buttonCS;
     }
   }
 }
@@ -31,21 +48,7 @@
     @include flex-row;
     margin: 2rem 4rem 3.2rem 4rem;
     .button {
-      @include flex-row-pos(space-between, center);
-      border: 1px solid #dbdee8;
-      @include width-height(10.6, 3.6rem);
-      padding: 1rem 1.6rem 0.8rem 1.6rem;
-      border-radius: 100rem;
-      background: none;
-      &:first-child {
-        margin-right: 0.4rem;
-      }
-      .buttonText {
-        font-size: 1.5rem;
-      }
-      .filterImg {
-        @include width-height(2rem, 2rem);
-      }
+      @include buttonCS;
     }
   }
 }
