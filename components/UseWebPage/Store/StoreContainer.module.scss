@@ -1,0 +1,27 @@
+@import '@/styles/mixins.scss';
+
+.container {
+  overflow-y: scroll;
+}
+
+@include mobile {
+}
+
+@include tablet {
+}
+
+@include desktop {
+  .container {
+    flex: 1;
+    &::-webkit-scrollbar {
+      width: 0.8rem;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: #4e77fb;
+      border-radius: 10rem;
+    }
+    &::-webkit-scrollbar-track {
+      background: rgba(219, 222, 232, 0.4);
+    }
+  }
+}

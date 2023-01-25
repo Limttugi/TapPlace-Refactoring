@@ -1,0 +1,21 @@
+@import '@/styles/mixins.scss';
+
+.list {
+  border-top: 1px solid lightgray;
+  &:last-child {
+    border-bottom: 1px solid lightgray;
+  }
+}
+
+@include mobile {
+}
+
+@include tablet {
+}
+
+@include desktop {
+  .list {
+    @include width-height(100%, 15rem);
+    padding: 2.4rem 4rem;
+  }
+}
