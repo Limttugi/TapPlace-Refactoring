@@ -20,6 +20,7 @@
 @include mobile {
   .container {
     @include width-height(32rem, 5.2rem);
+    margin: 0.4rem 0;
     .searchImg {
       @include width-height(1.8rem, 1.8rem);
     }
@@ -32,6 +33,7 @@
 @include tablet {
   .container {
     @include width-height(72rem, 5.2rem);
+    margin: 0.4rem 0;
     .searchImg {
       @include width-height(1.8rem, 1.8rem);
     }
@@ -44,12 +46,12 @@
 @include desktop {
   .container {
     @include width-height(39rem, 5.2rem);
-    margin: 4.4rem 4rem;
+    margin: 4.4rem 0;
     .searchImg {
+      @include width-height(1.8rem, 1.8rem);
     }
     .searchInput {
       @include searchInputCS;
-
       height: calc(100% - 2px);
     }
   }

@@ -6,6 +6,7 @@ export interface locationI {
     latitude: number;
     longitude: number;
   };
+  currentAddress: string;
 }
 
 const initialState: locationI = {
@@ -14,6 +15,7 @@ const initialState: locationI = {
     latitude: 37.3586704,
     longitude: 127.105499,
   },
+  currentAddress: '',
 };
 
 export const location = createSlice({
@@ -27,10 +29,13 @@ export const location = createSlice({
       state.myLocation.latitude = action.payload.latitude;
       state.myLocation.longitude = action.payload.longitude;
     },
+    SET_CURRENT_ADDRESS(state, action: PayloadAction<string>) {
+      state.currentAddress = action.payload;
+    },
   },
   // extraReducers: builder => {},
 });
 
-export const { LOADING_MY_LOCATION_SUCCESS, SET_MY_LOCATION } = location.actions;
+export const { LOADING_MY_LOCATION_SUCCESS, SET_MY_LOCATION, SET_CURRENT_ADDRESS } = location.actions;
 
 export default location;

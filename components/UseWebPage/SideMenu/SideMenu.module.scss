@@ -2,19 +2,22 @@
 
 @include mobile {
   .container {
+    @include flex-column-pos(space-between, center);
     height: 10rem;
   }
 }
 
 @include tablet {
   .container {
+    @include flex-column-pos(space-between, center);
     height: 12rem;
   }
 }
 
 @include desktop {
   .container {
+    @include flex-column;
     width: 47rem;
-    height: 100%;
+    padding: 0 4rem;
   }
 }
