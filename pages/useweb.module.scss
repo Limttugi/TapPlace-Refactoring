@@ -1,0 +1,27 @@
+@import '@/styles/mixins.scss';
+
+@mixin containerCS {
+  width: 100vw;
+  height: 100%;
+}
+
+@include mobile {
+  .container {
+    @include flex-column-pos(center, center);
+    @include containerCS;
+  }
+}
+
+@include tablet {
+  .container {
+    @include flex-column-pos(center, center);
+    @include containerCS;
+  }
+}
+
+@include desktop {
+  .container {
+    @include flex-row;
+    @include containerCS;
+  }
+}

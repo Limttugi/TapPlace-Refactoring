@@ -1,5 +1,6 @@
 @import '@/styles/mixins.scss';
 
 .map {
-  height: 100%;
+  @include width-height(100%, 100%);
+  flex: 1;
 }

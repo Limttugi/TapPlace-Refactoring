@@ -1,0 +1,56 @@
+@import '@/styles/mixins.scss';
+
+.container {
+  @include flex-row-pos(space-between, center);
+  border: 2px solid $mainColor;
+  border-radius: 1rem;
+  padding: 0 1.7rem;
+}
+
+@mixin searchInputCS {
+  flex: 1;
+  margin: 0 2.5rem 0 1.1rem;
+  border: none;
+  font-size: 1.7rem;
+  &:focus {
+    outline: none;
+  }
+}
+
+@include mobile {
+  .container {
+    @include width-height(32rem, 5.2rem);
+    .searchImg {
+      @include width-height(1.8rem, 1.8rem);
+    }
+    .searchInput {
+      @include searchInputCS;
+    }
+  }
+}
+
+@include tablet {
+  .container {
+    @include width-height(72rem, 5.2rem);
+    .searchImg {
+      @include width-height(1.8rem, 1.8rem);
+    }
+    .searchInput {
+      @include searchInputCS;
+    }
+  }
+}
+
+@include desktop {
+  .container {
+    @include width-height(39rem, 5.2rem);
+    margin: 4.4rem 4rem;
+    .searchImg {
+    }
+    .searchInput {
+      @include searchInputCS;
+
+      height: calc(100% - 2px);
+    }
+  }
+}

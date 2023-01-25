@@ -1,5 +1,8 @@
+import s from './useweb.module.scss';
+
 import LoadingSpinner from '@/components/UseWebPage/LoadingSpinner/LoadingSpinner';
 import Map from '@/components/UseWebPage/Map/Map';
+import SideMenu from '@/components/UseWebPage/SideMenu/SideMenu';
 import { useAppSelector } from '@/redux/hooks';
 
 const Useweb = () => {
@@ -8,7 +11,10 @@ const Useweb = () => {
   return (
     <>
       {LOADING_MY_LOCATION && <LoadingSpinner />}
-      <Map />
+      <div className={s.container}>
+        <SideMenu />
+        <Map />
+      </div>
     </>
   );
 };

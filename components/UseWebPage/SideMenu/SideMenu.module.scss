@@ -1,0 +1,20 @@
+@import '@/styles/mixins.scss';
+
+@include mobile {
+  .container {
+    height: 10rem;
+  }
+}
+
+@include tablet {
+  .container {
+    height: 12rem;
+  }
+}
+
+@include desktop {
+  .container {
+    width: 47rem;
+    height: 100%;
+  }
+}
