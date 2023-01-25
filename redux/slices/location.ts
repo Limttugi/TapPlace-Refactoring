@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export interface locationI {
   LOADING_MY_LOCATION: boolean;
-  myLocation: {
+  currentLocation: {
     latitude: number;
     longitude: number;
   };
@@ -11,7 +11,7 @@ export interface locationI {
 
 const initialState: locationI = {
   LOADING_MY_LOCATION: true,
-  myLocation: {
+  currentLocation: {
     latitude: 37.3586704,
     longitude: 127.105499,
   },
@@ -26,8 +26,8 @@ export const location = createSlice({
       state.LOADING_MY_LOCATION = false;
     },
     SET_MY_LOCATION(state, action: PayloadAction<{ latitude: number; longitude: number }>) {
-      state.myLocation.latitude = action.payload.latitude;
-      state.myLocation.longitude = action.payload.longitude;
+      state.currentLocation.latitude = action.payload.latitude;
+      state.currentLocation.longitude = action.payload.longitude;
     },
     SET_CURRENT_ADDRESS(state, action: PayloadAction<string>) {
       state.currentAddress = action.payload;

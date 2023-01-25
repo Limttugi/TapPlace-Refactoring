@@ -5,14 +5,14 @@ import { useDispatch } from 'react-redux';
 
 const useMap = () => {
   const dispatch = useDispatch();
-  const { myLocation, currentAddress, LOADING_MY_LOCATION } = useAppSelector(state => state.location);
+  const { currentLocation, currentAddress, LOADING_MY_LOCATION } = useAppSelector(state => state.location);
   const mapRef = useRef<HTMLElement | null | any>(null);
 
   // 지도 렌더링
   const mapRendering = () => {
     if (!LOADING_MY_LOCATION) {
       mapRef.current = new naver.maps.Map('map', {
-        center: new naver.maps.LatLng(myLocation.latitude, myLocation.longitude),
+        center: new naver.maps.LatLng(currentLocation.latitude, currentLocation.longitude),
         scaleControl: false,
       });
     }
@@ -46,7 +46,7 @@ const useMap = () => {
       navigator.geolocation.getCurrentPosition(position => {
         const _latitude = position.coords.latitude;
         const _longitude = position.coords.longitude;
-        if (myLocation.latitude !== _latitude && myLocation.longitude !== _longitude)
+        if (currentLocation.latitude !== _latitude && currentLocation.longitude !== _longitude)
           dispatch(
             SET_MY_LOCATION({
               latitude: _latitude,
@@ -68,7 +68,6 @@ const useMap = () => {
   });
 
   return {
-    myLocation,
     mapRendering,
     bringMyLocation,
   };

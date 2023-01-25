@@ -16,3 +16,8 @@ export const PAYS: Array<string> = [
   'google_maestro',
   'toss',
 ];
+
+export const PAYS_KOR: Array<string> = ['카카오페이', '네이버페이', '제로페이', '페이코'];
+export const PAYS_APPLE: Array<string> = ['VISA', 'MASTER CARD', 'JCB', 'AMEX'];
+export const PAYS_GOOGLE: Array<string> = ['VISA', 'MASTER CARD', 'MAESTOR', 'AMEX'];
+export const PAYS_CONTACTLESS: Array<string> = ['VISA', 'MASTER CARD', 'Union Pay', 'JCB', 'AMEX'];

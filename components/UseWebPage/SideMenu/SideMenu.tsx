@@ -6,10 +6,11 @@ import CurrentAddress from '../CurrentAddress/CurrentAddress';
 import FilterButton from '../Filter/FilterButton';
 import StoreContainer from '../Store/StoreContainer';
 import FilterFlagButton from '../Filter/FilterFlagButton/FilterFlagButton';
+import FilteringMenu from '../Filter/FilterMenu/FilteringMenu';
 
 const SideMenu = () => {
   const { viewType } = useAppSelector(state => state.common);
-  const { showListFlag } = useAppSelector(state => state.sideMenu);
+  const { showFilteringFlag } = useAppSelector(state => state.sideMenu);
 
   return (
     <>
@@ -29,6 +30,7 @@ const SideMenu = () => {
           </div>
         )}
         {viewType === 'MOBILE' && <CurrentAddress />}
+        {showFilteringFlag && <FilteringMenu />}
       </section>
       {viewType !== 'DESKTOP' && <FilterFlagButton />}
     </>
