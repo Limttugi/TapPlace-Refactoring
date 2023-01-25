@@ -1,0 +1,51 @@
+@import '@/styles/mixins.scss';
+
+@include mobile {
+}
+
+@include tablet {
+  .container {
+    @include flex-row;
+    .button {
+      @include flex-row-pos(space-between, center);
+      border: 1px solid #dbdee8;
+      @include width-height(10.6, 3.6rem);
+      padding: 1rem 1.6rem 0.8rem 1.6rem;
+      border-radius: 100rem;
+      background: none;
+      &:first-child {
+        margin-right: 0.4rem;
+      }
+      .buttonText {
+        font-size: 1.5rem;
+      }
+      .filterImg {
+        @include width-height(2rem, 2rem);
+      }
+    }
+  }
+}
+
+@include desktop {
+  .container {
+    @include flex-row;
+    margin: 2rem 0 3.2rem 0;
+    .button {
+      @include flex-row-pos(space-between, center);
+      border: 1px solid #dbdee8;
+      @include width-height(10.6, 3.6rem);
+      padding: 1rem 1.6rem 0.8rem 1.6rem;
+      border-radius: 100rem;
+      background: none;
+      &:first-child {
+        margin-right: 0.4rem;
+      }
+      .buttonText {
+        font-size: 1.5rem;
+      }
+      .filterImg {
+        @include width-height(2rem, 2rem);
+      }
+    }
+  }
+}
