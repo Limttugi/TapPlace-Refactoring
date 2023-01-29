@@ -1,11 +1,14 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
+/*
+  viewType : innerWidth에 따라 MOBILE, TABLET, DESKTOP
+*/
+
 export interface commonStateI {
   viewType: string;
 }
 
 const initialState: commonStateI = {
-  // innerWidth에 따라 MOBILE, TABLET, DESKTOP
   viewType: 'MOBILE',
 };
 

@@ -1,5 +1,11 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
+/*
+  LOADING_MY_LOCATION : true - 가져오는 중 / false - 가져오기 끝
+  currentLocation : 최근 위치 위경도
+  currentAddress : 최근 위치 주소
+*/
+
 export interface locationI {
   LOADING_MY_LOCATION: boolean;
   currentLocation: {
