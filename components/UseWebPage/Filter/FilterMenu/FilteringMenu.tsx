@@ -4,8 +4,8 @@ import back from '@/img/back.webp';
 import Image from 'next/image';
 import { PAYS_APPLE, PAYS_CONTACTLESS, PAYS_GOOGLE, PAYS_KOR } from '@/constants/PAYS';
 import { STORE_TYPE } from '@/constants/STORE';
-import { SET_SHOW_FILTERING_FLAG } from '@/redux/slices/sideMenu';
 import { useAppDispatch } from '@/redux/hooks';
+import { SET_SHOW_FILTERING_FLAG } from '@/redux/slices/\bshowMenu';
 
 const FilteringMenu = () => {
   const dispatch = useAppDispatch();

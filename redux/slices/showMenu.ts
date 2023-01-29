@@ -5,18 +5,18 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
   showFilteringFlag : 필터 누르면 필터 창 보이게 하는 플래그
 */
 
-export interface sideMenuI {
+export interface showMenuI {
   showListFlag: boolean;
   showFilteringFlag: boolean;
 }
 
-const initialState: sideMenuI = {
+const initialState: showMenuI = {
   showListFlag: false,
   showFilteringFlag: false,
 };
 
-export const sideMenu = createSlice({
-  name: 'sideMenu',
+export const showMenu = createSlice({
+  name: 'showMenu',
   initialState,
   reducers: {
     SET_SHOW_LIST_FLAG(state, action: PayloadAction<boolean>) {
@@ -28,6 +28,6 @@ export const sideMenu = createSlice({
   },
 });
 
-export const { SET_SHOW_LIST_FLAG, SET_SHOW_FILTERING_FLAG } = sideMenu.actions;
+export const { SET_SHOW_LIST_FLAG, SET_SHOW_FILTERING_FLAG } = showMenu.actions;
 
-export default sideMenu;
+export default showMenu;

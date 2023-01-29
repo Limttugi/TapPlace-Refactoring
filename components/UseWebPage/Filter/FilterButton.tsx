@@ -4,7 +4,7 @@ import filterCheck from '@/img/Filter/filter_check.webp';
 import filterReset from '@/img/Filter/filter_reset.webp';
 import Image from 'next/image';
 import { useAppDispatch } from '@/redux/hooks';
-import { SET_SHOW_FILTERING_FLAG } from '@/redux/slices/sideMenu';
+import { SET_SHOW_FILTERING_FLAG } from '@/redux/slices/\bshowMenu';
 
 const FilterButton = () => {
   const dispatch = useAppDispatch();

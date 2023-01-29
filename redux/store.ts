@@ -1,15 +1,15 @@
 import { configureStore, Reducer, AnyAction, CombinedState } from '@reduxjs/toolkit';
 import { HYDRATE, createWrapper } from 'next-redux-wrapper';
 import { combineReducers } from 'redux';
+import showMenu, { showMenuI } from './slices/\bshowMenu';
 import common, { commonStateI } from './slices/common';
 import location, { locationI } from './slices/location';
-import sideMenu, { sideMenuI } from './slices/sideMenu';
 
 // 리듀서 State 타입 정의
 export interface ReducerStates {
   common: commonStateI;
   location: locationI;
-  sideMenu: sideMenuI;
+  showMenu: showMenuI;
 }
 
 // 루트 리듀서 생성
@@ -23,7 +23,7 @@ const rootReducer = (state: ReducerStates, action: AnyAction): CombinedState<Red
       const combinedReducer = combineReducers({
         common: common.reducer,
         location: location.reducer,
-        sideMenu: sideMenu.reducer,
+        showMenu: showMenu.reducer,
       });
       return combinedReducer(state, action);
     }

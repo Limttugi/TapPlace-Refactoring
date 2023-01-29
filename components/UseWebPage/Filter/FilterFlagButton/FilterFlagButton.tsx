@@ -4,11 +4,11 @@ import showList from '@/img/Filter/FilterFlag/show_list.webp';
 import showMap from '@/img/Filter/FilterFlag/show_map.webp';
 import Image from 'next/image';
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
-import { SET_SHOW_LIST_FLAG } from '@/redux/slices/sideMenu';
+import { SET_SHOW_LIST_FLAG } from '@/redux/slices/\bshowMenu';
 
 const FilterFlagButton = () => {
   const dispatch = useAppDispatch();
-  const { showListFlag } = useAppSelector(state => state.sideMenu);
+  const { showListFlag } = useAppSelector(state => state.showMenu);
 
   const onChangeFlag = () => {
     dispatch(SET_SHOW_LIST_FLAG(!showListFlag));
