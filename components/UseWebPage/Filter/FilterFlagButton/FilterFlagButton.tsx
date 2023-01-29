@@ -4,7 +4,7 @@ import showList from '@/img/Filter/FilterFlag/show_list.webp';
 import showMap from '@/img/Filter/FilterFlag/show_map.webp';
 import Image from 'next/image';
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
-import { SET_SHOW_LIST_FLAG } from '@/redux/slices/\bshowMenu';
+import { SET_SHOW_LIST_FLAG } from '@/redux/slices/showMenu';
 
 const FilterFlagButton = () => {
   const dispatch = useAppDispatch();

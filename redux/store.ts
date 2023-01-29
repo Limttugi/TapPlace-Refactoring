@@ -1,7 +1,7 @@
 import { configureStore, Reducer, AnyAction, CombinedState } from '@reduxjs/toolkit';
 import { HYDRATE, createWrapper } from 'next-redux-wrapper';
 import { combineReducers } from 'redux';
-import showMenu, { showMenuI } from './slices/\bshowMenu';
+import showMenu, { showMenuI } from './slices/showMenu';
 import common, { commonStateI } from './slices/common';
 import location, { locationI } from './slices/location';
 

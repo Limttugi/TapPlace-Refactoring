@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { PAYS_APPLE, PAYS_CONTACTLESS, PAYS_GOOGLE, PAYS_KOR } from '@/constants/PAYS';
 import { STORE_TYPE } from '@/constants/STORE';
 import { useAppDispatch } from '@/redux/hooks';
-import { SET_SHOW_FILTERING_FLAG } from '@/redux/slices/\bshowMenu';
+import { SET_SHOW_FILTERING_FLAG } from '@/redux/slices/showMenu';
 
 const FilteringMenu = () => {
   const dispatch = useAppDispatch();
