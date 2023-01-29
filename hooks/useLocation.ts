@@ -5,7 +5,6 @@ import useMap from './useMap';
 type latlngT = string | naver.maps.Coord | naver.maps.CoordLiteral;
 
 const useLocation = () => {
-  const { mapRef } = useMap();
   const dispatch = useAppDispatch();
   const { currentLocation, currentAddress, LOADING_MY_LOCATION } = useAppSelector(state => state.location);
 
@@ -23,12 +22,14 @@ const useLocation = () => {
             }),
           );
         if (LOADING_MY_LOCATION) dispatch(LOADING_MY_LOCATION_SUCCESS());
-        getCurrentAddress(mapRef.current?.center);
+        if (!LOADING_MY_LOCATION)
+          getCurrentAddress(new naver.maps.LatLng(currentLocation.latitude, currentLocation.longitude));
       });
     } else {
       alert('현재 위치를 알 수 없어 기본 위치로 지정합니다\n가급적이면 위치 정보 수집을 동의해주세요');
       if (LOADING_MY_LOCATION) dispatch(LOADING_MY_LOCATION_SUCCESS());
-      getCurrentAddress(mapRef.current?.center);
+      if (!LOADING_MY_LOCATION)
+        getCurrentAddress(new naver.maps.LatLng(currentLocation.latitude, currentLocation.longitude));
     }
   };
 
