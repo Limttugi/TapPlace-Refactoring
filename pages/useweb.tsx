@@ -10,7 +10,7 @@ import FilterButton from '@/components/UseWebPage/Filter/FilterButton';
 const Useweb = () => {
   const { viewType } = useAppSelector(state => state.common);
   const { LOADING_MY_LOCATION } = useAppSelector(state => state.location);
-  const { showListFlag } = useAppSelector(state => state.sideMenu);
+  const { showListFlag } = useAppSelector(state => state.showMenu);
 
   return (
     <>

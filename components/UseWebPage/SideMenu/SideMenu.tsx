@@ -10,7 +10,7 @@ import FilteringMenu from '../Filter/FilterMenu/FilteringMenu';
 
 const SideMenu = () => {
   const { viewType } = useAppSelector(state => state.common);
-  const { showFilteringFlag } = useAppSelector(state => state.sideMenu);
+  const { showFilteringFlag } = useAppSelector(state => state.showMenu);
 
   return (
     <>

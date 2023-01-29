@@ -7,10 +7,46 @@
   }
 }
 
+@mixin placeNameCS {
+  font-weight: 400;
+  margin-right: 0.6rem;
+}
+
+@mixin nameCS {
+  font-weight: 400;
+  color: #707070;
+}
+
 @include mobile {
   .list {
     @include width-height(100%, 11rem);
     padding: 1.6rem 2.4rem;
+    .nameContainer {
+      @include flex-row-pos(flex-start, baseline);
+      .placeName {
+        @include placeNameCS;
+        font-size: 1.6rem;
+      }
+      .categoryName {
+        font-size: 1.3rem;
+        color: #9e9e9e;
+      }
+    }
+    .locationContainer {
+      @include flex-row-pos(flex-start, center);
+      margin: 0.4rem 0 1.2rem 0;
+      .distance,
+      .addressName {
+        @include nameCS;
+        font-size: 1.2rem;
+      }
+    }
+    .logoContainer {
+      .payRectangleLogo {
+        @include width-height(2.8rem, 2.8rem);
+        margin-right: 0.5rem;
+      }
+    }
   }
 }
 
@@ -18,6 +54,32 @@
   .list {
     @include width-height(100%, 15rem);
     padding: 2.4rem;
+    .nameContainer {
+      @include flex-row-pos(flex-start, baseline);
+      .placeName {
+        @include placeNameCS;
+        font-size: 1.8rem;
+      }
+      .categoryName {
+        font-size: 1.5rem;
+        color: #9e9e9e;
+      }
+    }
+    .locationContainer {
+      @include flex-row-pos(flex-start, center);
+      margin: 0.6rem 0 1.6rem 0;
+      .distance,
+      .addressName {
+        @include nameCS;
+        font-size: 1.4rem;
+      }
+    }
+    .logoContainer {
+      .payRectangleLogo {
+        @include width-height(3.8rem, 3.8rem);
+        margin-right: 0.6rem;
+      }
+    }
   }
 }
 
@@ -25,5 +87,31 @@
   .list {
     @include width-height(100%, 15rem);
     padding: 2.4rem 4rem;
+    .nameContainer {
+      @include flex-row-pos(flex-start, baseline);
+      .placeName {
+        @include placeNameCS;
+        font-size: 1.8rem;
+      }
+      .categoryName {
+        font-size: 1.5rem;
+        color: #9e9e9e;
+      }
+    }
+    .locationContainer {
+      @include flex-row-pos(flex-start, center);
+      margin: 0.6rem 0 1.6rem 0;
+      .distance,
+      .addressName {
+        @include nameCS;
+        font-size: 1.4rem;
+      }
+    }
+    .logoContainer {
+      .payRectangleLogo {
+        @include width-height(3.8rem, 3.8rem);
+        margin-right: 0.6rem;
+      }
+    }
   }
 }

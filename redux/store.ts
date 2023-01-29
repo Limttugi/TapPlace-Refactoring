@@ -4,12 +4,14 @@ import { combineReducers } from 'redux';
 import showMenu, { showMenuI } from './slices/showMenu';
 import common, { commonStateI } from './slices/common';
 import location, { locationI } from './slices/location';
+import store, { storeI } from './slices/store';
 
 // 리듀서 State 타입 정의
 export interface ReducerStates {
   common: commonStateI;
   location: locationI;
   showMenu: showMenuI;
+  store: storeI;
 }
 
 // 루트 리듀서 생성
@@ -24,6 +26,7 @@ const rootReducer = (state: ReducerStates, action: AnyAction): CombinedState<Red
         common: common.reducer,
         location: location.reducer,
         showMenu: showMenu.reducer,
+        store: store.reducer,
       });
       return combinedReducer(state, action);
     }

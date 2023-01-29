@@ -1,6 +1,7 @@
 import { getStore } from '@/api/store';
-import { useAppSelector } from '@/redux/hooks';
-import { useCallback, useRef, useState } from 'react';
+import { useAppDispatch, useAppSelector } from '@/redux/hooks';
+import { SET_STORES } from '@/redux/slices/store';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import useMarker from './useMarker';
 
 export interface storeI {
@@ -22,10 +23,10 @@ interface storeImageI {
 }
 
 const useMap = () => {
+  const dispatch = useAppDispatch();
   const { markerImageDivideByCategory, markerAddClickEvent } = useMarker();
   const { currentLocation, LOADING_MY_LOCATION } = useAppSelector(state => state.location);
   const mapRef = useRef<HTMLElement | null | any>(null);
-  let stores: Array<storeI> = [];
 
   // 지도 렌더링
   const mapRendering = useCallback(() => {
@@ -37,35 +38,42 @@ const useMap = () => {
     }
   }, [LOADING_MY_LOCATION, currentLocation]);
 
-  // 반경 내 가맹점 가져오기
-  const handleGetStore = async () => {
-    const res = await getStore(currentLocation);
-    if (res.status !== 200) alert('예기치 못한 오류가 발생했습니다\n다시 시도해주세요');
-    else {
-      stores = res.data.stores;
-      handleDisplayMarker(res.data.stores);
-    }
-  };
-
   // 지도에 가맹점 마커 표시
-  const handleDisplayMarker = (stores: Array<storeI>) => {
-    stores.forEach(storeInfo => {
-      const storeImage: storeImageI = markerImageDivideByCategory(storeInfo);
-      const marker = new naver.maps.Marker({
-        map: mapRef.current,
-        position: new naver.maps.LatLng(Number(storeInfo.y), Number(storeInfo.x)),
-        icon: {
-          url: storeImage.imageSrc,
-        },
+  const handleDisplayMarker = useCallback(
+    (stores: Array<storeI>) => {
+      stores.forEach(storeInfo => {
+        const storeImage: storeImageI = markerImageDivideByCategory(storeInfo);
+        const marker = new naver.maps.Marker({
+          map: mapRef.current,
+          position: new naver.maps.LatLng(Number(storeInfo.y), Number(storeInfo.x)),
+          icon: {
+            url: storeImage.imageSrc,
+          },
+        });
+        markerAddClickEvent({ marker, storeImage, storeInfo });
       });
-      markerAddClickEvent({ marker, storeImage, storeInfo });
-    });
-  };
+    },
+    [markerAddClickEvent, markerImageDivideByCategory],
+  );
+
+  // 반경 내 가맹점 가져오기
+  const handleGetStore = useCallback(async () => {
+    const res = await getStore(currentLocation);
+    if (res.status !== 200) {
+      return alert('예기치 못한 오류가 발생했습니다\n다시 시도해주세요');
+    } else {
+      handleDisplayMarker(res.data.stores);
+      dispatch(SET_STORES(res.data.stores));
+    }
+  }, [currentLocation, dispatch, handleDisplayMarker]);
+
+  useEffect(() => {
+    if (!LOADING_MY_LOCATION) handleGetStore();
+  }, [LOADING_MY_LOCATION, currentLocation, handleGetStore]);
 
   return {
     mapRef,
     mapRendering,
-    stores,
     handleGetStore,
   };
 };

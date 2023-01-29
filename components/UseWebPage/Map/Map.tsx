@@ -18,10 +18,6 @@ const Map = () => {
     mapRendering();
   }, [LOADING_MY_LOCATION, mapRendering]);
 
-  useEffect(() => {
-    handleGetStore();
-  }, [currentLocation, handleGetStore]);
-
   return <div id="map" className={s.map}></div>;
 };
 

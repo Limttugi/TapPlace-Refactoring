@@ -1,10 +1,11 @@
+import { useCallback } from 'react';
 import { storeI } from './useMap';
 
 const useMarker = () => {
   let priorClickedMarker: naver.maps.Marker | null = null;
 
   // 가맹점 카테고리에 따른 마커 이미지 분류
-  const markerImageDivideByCategory = (store: storeI) => {
+  const markerImageDivideByCategory = useCallback((store: storeI) => {
     let imageSrc, imageSrc_big;
     switch (store.category_group_name) {
       case '음식점':
@@ -52,10 +53,10 @@ const useMarker = () => {
         imageSrc_big = '/img/Marker/etc_big.webp';
         return { imageSrc, imageSrc_big };
     }
-  };
+  }, []);
 
   // 마커 클릭 이벤트
-  const markerAddClickEvent = ({ marker, storeImage, storeInfo }: any) => {
+  const markerAddClickEvent = useCallback(({ marker, storeImage, storeInfo }: any) => {
     return naver.maps.Event.addListener(marker, 'click', () => {
       // 전에 클릭 된 마커랑 현재 클릭한 마커가 같지 않은 경우
       if (priorClickedMarker !== null && marker !== priorClickedMarker) {
@@ -69,7 +70,7 @@ const useMarker = () => {
         url: storeImage.imageSrc_big,
       });
     });
-  };
+  }, []);
 
   return {
     markerImageDivideByCategory,
