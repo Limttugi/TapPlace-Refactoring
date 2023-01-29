@@ -9,11 +9,9 @@ import setViewType from '@/utils/setViewType';
 import wrapper from '@/redux/store';
 import AppLayout from '@/components/Common/Layout/AppLayout';
 import Script from 'next/script';
-import { Hydrate, QueryClient, QueryClientProvider } from 'react-query';
 
 function App({ Component, pageProps }: AppProps) {
   const dispatch = useAppDispatch();
-  const queryClient = new QueryClient();
 
   // Window Reszie 이벤트 추가
   useEffect(() => {
@@ -39,11 +37,7 @@ function App({ Component, pageProps }: AppProps) {
       <Script
         strategy="beforeInteractive"
         src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=5iahchagdx&submodules=geocoder"></Script>
-      <QueryClientProvider client={queryClient}>
-        <Hydrate state={pageProps.dehydratedState}>
-          <Component {...pageProps} />
-        </Hydrate>
-      </QueryClientProvider>
+      <Component {...pageProps} />
     </AppLayout>
   );
 }

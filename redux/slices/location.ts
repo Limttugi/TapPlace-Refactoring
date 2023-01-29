@@ -25,7 +25,7 @@ export const location = createSlice({
     LOADING_MY_LOCATION_SUCCESS(state) {
       state.LOADING_MY_LOCATION = false;
     },
-    SET_MY_LOCATION(state, action: PayloadAction<{ latitude: number; longitude: number }>) {
+    SET_CURRENT_LOCATION(state, action: PayloadAction<{ latitude: number; longitude: number }>) {
       state.currentLocation.latitude = action.payload.latitude;
       state.currentLocation.longitude = action.payload.longitude;
     },
@@ -36,6 +36,6 @@ export const location = createSlice({
   // extraReducers: builder => {},
 });
 
-export const { LOADING_MY_LOCATION_SUCCESS, SET_MY_LOCATION, SET_CURRENT_ADDRESS } = location.actions;
+export const { LOADING_MY_LOCATION_SUCCESS, SET_CURRENT_LOCATION, SET_CURRENT_ADDRESS } = location.actions;
 
 export default location;

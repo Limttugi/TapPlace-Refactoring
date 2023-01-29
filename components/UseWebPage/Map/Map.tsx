@@ -5,12 +5,20 @@ import { useAppSelector } from '@/redux/hooks';
 import { useEffect } from 'react';
 
 const Map = () => {
-  const { mapRendering } = useMap();
-  const { LOADING_MY_LOCATION } = useAppSelector(state => state.location);
+  const { bringMyLocation, mapRendering, handleGetStore } = useMap();
+  const { currentLocation, LOADING_MY_LOCATION } = useAppSelector(state => state.location);
+
+  useEffect(() => {
+    bringMyLocation();
+  }, [bringMyLocation]);
 
   useEffect(() => {
     mapRendering();
   }, [LOADING_MY_LOCATION, mapRendering]);
+
+  useEffect(() => {
+    handleGetStore();
+  }, [currentLocation, handleGetStore]);
 
   return <div id="map" className={s.map}></div>;
 };

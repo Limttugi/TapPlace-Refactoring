@@ -6,16 +6,12 @@ interface locationI {
   latitude: number;
 }
 
-export const getStore = ({ longitude, latitude }: locationI) => {
-  instance
-    .post('/store/around', {
-      x1: longitude,
-      y1: latitude,
-      distance: 2,
-      pays: PAYS,
-      user_id: '',
-    })
-    .then(res => {
-      return res.data;
-    });
+export const getStore = async ({ longitude, latitude }: locationI) => {
+  return await instance.post('/store/around', {
+    x1: String(longitude),
+    y1: String(latitude),
+    distance: 2,
+    pays: PAYS,
+    user_id: '',
+  });
 };
