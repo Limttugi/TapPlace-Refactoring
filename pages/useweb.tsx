@@ -6,11 +6,14 @@ import SideMenu from '@/components/UseWebPage/SideMenu/SideMenu';
 import { useAppSelector } from '@/redux/hooks';
 import StoreContainer from '@/components/UseWebPage/Store/StoreContainer';
 import FilterButton from '@/components/UseWebPage/Filter/FilterButton';
+import FilterFlagButton from '@/components/UseWebPage/Filter/FilterFlagButton/FilterFlagButton';
+import StoreDetail from '@/components/UseWebPage/Store/StoreDetail/StoreDetail';
 
 const Useweb = () => {
   const { viewType } = useAppSelector(state => state.common);
   const { LOADING_MY_LOCATION } = useAppSelector(state => state.location);
   const { showListFlag } = useAppSelector(state => state.showMenu);
+  const { storeDetailInfo } = useAppSelector(state => state.store);
 
   return (
     <>
@@ -19,12 +22,15 @@ const Useweb = () => {
         <SideMenu />
         <Map />
       </div>
-      {viewType !== 'DESKTOP' && showListFlag && (
+      {viewType === 'TABLET' && showListFlag && <StoreContainer />}
+      {viewType === 'MOBILE' && showListFlag && (
         <>
           <FilterButton />
           <StoreContainer />
         </>
       )}
+      {viewType !== 'DESKTOP' && <FilterFlagButton />}
+      {storeDetailInfo && !showListFlag && <StoreDetail />}
     </>
   );
 };

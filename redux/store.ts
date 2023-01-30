@@ -1,17 +1,17 @@
 import { configureStore, Reducer, AnyAction, CombinedState } from '@reduxjs/toolkit';
 import { HYDRATE, createWrapper } from 'next-redux-wrapper';
 import { combineReducers } from 'redux';
-import showMenu, { showMenuI } from './slices/showMenu';
-import common, { commonStateI } from './slices/common';
-import location, { locationI } from './slices/location';
-import store, { storeI } from './slices/store';
+import showMenu, { showMenuSliceI } from './slices/showMenu';
+import common, { commonStateSliceI } from './slices/common';
+import location, { locationSliceI } from './slices/location';
+import store, { storeSliceI } from './slices/store';
 
 // 리듀서 State 타입 정의
 export interface ReducerStates {
-  common: commonStateI;
-  location: locationI;
-  showMenu: showMenuI;
-  store: storeI;
+  common: commonStateSliceI;
+  location: locationSliceI;
+  showMenu: showMenuSliceI;
+  store: storeSliceI;
 }
 
 // 루트 리듀서 생성

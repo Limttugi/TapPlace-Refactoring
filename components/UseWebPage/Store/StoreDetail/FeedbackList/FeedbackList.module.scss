@@ -1,0 +1,157 @@
+@import '@/styles/mixins.scss';
+
+@mixin containerCS {
+  @include flex-column-pos(center, flex-start);
+  border-bottom: 1px solid rgba(219, 222, 232, 0.6);
+}
+
+@mixin percentProgressbarCS {
+  width: 100%;
+  appearance: none;
+  border-radius: 10rem;
+  &::-webkit-progress-bar {
+    background: #e6e6e6;
+    border-radius: 10rem;
+  }
+  &::-webkit-progress-value {
+    background: $mainColor;
+    border-radius: 10rem;
+  }
+}
+
+@include mobile {
+  .container {
+    @include containerCS;
+    height: 14.5rem;
+    .paymentWrapper {
+      @include flex-row-pos(flex-start, center);
+      .paymentLogo {
+        @include width-height(3.2rem, 3.2rem);
+        margin-right: 0.8rem;
+      }
+      .paymentKind {
+        font-size: 1.5rem;
+        color: #333333;
+      }
+    }
+    .currentDateWrapper {
+      @include flex-row-pos(flex-start, baseline);
+      margin: 1.5rem 0 0.8rem 0;
+      .currentSuccess {
+        font-size: 1.4rem;
+        color: $mainColor;
+      }
+      .currentFailure {
+        font-size: 1.4rem;
+        color: #707070;
+      }
+      .date {
+        font-size: 1.2rem;
+        color: #9e9e9e;
+        margin-left: 0.6rem;
+      }
+    }
+    .percentProgressbar {
+      @include percentProgressbarCS;
+      height: 12px;
+      margin-bottom: 0.8rem;
+    }
+    .percentContainer {
+      @include flex-row-pos(space-between, center);
+      font-size: 1.3rem;
+      color: #707070;
+    }
+  }
+}
+
+@include tablet {
+  .container {
+    @include flex-column-pos(center, flex-start);
+    border-bottom: 1px solid rgba(219, 222, 232, 0.6);
+    height: 16rem;
+    .paymentWrapper {
+      @include flex-row-pos(flex-start, center);
+      .paymentLogo {
+        @include width-height(3.8rem, 3.8rem);
+        margin-right: 1.2rem;
+      }
+      .paymentKind {
+        font-size: 1.8rem;
+        color: #333333;
+      }
+    }
+    .currentDateWrapper {
+      @include flex-row-pos(flex-start, baseline);
+      margin: 1.6rem 0 1.2rem 0;
+      .currentSuccess {
+        font-size: 1.6rem;
+        color: $mainColor;
+      }
+      .currentFailure {
+        font-size: 1.6rem;
+        color: #707070;
+      }
+      .date {
+        font-size: 1.5rem;
+        color: #9e9e9e;
+        margin-left: 0.8rem;
+      }
+    }
+    .percentProgressbar {
+      @include percentProgressbarCS;
+      height: 12px;
+      margin-bottom: 0.8rem;
+    }
+    .percentContainer {
+      @include flex-row-pos(space-between, center);
+      font-size: 1.5rem;
+      color: #707070;
+    }
+  }
+}
+
+@include desktop {
+  .container {
+    @include flex-column-pos(center, flex-start);
+    border-bottom: 1px solid rgba(219, 222, 232, 0.6);
+    height: 16rem;
+    .paymentWrapper {
+      @include flex-row-pos(flex-start, center);
+      .paymentLogo {
+        @include width-height(3.8rem, 3.8rem);
+        margin-right: 1.2rem;
+      }
+      .paymentKind {
+        font-size: 1.8rem;
+        color: #333333;
+      }
+    }
+    .currentDateWrapper {
+      @include flex-row-pos(flex-start, baseline);
+      margin: 1.6rem 0 1.2rem 0;
+      .currentSuccess {
+        font-size: 1.6rem;
+        color: $mainColor;
+      }
+      .currentFailure {
+        font-size: 1.6rem;
+        color: #707070;
+      }
+      .date {
+        font-size: 1.5rem;
+        color: #9e9e9e;
+        margin-left: 0.8rem;
+      }
+    }
+    .percentProgressbar {
+      @include percentProgressbarCS;
+      height: 12px;
+      margin-bottom: 0.8rem;
+    }
+    .percentContainer {
+      @include flex-row-pos(space-between, center);
+      font-size: 1.5rem;
+      color: #707070;
+    }
+  }
+}

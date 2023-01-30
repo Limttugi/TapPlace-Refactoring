@@ -1,0 +1,336 @@
+@import '@/styles/mixins.scss';
+
+@mixin detailContainerCS {
+  position: absolute;
+  z-index: 2;
+  background: white;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.16);
+  overflow-y: scroll;
+}
+
+@mixin findWayWrapperCS {
+  @include flex-row-pos(center, center);
+  border: 1px solid $mainColor;
+  border-radius: 1rem;
+  background: white;
+}
+
+@mixin midContainerTextCS {
+  color: #707070;
+  font-weight: 400;
+}
+
+@mixin hrCS {
+  background: rgba(219, 222, 232, 0.6);
+  border: 0;
+}
+
+@mixin paymentTitleCS {
+  color: #333333;
+  font-weight: 400;
+}
+
+@include mobile {
+  .detailContainer {
+    @include detailContainerCS;
+    @include width-height(100%, 75%);
+    bottom: 0;
+    padding: 2rem;
+    .topContainer {
+      @include flex-row-pos(space-between, center);
+      .nameWrapper {
+        @include flex-row-pos(flex-start, baseline);
+        .placeName {
+          font-size: 1.8rem;
+          font-weight: 400;
+          margin-right: 0.6rem;
+        }
+        .categoryName {
+          font-size: 1, 4rem;
+          color: #9e9e9e;
+        }
+      }
+      .closeImage {
+        @include width-height(2.4rem, 2.4rem);
+      }
+    }
+    .findWayWrapper {
+      @include findWayWrapperCS;
+      @include width-height(100%, 5.2rem);
+      margin: 3.2rem 0 2.6rem 0;
+      .findWayImage {
+        @include width-height(2.4rem, 2.4rem);
+      }
+      .findWayText {
+        font-size: 1.6rem;
+        color: $mainColor;
+        margin-left: 0.6rem;
+      }
+    }
+    .midContainer {
+      @include flex-column-pos(center, flex-start);
+      gap: 1.5rem 0;
+      .locationWrapper {
+        @include flex-row-pos(flex-start, center);
+        .locationImage {
+          @include width-height(1.2rem, 1.8rem);
+          margin-right: 1.3rem;
+        }
+        .distanceAddressContainer {
+          @include flex-row-pos(flex-start, center);
+          .disAddrText {
+            @include midContainerTextCS;
+            font-size: 1.4rem;
+          }
+        }
+      }
+      .callWrapper {
+        @include flex-row-pos(flex-start, center);
+        .callImage {
+          @include width-height(1.4rem, 1.4rem);
+          margin-right: 1.1rem;
+        }
+        .callText {
+          @include midContainerTextCS;
+          font-size: 1.4rem;
+        }
+      }
+    }
+    hr {
+      @include hrCS;
+      width: 100%;
+      height: 0.1rem;
+      margin: 2rem 0;
+    }
+    .requestModifyWrapper {
+      @include flex-row-pos(flex-start, center);
+      margin-bottom: 5rem;
+      .requestModifyImage {
+        @include width-height(1.4rem, 1.4rem);
+        margin-right: 1.1rem;
+      }
+      .requestModifyText {
+        @include midContainerTextCS;
+        font-size: 1.4rem;
+      }
+    }
+    .midHr {
+      position: absolute;
+      left: 0;
+      top: 26rem;
+      width: 100%;
+      height: 0.8rem;
+    }
+    .paymentContainer {
+      .paymentTitle {
+        @include paymentTitleCS;
+        font-size: 1.7rem;
+        margin-bottom: 0.8rem;
+      }
+    }
+  }
+}
+
+@include tablet {
+  .detailContainer {
+    @include detailContainerCS;
+    @include width-height(100%, 75%);
+    bottom: 0;
+    padding: 2rem;
+    .topContainer {
+      @include flex-row-pos(space-between, center);
+      .nameWrapper {
+        @include flex-row-pos(flex-start, baseline);
+        .placeName {
+          font-size: 2.2rem;
+          font-weight: 400;
+          margin-right: 0.8rem;
+        }
+        .categoryName {
+          font-size: 1.6rem;
+          color: #9e9e9e;
+        }
+      }
+      .closeImage {
+        @include width-height(2.4rem, 2.4rem);
+      }
+    }
+    .findWayWrapper {
+      @include findWayWrapperCS;
+      @include width-height(100%, 5.2rem);
+      margin: 3.2rem 0 2.6rem 0;
+      .findWayImage {
+        @include width-height(2.4rem, 2.4rem);
+      }
+      .findWayText {
+        font-size: 1.7rem;
+        color: $mainColor;
+        margin-left: 0.6rem;
+      }
+    }
+    .midContainer {
+      @include flex-column-pos(center, flex-start);
+      gap: 1.5rem 0;
+      .locationWrapper {
+        @include flex-row-pos(flex-start, center);
+        .locationImage {
+          @include width-height(1.6rem, 2.2rem);
+          margin-right: 1.3rem;
+        }
+        .distanceAddressContainer {
+          @include flex-row-pos(flex-start, center);
+          .disAddrText {
+            @include midContainerTextCS;
+            font-size: 1.6rem;
+          }
+        }
+      }
+      .callWrapper {
+        @include flex-row-pos(flex-start, center);
+        .callImage {
+          @include width-height(1.8rem, 1.8rem);
+          margin-right: 1.1rem;
+        }
+        .callText {
+          @include midContainerTextCS;
+          font-size: 1.6rem;
+        }
+      }
+    }
+    hr {
+      @include hrCS;
+      width: 100%;
+      height: 0.1rem;
+      margin: 2rem 0;
+    }
+    .requestModifyWrapper {
+      @include flex-row-pos(flex-start, center);
+      margin-bottom: 5rem;
+      .requestModifyImage {
+        @include width-height(1.8rem, 1.8rem);
+        margin-right: 1.1rem;
+      }
+      .requestModifyText {
+        @include midContainerTextCS;
+        font-size: 1.6rem;
+      }
+    }
+    .midHr {
+      position: absolute;
+      left: 0;
+      top: 27rem;
+      width: 100%;
+      height: 0.8rem;
+    }
+    .paymentContainer {
+      .paymentTitle {
+        @include paymentTitleCS;
+        font-size: 2rem;
+        margin-bottom: 0.8rem;
+      }
+    }
+  }
+}
+
+@include desktop {
+  .detailContainer {
+    @include detailContainerCS;
+    @include width-height(47rem, 98rem);
+    left: 49rem;
+    top: 2rem;
+    padding: 2rem;
+    border-radius: 2rem;
+    .topContainer {
+      @include flex-row-pos(space-between, center);
+      .nameWrapper {
+        @include flex-row-pos(flex-start, baseline);
+        .placeName {
+          font-size: 2.2rem;
+          font-weight: 400;
+          margin-right: 0.8rem;
+        }
+        .categoryName {
+          font-size: 1.6rem;
+          color: #9e9e9e;
+        }
+      }
+      .closeImage {
+        @include width-height(2.4rem, 2.4rem);
+      }
+    }
+    .findWayWrapper {
+      @include findWayWrapperCS;
+      @include width-height(43rem, 5.2rem);
+      margin: 3.2rem 0 2.6rem 0;
+      .findWayImage {
+        @include width-height(2.4rem, 2.4rem);
+      }
+      .findWayText {
+        font-size: 1.7rem;
+        color: $mainColor;
+        margin-left: 0.6rem;
+      }
+    }
+    .midContainer {
+      @include flex-column-pos(center, flex-start);
+      gap: 1.5rem 0;
+      .locationWrapper {
+        @include flex-row-pos(flex-start, center);
+        .locationImage {
+          @include width-height(1.6rem, 2.2rem);
+          margin-right: 1.3rem;
+        }
+        .distanceAddressContainer {
+          @include flex-row-pos(flex-start, center);
+          .disAddrText {
+            @include midContainerTextCS;
+            font-size: 1.6rem;
+          }
+        }
+      }
+      .callWrapper {
+        @include flex-row-pos(flex-start, center);
+        .callImage {
+          @include width-height(1.8rem, 1.8rem);
+          margin-right: 1.1rem;
+        }
+        .callText {
+          @include midContainerTextCS;
+          font-size: 1.6rem;
+        }
+      }
+    }
+    hr {
+      @include hrCS;
+      width: 100%;
+      height: 0.1rem;
+      margin: 2rem 0;
+    }
+    .requestModifyWrapper {
+      @include flex-row-pos(flex-start, center);
+      margin-bottom: 5rem;
+      .requestModifyImage {
+        @include width-height(1.8rem, 1.8rem);
+        margin-right: 1.1rem;
+      }
+      .requestModifyText {
+        @include midContainerTextCS;
+        font-size: 1.6rem;
+      }
+    }
+    .midHr {
+      position: absolute;
+      left: 0;
+      top: 27rem;
+      width: 100%;
+      height: 0.8rem;
+    }
+    .paymentContainer {
+      .paymentTitle {
+        @include paymentTitleCS;
+        font-size: 2rem;
+        margin-bottom: 0.8rem;
+      }
+    }
+  }
+}

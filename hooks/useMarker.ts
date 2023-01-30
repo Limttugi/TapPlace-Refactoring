@@ -1,7 +1,11 @@
+import { getStoreFeedback } from '@/api/store';
+import { SET_STORE_DETAIL_INFO, SET_STORE_FEEDBACK_INFO } from '@/redux/slices/store';
 import { useCallback } from 'react';
+import { useDispatch } from 'react-redux';
 import { storeI } from './useMap';
 
 const useMarker = () => {
+  const dispatch = useDispatch();
   let priorClickedMarker: naver.maps.Marker | null = null;
 
   // 가맹점 카테고리에 따른 마커 이미지 분류
@@ -57,7 +61,8 @@ const useMarker = () => {
 
   // 마커 클릭 이벤트
   const markerAddClickEvent = useCallback(({ marker, storeImage, storeInfo }: any) => {
-    return naver.maps.Event.addListener(marker, 'click', () => {
+    return naver.maps.Event.addListener(marker, 'click', async () => {
+      dispatch(SET_STORE_DETAIL_INFO(storeInfo));
       // 전에 클릭 된 마커랑 현재 클릭한 마커가 같지 않은 경우
       if (priorClickedMarker !== null && marker !== priorClickedMarker) {
         const src: any = priorClickedMarker;
@@ -69,6 +74,10 @@ const useMarker = () => {
       marker.setIcon({
         url: storeImage.imageSrc_big,
       });
+      // 가맹점 피드백 정보 저장
+      const feedback = await getStoreFeedback(storeInfo.store_id, storeInfo.pays);
+      dispatch(SET_STORE_FEEDBACK_INFO(feedback.data.feedback));
+      console.log(feedback.data.feedback);
     });
   }, []);
 

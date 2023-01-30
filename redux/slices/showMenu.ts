@@ -5,12 +5,12 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
   showFilteringFlag : 필터 누르면 필터 창 보이게 하는 플래그
 */
 
-export interface showMenuI {
+export interface showMenuSliceI {
   showListFlag: boolean;
   showFilteringFlag: boolean;
 }
 
-const initialState: showMenuI = {
+const initialState: showMenuSliceI = {
   showListFlag: false,
   showFilteringFlag: false,
 };

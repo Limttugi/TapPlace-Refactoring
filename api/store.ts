@@ -15,3 +15,10 @@ export const getStore = async ({ longitude, latitude }: locationI) => {
     user_id: '',
   });
 };
+
+export const getStoreFeedback = async (storeId: string, pays: Array<string>) => {
+  return await instance.post('/pay/list/more', {
+    store_id: storeId,
+    pays: pays,
+  });
+};

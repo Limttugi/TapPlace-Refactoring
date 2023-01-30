@@ -6,7 +6,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
   currentAddress : 최근 위치 주소
 */
 
-export interface locationI {
+export interface locationSliceI {
   LOADING_MY_LOCATION: boolean;
   currentLocation: {
     latitude: number;
@@ -15,7 +15,7 @@ export interface locationI {
   currentAddress: string;
 }
 
-const initialState: locationI = {
+const initialState: locationSliceI = {
   LOADING_MY_LOCATION: true,
   currentLocation: {
     latitude: 37.3586704,

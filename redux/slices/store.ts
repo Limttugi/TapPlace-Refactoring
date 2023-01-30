@@ -1,16 +1,33 @@
+import { storeI } from '@/hooks/useMap';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 /* 
-  showListFlag : 데스크톱을 제외한 화면에서 가맹점 리스트들을 보여주는 여부를 관장하는 플래그
-  showFilteringFlag : 필터 누르면 필터 창 보이게 하는 플래그
+  stores : 내 주변 가맹점들
+  storeDetailInfo : 클릭한 마커/가맹점의 상세정보
+  storeFeedbackInfo : 클릭한 마커/가맹점의 피드백 정보
 */
 
-export interface storeI {
-  stores: Array<storeI>;
+export interface feedbackI {
+  store_id: string;
+  num: number;
+  pay: string;
+  exist: boolean;
+  success: number;
+  fail: number;
+  last_state: string;
+  last_time: string;
 }
 
-const initialState: storeI = {
+export interface storeSliceI {
+  stores: Array<storeI>;
+  storeDetailInfo: storeI | null;
+  storeFeedbackInfo: Array<feedbackI>;
+}
+
+const initialState: storeSliceI = {
   stores: [],
+  storeDetailInfo: null,
+  storeFeedbackInfo: [],
 };
 
 export const store = createSlice({
@@ -20,12 +37,15 @@ export const store = createSlice({
     SET_STORES(state, action: PayloadAction<Array<storeI>>) {
       state.stores = action.payload;
     },
-    // SET_SHOW_LIST_FLAG(state, action: PayloadAction<boolean>) {
-    //   state.showListFlag = action.payload;
-    // },
+    SET_STORE_DETAIL_INFO(state, action: PayloadAction<storeI | null>) {
+      state.storeDetailInfo = action.payload;
+    },
+    SET_STORE_FEEDBACK_INFO(state, action: PayloadAction<Array<feedbackI>>) {
+      state.storeFeedbackInfo = action.payload;
+    },
   },
 });
 
-export const { SET_STORES } = store.actions;
+export const { SET_STORES, SET_STORE_DETAIL_INFO, SET_STORE_FEEDBACK_INFO } = store.actions;
 
 export default store;

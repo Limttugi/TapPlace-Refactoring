@@ -3,14 +3,15 @@ import s from './FilterButton.module.scss';
 import filterCheck from '@/img/Filter/filter_check.webp';
 import filterReset from '@/img/Filter/filter_reset.webp';
 import Image from 'next/image';
-import { useAppDispatch } from '@/redux/hooks';
+import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import { SET_SHOW_FILTERING_FLAG } from '@/redux/slices/showMenu';
 
 const FilterButton = () => {
   const dispatch = useAppDispatch();
+  const { showFilteringFlag } = useAppSelector(state => state.showMenu);
 
   const onChangeFlag = () => {
-    dispatch(SET_SHOW_FILTERING_FLAG(true));
+    dispatch(SET_SHOW_FILTERING_FLAG(!showFilteringFlag));
   };
 
   return (
