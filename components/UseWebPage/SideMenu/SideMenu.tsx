@@ -5,7 +5,6 @@ import StoreSearch from '../SearchStore.tsx/StoreSearch';
 import CurrentAddress from '../CurrentAddress/CurrentAddress';
 import FilterButton from '../Filter/FilterButton';
 import StoreContainer from '../Store/StoreContainer';
-import FilterFlagButton from '../Filter/FilterFlagButton/FilterFlagButton';
 import FilteringMenu from '../Filter/FilterMenu/FilteringMenu';
 import StoreDetail from '../Store/StoreDetail/StoreDetail';
 
@@ -17,25 +16,21 @@ const SideMenu = () => {
   return (
     <>
       {viewType === 'DESKTOP' && (
-        <>
-          <section className={s.container}>
-            <StoreSearch />
-            <CurrentAddress />
-            <FilterButton />
-            <StoreContainer />
-          </section>
-        </>
+        <section className={s.container}>
+          <StoreSearch />
+          <CurrentAddress />
+          <FilterButton />
+          <StoreContainer />
+        </section>
       )}
       {viewType === 'TABLET' && !storeDetailInfo && (
-        <>
-          <section className={s.container}>
-            <StoreSearch />
-            <div className={s.AddressFilterContainer}>
-              <CurrentAddress />
-              <FilterButton />
-            </div>
-          </section>
-        </>
+        <section className={s.container}>
+          <StoreSearch />
+          <div className={s.AddressFilterContainer}>
+            <CurrentAddress />
+            <FilterButton />
+          </div>
+        </section>
       )}
       {viewType === 'MOBILE' && !storeDetailInfo && (
         <section className={s.container}>
@@ -44,6 +39,7 @@ const SideMenu = () => {
         </section>
       )}
       {showFilteringFlag && <FilteringMenu />}
+      {storeDetailInfo && !showListFlag && <StoreDetail />}
     </>
   );
 };

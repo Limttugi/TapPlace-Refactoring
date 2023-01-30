@@ -30,7 +30,6 @@ const Useweb = () => {
         </>
       )}
       {viewType !== 'DESKTOP' && <FilterFlagButton />}
-      {storeDetailInfo && !showListFlag && <StoreDetail />}
     </>
   );
 };

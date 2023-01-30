@@ -2,7 +2,7 @@
 
 @mixin detailContainerCS {
   position: absolute;
-  z-index: 2;
+  z-index: 3;
   background: white;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.16);
   overflow-y: scroll;
@@ -28,6 +28,19 @@
 @mixin paymentTitleCS {
   color: #333333;
   font-weight: 400;
+}
+
+@mixin goAppStoreButtonCS {
+  color: white;
+  background-color: $mainColor;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: 5.6rem;
+  line-height: 5.6rem;
+  width: 100%;
+  font-size: 1.7rem;
 }
 
 @include mobile {
@@ -122,11 +135,15 @@
       height: 0.8rem;
     }
     .paymentContainer {
+      margin-bottom: 5.6rem;
       .paymentTitle {
         @include paymentTitleCS;
         font-size: 1.7rem;
         margin-bottom: 0.8rem;
       }
+    }
+    .goAppStoreButton {
+      @include goAppStoreButtonCS;
     }
   }
 }
@@ -223,11 +240,15 @@
       height: 0.8rem;
     }
     .paymentContainer {
+      margin-bottom: 5.6rem;
       .paymentTitle {
         @include paymentTitleCS;
         font-size: 2rem;
         margin-bottom: 0.8rem;
       }
+    }
+    .goAppStoreButton {
+      @include goAppStoreButtonCS;
     }
   }
 }
@@ -326,11 +347,19 @@
       height: 0.8rem;
     }
     .paymentContainer {
+      margin-bottom: 5.6rem;
       .paymentTitle {
         @include paymentTitleCS;
         font-size: 2rem;
         margin-bottom: 0.8rem;
       }
+    }
+    .goAppStoreButton {
+      @include goAppStoreButtonCS;
+      border-radius: 0 0 2rem 2rem;
+      width: 47rem;
+      left: 49rem;
+      bottom: 2rem;
     }
   }
 }

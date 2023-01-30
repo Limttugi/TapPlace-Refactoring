@@ -18,6 +18,8 @@ const StoreDetail = () => {
     dispatch(SET_STORE_DETAIL_INFO(null));
   };
 
+  const onClickMoveAppStore = () => {};
+
   return (
     <section className={s.detailContainer}>
       <div className={s.topContainer}>
@@ -60,6 +62,9 @@ const StoreDetail = () => {
           <FeedbackList key={feedback.store_id + index} feedback={feedback} />
         ))}
       </ul>
+      <button className={s.goAppStoreButton} onClick={onClickMoveAppStore}>
+        앱에서 사용여부 피드백하기
+      </button>
     </section>
   );
 };
