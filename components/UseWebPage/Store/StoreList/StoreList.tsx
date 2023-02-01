@@ -17,7 +17,7 @@ import { SET_SHOW_LIST_FLAG } from '@/redux/slices/showMenu';
 const StoreList = ({ store }: storeI | any) => {
   const dispatch = useAppDispatch();
 
-  const onClickStore = async () => {
+  const handleShowStoreDetailInfo = async () => {
     dispatch(SET_STORE_DETAIL_INFO(store));
     const feedback = await getStoreFeedback(store.store_id, store.pays);
     dispatch(SET_STORE_FEEDBACK_INFO(feedback.data.feedback));
@@ -26,7 +26,7 @@ const StoreList = ({ store }: storeI | any) => {
   };
 
   return (
-    <li className={s.list} onClick={onClickStore}>
+    <li className={s.list} onClick={handleShowStoreDetailInfo}>
       <div className={s.nameContainer}>
         <h4 className={s.placeName}>{store.place_name}</h4>
         <p className={s.categoryName}>{store.category_group_name}</p>

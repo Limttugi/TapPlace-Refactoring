@@ -10,12 +10,12 @@ const FilterFlagButton = () => {
   const dispatch = useAppDispatch();
   const { showListFlag } = useAppSelector(state => state.showMenu);
 
-  const onChangeFlag = () => {
+  const handleToggleShowList = () => {
     dispatch(SET_SHOW_LIST_FLAG(!showListFlag));
   };
 
   return (
-    <button className={s.flag} onClick={onChangeFlag}>
+    <button className={s.flag} onClick={handleToggleShowList}>
       {showListFlag ? (
         <>
           <Image className={s.flagImg} src={showMap} alt="showList" />

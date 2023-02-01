@@ -14,11 +14,11 @@ const StoreDetail = () => {
   const dispatch = useAppDispatch();
   const { storeDetailInfo, storeFeedbackInfo } = useAppSelector(state => state.store);
 
-  const onClickClose = () => {
+  const handleCloseStoreDetailInfo = () => {
     dispatch(SET_STORE_DETAIL_INFO(null));
   };
 
-  const onClickMoveAppStore = () => {};
+  const handleMoveAppStore = () => {};
 
   return (
     <section className={s.detailContainer}>
@@ -27,7 +27,7 @@ const StoreDetail = () => {
           <h4 className={s.placeName}>{storeDetailInfo?.place_name}</h4>
           <p className={s.categoryName}>{storeDetailInfo?.category_group_name}</p>
         </div>
-        <Image className={s.closeImage} src={close} alt="closeImage" onClick={onClickClose} />
+        <Image className={s.closeImage} src={close} alt="closeImage" onClick={handleCloseStoreDetailInfo} />
       </div>
       <button className={s.findWayWrapper}>
         <Image className={s.findWayImage} src={findWay} alt="findWay" />
@@ -62,7 +62,7 @@ const StoreDetail = () => {
           <FeedbackList key={feedback.store_id + index} feedback={feedback} />
         ))}
       </ul>
-      <button className={s.goAppStoreButton} onClick={onClickMoveAppStore}>
+      <button className={s.goAppStoreButton} onClick={handleMoveAppStore}>
         앱에서 사용여부 피드백하기
       </button>
     </section>

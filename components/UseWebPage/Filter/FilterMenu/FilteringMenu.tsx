@@ -12,11 +12,11 @@ const FilteringMenu = () => {
   const dispatch = useAppDispatch();
   const { showFilteringFlag } = useAppSelector(state => state.showMenu);
 
-  const onChangeFlag = () => {
+  const handleCloseFilterMenu = () => {
     dispatch(SET_SHOW_FILTERING_FLAG(false));
   };
 
-  const onClickToggleFilter = (e: React.MouseEvent | any) => {
+  const handleActiveFilter = (e: React.MouseEvent | any) => {
     e.target.className === `${s.filterList}`
       ? (e.currentTarget.className = `${s.filterList} ${s.filterActive}`)
       : (e.currentTarget.className = `${s.filterList}`);
@@ -37,13 +37,13 @@ const FilteringMenu = () => {
   return (
     <section id={showFilteringFlag ? `${s.active}` : ''} className={s.container}>
       <div className={s.topContainer}>
-        <Image className={s.backImg} src={back} alt="backBtn" onClick={onChangeFlag} />
+        <Image className={s.backImg} src={back} alt="backBtn" onClick={handleCloseFilterMenu} />
         <h1 className={s.headerText}>필터</h1>
       </div>
       <h4 className={s.filterTypeText}>매장선택</h4>
       <ul className={s.listContainer}>
         {STORE_TYPE.map((item, idx) => (
-          <li onClick={onClickToggleFilter} id={'store' + idx} className={s.filterList} key={item + idx}>
+          <li onClick={handleActiveFilter} id={'store' + idx} className={s.filterList} key={item + idx}>
             {item}
           </li>
         ))}
@@ -52,7 +52,7 @@ const FilteringMenu = () => {
       <h4 className={s.filterTypeText}>결제수단</h4>
       <ul className={s.listContainer}>
         {PAYS_KOR.map((item, idx) => (
-          <li onClick={onClickToggleFilter} id={'pay' + idx} className={s.filterList} key={item + idx}>
+          <li onClick={handleActiveFilter} id={'pay' + idx} className={s.filterList} key={item + idx}>
             {item}
           </li>
         ))}
@@ -60,7 +60,7 @@ const FilteringMenu = () => {
       <h4 className={s.payTypeText}>애플페이</h4>
       <ul className={s.listContainer}>
         {PAYS_APPLE.map((item, idx) => (
-          <li onClick={onClickToggleFilter} id={'apple' + idx} className={s.filterList} key={item + idx}>
+          <li onClick={handleActiveFilter} id={'apple' + idx} className={s.filterList} key={item + idx}>
             {item}
           </li>
         ))}
@@ -68,7 +68,7 @@ const FilteringMenu = () => {
       <h4 className={s.payTypeText}>구글페이</h4>
       <ul className={s.listContainer}>
         {PAYS_GOOGLE.map((item, idx) => (
-          <li onClick={onClickToggleFilter} id={'google' + idx} className={s.filterList} key={item + idx}>
+          <li onClick={handleActiveFilter} id={'google' + idx} className={s.filterList} key={item + idx}>
             {item}
           </li>
         ))}
@@ -76,7 +76,7 @@ const FilteringMenu = () => {
       <h4 className={s.payTypeText}>컨택리스 카드</h4>
       <ul className={s.listContainer}>
         {PAYS_CONTACTLESS.map((item, idx) => (
-          <li onClick={onClickToggleFilter} id={'conless' + idx} className={s.filterList} key={item + idx}>
+          <li onClick={handleActiveFilter} id={'conless' + idx} className={s.filterList} key={item + idx}>
             {item}
           </li>
         ))}
@@ -84,7 +84,7 @@ const FilteringMenu = () => {
       <button
         className={s.filterApplyButton}
         onClick={() => {
-          onChangeFlag;
+          handleCloseFilterMenu();
           handleApplyFilter();
         }}>
         적용

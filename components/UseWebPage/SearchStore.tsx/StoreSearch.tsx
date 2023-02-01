@@ -8,7 +8,7 @@ import search_close from '@/img/SearchInput/search_close.webp';
 const StoreSearch = () => {
   const [searchWord, setSearchWord] = useState<string>();
 
-  const onChangeWord = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChangeSearchWord = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchWord(e.target.value);
   };
 
@@ -20,7 +20,7 @@ const StoreSearch = () => {
         type="text"
         placeholder="가맹점을 찾아보세요"
         value={searchWord}
-        onChange={onChangeWord}
+        onChange={handleChangeSearchWord}
       />
       {searchWord && <Image src={search_close} alt="searchReset" />}
     </div>

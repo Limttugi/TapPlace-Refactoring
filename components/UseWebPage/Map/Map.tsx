@@ -6,13 +6,13 @@ import { useEffect } from 'react';
 import useLocation from '@/hooks/useLocation';
 
 const Map = () => {
-  const { mapRendering, handleGetStore } = useMap();
-  const { bringMyLocation } = useLocation();
+  const { mapRendering } = useMap();
+  const { handleGetFirstLocation } = useLocation();
   const { LOADING_MY_LOCATION } = useAppSelector(state => state.location);
 
   useEffect(() => {
-    bringMyLocation();
-  }, [bringMyLocation]);
+    handleGetFirstLocation();
+  }, [handleGetFirstLocation]);
 
   useEffect(() => {
     mapRendering();
