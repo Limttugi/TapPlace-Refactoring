@@ -10,7 +10,7 @@ import StoreDetail from '../Store/StoreDetail/StoreDetail';
 
 const SideMenu = () => {
   const { viewType } = useAppSelector(state => state.common);
-  const { showFilteringFlag, showListFlag } = useAppSelector(state => state.showMenu);
+  const { showListFlag } = useAppSelector(state => state.showMenu);
   const { storeDetailInfo } = useAppSelector(state => state.store);
 
   return (
@@ -38,7 +38,7 @@ const SideMenu = () => {
           <CurrentAddress />
         </section>
       )}
-      {showFilteringFlag && <FilteringMenu />}
+      <FilteringMenu />
       {storeDetailInfo && !showListFlag && <StoreDetail />}
     </>
   );

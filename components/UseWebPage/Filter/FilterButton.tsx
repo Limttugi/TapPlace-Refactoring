@@ -1,7 +1,7 @@
 import s from './FilterButton.module.scss';
+import filterMenu from './FilterMenu/FilteringMenu.module.scss';
 
 import filterCheck from '@/img/Filter/filter_check.webp';
-import filterReset from '@/img/Filter/filter_reset.webp';
 import Image from 'next/image';
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import { SET_SHOW_FILTERING_FLAG } from '@/redux/slices/showMenu';

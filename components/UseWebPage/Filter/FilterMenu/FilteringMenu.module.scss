@@ -1,12 +1,17 @@
 @import '@/styles/mixins.scss';
 
+#active {
+  display: block;
+}
+
 @mixin containerCS {
+  display: none;
   position: absolute;
   height: 100%;
   background-color: white;
   left: 0;
   top: 0;
-  z-index: 1;
+  z-index: 3;
 }
 
 @mixin filterActiveCS {
@@ -110,6 +115,9 @@
       @include hrCS;
       width: 32.7rem;
     }
+    .filterApplyButton {
+      @include filterApplyButtonCS;
+    }
   }
 }
 
@@ -149,6 +157,9 @@
     hr {
       @include hrCS;
       width: 72rem;
+    }
+    .filterApplyButton {
+      @include filterApplyButtonCS;
     }
   }
 }

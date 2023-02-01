@@ -22,12 +22,16 @@ export interface storeSliceI {
   stores: Array<storeI>;
   storeDetailInfo: storeI | null;
   storeFeedbackInfo: Array<feedbackI>;
+  filteringStore: Array<string>;
+  filteringPayment: Array<string>;
 }
 
 const initialState: storeSliceI = {
   stores: [],
   storeDetailInfo: null,
   storeFeedbackInfo: [],
+  filteringStore: [],
+  filteringPayment: [],
 };
 
 export const store = createSlice({
@@ -43,9 +47,13 @@ export const store = createSlice({
     SET_STORE_FEEDBACK_INFO(state, action: PayloadAction<Array<feedbackI>>) {
       state.storeFeedbackInfo = action.payload;
     },
+    SET_APPLY_FILTER(state, action: PayloadAction<Array<Array<string>>>) {
+      state.filteringStore = action.payload[0];
+      state.filteringPayment = action.payload[1];
+    },
   },
 });
 
-export const { SET_STORES, SET_STORE_DETAIL_INFO, SET_STORE_FEEDBACK_INFO } = store.actions;
+export const { SET_STORES, SET_STORE_DETAIL_INFO, SET_STORE_FEEDBACK_INFO, SET_APPLY_FILTER } = store.actions;
 
 export default store;
