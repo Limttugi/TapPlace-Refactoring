@@ -9,7 +9,7 @@ import setViewType from '@/utils/setViewType';
 import wrapper from '@/redux/store';
 import AppLayout from '@/components/Common/Layout/AppLayout';
 import Script from 'next/script';
-import GlobalContext from '@/context/GlobalContext';
+import GlobalContext, { GlobalContextValue } from '@/context/GlobalContext';
 
 function App({ Component, pageProps }: AppProps) {
   const dispatch = useAppDispatch();
@@ -29,8 +29,6 @@ function App({ Component, pageProps }: AppProps) {
     return () => window.removeEventListener('resize', resizeWindow);
   });
 
-  const contextValue = { currentClickedMarker: null };
-
   return (
     <AppLayout>
       <Head>
@@ -40,7 +38,7 @@ function App({ Component, pageProps }: AppProps) {
       <Script
         strategy="beforeInteractive"
         src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=5iahchagdx&submodules=geocoder"></Script>
-      <GlobalContext.Provider value={contextValue}>
+      <GlobalContext.Provider value={GlobalContextValue}>
         <Component {...pageProps} />
       </GlobalContext.Provider>
     </AppLayout>

@@ -14,13 +14,14 @@ import GlobalContext from '@/context/GlobalContext';
 
 const StoreDetailSection = () => {
   const dispatch = useAppDispatch();
-  const globalContext = useContext(GlobalContext);
+  const GlobalContextValue = useContext(GlobalContext);
 
   const { storeDetailInfo, storeFeedbackInfo } = useAppSelector(state => state.store);
 
   const handleCloseStoreDetailInfo = () => {
-    const clickedMarker: naver.maps.Marker | any = globalContext.currentClickedMarker;
+    const clickedMarker: naver.maps.Marker | any = GlobalContextValue.currentClickedMarker;
 
+    console.log(clickedMarker);
     clickedMarker.setIcon({
       url: clickedMarker.icon.url.replace('_big', ''),
     });

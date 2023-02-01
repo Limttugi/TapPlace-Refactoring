@@ -13,20 +13,40 @@ import { SET_STORE_DETAIL_INFO, SET_STORE_FEEDBACK_INFO } from '@/redux/slices/s
 import { getStoreFeedback } from '@/api/store';
 import { useAppDispatch } from '@/redux/hooks';
 import { SET_SHOW_LIST_FLAG } from '@/redux/slices/showMenu';
+import { useContext } from 'react';
+import GlobalContext from '@/context/GlobalContext';
 
 const StoreList = ({ store }: storeI | any) => {
   const dispatch = useAppDispatch();
+  const GlobalContextValue = useContext(GlobalContext);
 
   const handleShowStoreDetailInfo = async () => {
-    dispatch(SET_STORE_DETAIL_INFO(store));
     const feedback = await getStoreFeedback(store.store_id, store.pays);
-    dispatch(SET_STORE_FEEDBACK_INFO(feedback.data.feedback));
-    console.log(feedback.data.feedback);
+
+    GlobalContextValue.marker.forEach(marker => {
+      // 마커들 중 선택한 마커 찾기
+      if (marker.title === store.store_id) {
+        if (marker !== GlobalContextValue.currentClickedMarker) {
+          GlobalContextValue.currentClickedMarker.setIcon({
+            url: GlobalContextValue.currentClickedMarker.icon.url.replace('_big', ''),
+          });
+          GlobalContextValue.currentClickedMarker = marker;
+        }
+
+        const split = marker.icon.url.split('.');
+        marker.setIcon({
+          url: split[0] + '_big.' + split[1],
+        });
+      }
+    });
+
     dispatch(SET_SHOW_LIST_FLAG(false));
+    dispatch(SET_STORE_FEEDBACK_INFO(feedback.data.feedback));
+    dispatch(SET_STORE_DETAIL_INFO(store));
   };
 
   return (
-    <li className={s.list} onClick={handleShowStoreDetailInfo}>
+    <li id={store.store_id} className={s.list} onClick={handleShowStoreDetailInfo}>
       <div className={s.nameContainer}>
         <h4 className={s.placeName}>{store.place_name}</h4>
         <p className={s.categoryName}>{store.category_group_name}</p>

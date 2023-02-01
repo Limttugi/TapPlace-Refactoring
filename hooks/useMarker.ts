@@ -18,9 +18,9 @@ interface setCenterI {
 
 const useMarker = () => {
   const dispatch = useDispatch();
+  const GlobalContextValue = useContext(GlobalContext);
   const { viewType } = useAppSelector(state => state.common);
   let priorClickedMarker: naver.maps.Marker | any | null = null;
-  const globalContext = useContext(GlobalContext);
 
   // 가맹점 카테고리에 따른 마커 이미지 분류
   const markerImageDivideByCategory = useCallback((store: storeI) => {
@@ -76,13 +76,12 @@ const useMarker = () => {
   // 마커 클릭 이벤트
   const markerAddClickEvent = ({ mapRef, marker, storeImage, storeInfo }: markerClickEventI) => {
     return naver.maps.Event.addListener(marker, 'click', async () => {
-      globalContext.currentClickedMarker = marker;
+      GlobalContextValue.currentClickedMarker = marker;
       dispatch(SET_STORE_DETAIL_INFO(storeInfo));
       // 전에 클릭 된 마커랑 현재 클릭한 마커가 같지 않은 경우
       if (priorClickedMarker !== null && marker !== priorClickedMarker) {
-        const src: any = priorClickedMarker;
         priorClickedMarker.setIcon({
-          url: src.icon.url.replace('_big', ''),
+          url: priorClickedMarker.icon.url.replace('_big', ''),
         });
       }
       priorClickedMarker = marker;
@@ -97,6 +96,7 @@ const useMarker = () => {
     });
   };
 
+  // 클릭 시 지도를 마커 기준 중앙으로 이동
   const handleMapSetCenter = ({ mapRef, marker }: setCenterI) => {
     let lat: number = marker.position._lat;
     const lng: number = marker.position._lng;

@@ -1,7 +1,8 @@
 import { getStore } from '@/api/store';
+import GlobalContext from '@/context/GlobalContext';
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import { SET_STORES } from '@/redux/slices/store';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useContext, useEffect, useRef, useState } from 'react';
 import useMarker from './useMarker';
 
 export interface storeI {
@@ -24,34 +25,41 @@ export interface storeImageI {
 
 const useMap = () => {
   const dispatch = useAppDispatch();
+  const GlobalContextValue = useContext(GlobalContext);
   const { markerImageDivideByCategory, markerAddClickEvent } = useMarker();
   const { currentLocation, LOADING_MY_LOCATION } = useAppSelector(state => state.location);
   const mapRef = useRef<HTMLElement | null | any>(null);
 
   // 지도 렌더링
-  const mapRendering = () => {
+  const mapRendering = useCallback(() => {
     if (!LOADING_MY_LOCATION) {
+      console.log('mapRendering');
       mapRef.current = new naver.maps.Map('map', {
         center: new naver.maps.LatLng(currentLocation.latitude, currentLocation.longitude),
         scaleControl: false,
       });
     }
-  };
+  }, [LOADING_MY_LOCATION, currentLocation.latitude, currentLocation.longitude]);
 
   // 지도에 가맹점 마커 표시
   const handleDisplayMarker = useCallback(
     (stores: Array<storeI>) => {
+      const ALL_STORE: Array<naver.maps.Marker> = [];
+
       stores.forEach(storeInfo => {
         const storeImage: storeImageI = markerImageDivideByCategory(storeInfo);
         const marker = new naver.maps.Marker({
+          title: storeInfo.store_id,
           map: mapRef.current,
           position: new naver.maps.LatLng(Number(storeInfo.y), Number(storeInfo.x)),
           icon: {
             url: storeImage.imageSrc,
           },
         });
+        ALL_STORE.push(marker);
         markerAddClickEvent({ mapRef, marker, storeImage, storeInfo });
       });
+      GlobalContextValue.marker = ALL_STORE;
     },
     [markerAddClickEvent, markerImageDivideByCategory],
   );
