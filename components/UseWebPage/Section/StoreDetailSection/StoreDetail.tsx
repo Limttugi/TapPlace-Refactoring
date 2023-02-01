@@ -9,12 +9,22 @@ import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import Image from 'next/image';
 import FeedbackList from '../../List/FeedbackList/FeedbackList';
 import { feedbackI, SET_STORE_DETAIL_INFO } from '@/redux/slices/store';
+import { useContext } from 'react';
+import GlobalContext from '@/context/GlobalContext';
 
 const StoreDetailSection = () => {
   const dispatch = useAppDispatch();
+  const globalContext = useContext(GlobalContext);
+
   const { storeDetailInfo, storeFeedbackInfo } = useAppSelector(state => state.store);
 
   const handleCloseStoreDetailInfo = () => {
+    const clickedMarker: naver.maps.Marker | any = globalContext.currentClickedMarker;
+
+    clickedMarker.setIcon({
+      url: clickedMarker.icon.url.replace('_big', ''),
+    });
+
     dispatch(SET_STORE_DETAIL_INFO(null));
   };
 

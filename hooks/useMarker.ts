@@ -1,12 +1,26 @@
 import { getStoreFeedback } from '@/api/store';
+import GlobalContext from '@/context/GlobalContext';
+import { useAppSelector } from '@/redux/hooks';
 import { SET_STORE_DETAIL_INFO, SET_STORE_FEEDBACK_INFO } from '@/redux/slices/store';
-import { useCallback } from 'react';
+import { useCallback, useContext } from 'react';
 import { useDispatch } from 'react-redux';
-import { storeI } from './useMap';
+import { storeI, storeImageI } from './useMap';
+
+interface markerClickEventI extends setCenterI {
+  storeImage: storeImageI;
+  storeInfo: storeI;
+}
+
+interface setCenterI {
+  mapRef: HTMLElement | null | any;
+  marker: naver.maps.Marker | any;
+}
 
 const useMarker = () => {
   const dispatch = useDispatch();
-  let priorClickedMarker: naver.maps.Marker | null = null;
+  const { viewType } = useAppSelector(state => state.common);
+  let priorClickedMarker: naver.maps.Marker | any | null = null;
+  const globalContext = useContext(GlobalContext);
 
   // 가맹점 카테고리에 따른 마커 이미지 분류
   const markerImageDivideByCategory = useCallback((store: storeI) => {
@@ -60,8 +74,9 @@ const useMarker = () => {
   }, []);
 
   // 마커 클릭 이벤트
-  const markerAddClickEvent = useCallback(({ marker, storeImage, storeInfo }: any) => {
+  const markerAddClickEvent = ({ mapRef, marker, storeImage, storeInfo }: markerClickEventI) => {
     return naver.maps.Event.addListener(marker, 'click', async () => {
+      globalContext.currentClickedMarker = marker;
       dispatch(SET_STORE_DETAIL_INFO(storeInfo));
       // 전에 클릭 된 마커랑 현재 클릭한 마커가 같지 않은 경우
       if (priorClickedMarker !== null && marker !== priorClickedMarker) {
@@ -77,14 +92,27 @@ const useMarker = () => {
       // 가맹점 피드백 정보 저장
       const feedback = await getStoreFeedback(storeInfo.store_id, storeInfo.pays);
       dispatch(SET_STORE_FEEDBACK_INFO(feedback.data.feedback));
-      console.log(feedback.data.feedback);
-    });
-  }, []);
 
-  return {
-    markerImageDivideByCategory,
-    markerAddClickEvent,
+      handleMapSetCenter({ mapRef, marker });
+    });
   };
+
+  const handleMapSetCenter = ({ mapRef, marker }: setCenterI) => {
+    let lat: number = marker.position._lat;
+    const lng: number = marker.position._lng;
+
+    if (viewType === 'DESKTOP') {
+      mapRef.current.setCenter(marker.position);
+    } else if (viewType === 'TABLET') {
+      lat = lat - window.innerWidth / 128000;
+      mapRef.current.setCenter(new naver.maps.LatLng(lat, lng));
+    } else if (viewType === 'MOBILE') {
+      lat = lat - window.innerWidth / 62500;
+      mapRef.current.setCenter(new naver.maps.LatLng(lat, lng));
+    }
+  };
+
+  return { markerImageDivideByCategory, markerAddClickEvent };
 };
 
 export default useMarker;

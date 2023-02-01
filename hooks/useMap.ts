@@ -17,7 +17,7 @@ export interface storeI {
   x: string;
   y: string;
 }
-interface storeImageI {
+export interface storeImageI {
   imageSrc: string;
   imageSrc_big: string;
 }
@@ -29,14 +29,14 @@ const useMap = () => {
   const mapRef = useRef<HTMLElement | null | any>(null);
 
   // 지도 렌더링
-  const mapRendering = useCallback(() => {
+  const mapRendering = () => {
     if (!LOADING_MY_LOCATION) {
       mapRef.current = new naver.maps.Map('map', {
         center: new naver.maps.LatLng(currentLocation.latitude, currentLocation.longitude),
         scaleControl: false,
       });
     }
-  }, [LOADING_MY_LOCATION, currentLocation]);
+  };
 
   // 지도에 가맹점 마커 표시
   const handleDisplayMarker = useCallback(
@@ -50,7 +50,7 @@ const useMap = () => {
             url: storeImage.imageSrc,
           },
         });
-        markerAddClickEvent({ marker, storeImage, storeInfo });
+        markerAddClickEvent({ mapRef, marker, storeImage, storeInfo });
       });
     },
     [markerAddClickEvent, markerImageDivideByCategory],

@@ -6,14 +6,12 @@ import SideMenu from '@/components/UseWebPage/Section/SideMenuSection/SideMenu';
 import { useAppSelector } from '@/redux/hooks';
 import StoreContainer from '@/components/UseWebPage/Section/SideMenuSection/StoreContainer/StoreContainer';
 import FilterButton from '@/components/UseWebPage/Button/FilterButton/FilterButton';
-import StoreDetail from '@/components/UseWebPage/Section/StoreDetailSection/StoreDetail';
 import DisplayModeButton from '@/components/UseWebPage/Button/DisplayModeButton/DisplayModeButton';
 
 const Useweb = () => {
   const { viewType } = useAppSelector(state => state.common);
   const { LOADING_MY_LOCATION } = useAppSelector(state => state.location);
   const { showListFlag } = useAppSelector(state => state.showMenu);
-  const { storeDetailInfo } = useAppSelector(state => state.store);
 
   return (
     <>
