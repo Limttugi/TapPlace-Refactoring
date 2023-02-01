@@ -2,12 +2,12 @@ import s from './useweb.module.scss';
 
 import LoadingSpinner from '@/components/UseWebPage/LoadingSpinner/LoadingSpinner';
 import Map from '@/components/UseWebPage/Map/Map';
-import SideMenu from '@/components/UseWebPage/SideMenu/SideMenu';
+import SideMenu from '@/components/UseWebPage/Section/SideMenuSection/SideMenu';
 import { useAppSelector } from '@/redux/hooks';
-import StoreContainer from '@/components/UseWebPage/Store/StoreContainer';
-import FilterButton from '@/components/UseWebPage/Filter/FilterButton';
-import FilterFlagButton from '@/components/UseWebPage/Filter/FilterFlagButton/FilterFlagButton';
-import StoreDetail from '@/components/UseWebPage/Store/StoreDetail/StoreDetail';
+import StoreContainer from '@/components/UseWebPage/Section/SideMenuSection/StoreContainer/StoreContainer';
+import FilterButton from '@/components/UseWebPage/Button/FilterButton/FilterButton';
+import StoreDetail from '@/components/UseWebPage/Section/StoreDetailSection/StoreDetail';
+import DisplayModeButton from '@/components/UseWebPage/Button/DisplayModeButton/DisplayModeButton';
 
 const Useweb = () => {
   const { viewType } = useAppSelector(state => state.common);
@@ -29,7 +29,7 @@ const Useweb = () => {
           <StoreContainer />
         </>
       )}
-      {viewType !== 'DESKTOP' && <FilterFlagButton />}
+      {viewType !== 'DESKTOP' && <DisplayModeButton />}
     </>
   );
 };

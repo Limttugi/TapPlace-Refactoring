@@ -1,11 +1,11 @@
-import s from './StoreSearch.module.scss';
+import s from './SearchStore.module.scss';
 
 import { useState } from 'react';
 import Image from 'next/image';
 import search from '@/img/SearchInput/search_list.webp';
 import search_close from '@/img/SearchInput/search_close.webp';
 
-const StoreSearch = () => {
+const SearchStore = () => {
   const [searchWord, setSearchWord] = useState<string>();
 
   const handleChangeSearchWord = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -27,4 +27,4 @@ const StoreSearch = () => {
   );
 };
 
-export default StoreSearch;
+export default SearchStore;

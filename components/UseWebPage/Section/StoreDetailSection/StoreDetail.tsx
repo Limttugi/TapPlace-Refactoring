@@ -1,4 +1,4 @@
-import s from './StoreDetail.module.scss';
+import s from './StoreDetailSection.module.scss';
 
 import close from '@/img/SearchInput/search_close.webp';
 import findWay from '@/img/StoreDetail/navigation.webp';
@@ -7,10 +7,10 @@ import phone from '@/img/StoreDetail/phone.webp';
 import pencil from '@/img/StoreDetail/pencil.webp';
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import Image from 'next/image';
-import FeedbackList from './FeedbackList/FeedbackList';
+import FeedbackList from '../../List/FeedbackList/FeedbackList';
 import { feedbackI, SET_STORE_DETAIL_INFO } from '@/redux/slices/store';
 
-const StoreDetail = () => {
+const StoreDetailSection = () => {
   const dispatch = useAppDispatch();
   const { storeDetailInfo, storeFeedbackInfo } = useAppSelector(state => state.store);
 
@@ -69,4 +69,4 @@ const StoreDetail = () => {
   );
 };
 
-export default StoreDetail;
+export default StoreDetailSection;

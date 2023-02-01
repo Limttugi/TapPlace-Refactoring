@@ -1,14 +1,14 @@
-import s from './SideMenu.module.scss';
+import s from './SideMenuSection.module.scss';
 
 import { useAppSelector } from '@/redux/hooks';
-import StoreSearch from '../SearchStore.tsx/StoreSearch';
-import CurrentAddress from '../CurrentAddress/CurrentAddress';
-import FilterButton from '../Filter/FilterButton';
-import StoreContainer from '../Store/StoreContainer';
-import FilteringMenu from '../Filter/FilterMenu/FilteringMenu';
-import StoreDetail from '../Store/StoreDetail/StoreDetail';
+import StoreSearch from '../../Input/SearchStore/StoreSearch';
+import CurrentAddress from './CurrentAddress/CurrentAddress';
+import FilterButton from '../../Button/FilterButton/FilterButton';
+import StoreContainer from './StoreContainer/StoreContainer';
+import StoreDetail from '../StoreDetailSection/StoreDetail';
+import FilterSection from '../FilterSection/FilterSection';
 
-const SideMenu = () => {
+const SideMenuSection = () => {
   const { viewType } = useAppSelector(state => state.common);
   const { showListFlag } = useAppSelector(state => state.showMenu);
   const { storeDetailInfo } = useAppSelector(state => state.store);
@@ -38,10 +38,10 @@ const SideMenu = () => {
           <CurrentAddress />
         </section>
       )}
-      <FilteringMenu />
+      <FilterSection />
       {storeDetailInfo && !showListFlag && <StoreDetail />}
     </>
   );
 };
 
-export default SideMenu;
+export default SideMenuSection;

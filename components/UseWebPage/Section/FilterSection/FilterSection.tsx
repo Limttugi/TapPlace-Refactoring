@@ -1,4 +1,4 @@
-import s from './FilteringMenu.module.scss';
+import s from './FilterSection.module.scss';
 
 import back from '@/img/back.webp';
 import Image from 'next/image';
@@ -8,7 +8,7 @@ import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import { SET_SHOW_FILTERING_FLAG } from '@/redux/slices/showMenu';
 import { SET_APPLY_FILTER } from '@/redux/slices/store';
 
-const FilteringMenu = () => {
+const FilterSection = () => {
   const dispatch = useAppDispatch();
   const { showFilteringFlag } = useAppSelector(state => state.showMenu);
 
@@ -93,4 +93,4 @@ const FilteringMenu = () => {
   );
 };
 
-export default FilteringMenu;
+export default FilterSection;

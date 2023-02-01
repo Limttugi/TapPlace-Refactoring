@@ -1,7 +1,7 @@
 import s from './StoreContainer.module.scss';
 
-import StoreList from './StoreList/StoreList';
 import { useAppSelector } from '@/redux/hooks';
+import StoreList from '../../../List/StoreList/StoreList';
 
 const StoreContainer = () => {
   const { LOADING_MY_LOCATION } = useAppSelector(state => state.location);

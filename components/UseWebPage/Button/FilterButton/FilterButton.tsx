@@ -2,7 +2,7 @@ import s from './FilterButton.module.scss';
 
 import filterCheck from '@/img/Filter/filter_check.webp';
 import Image from 'next/image';
-import { useAppDispatch, useAppSelector } from '@/redux/hooks';
+import { useAppDispatch } from '@/redux/hooks';
 import { SET_SHOW_FILTERING_FLAG } from '@/redux/slices/showMenu';
 
 const FilterButton = () => {

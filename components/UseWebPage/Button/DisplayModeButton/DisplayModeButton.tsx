@@ -1,4 +1,4 @@
-import s from './FilterFlagButton.module.scss';
+import s from './DisplayModeButton.module.scss';
 
 import showList from '@/img/Filter/FilterFlag/show_list.webp';
 import showMap from '@/img/Filter/FilterFlag/show_map.webp';
@@ -6,7 +6,7 @@ import Image from 'next/image';
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import { SET_SHOW_LIST_FLAG } from '@/redux/slices/showMenu';
 
-const FilterFlagButton = () => {
+const DisplayModeButton = () => {
   const dispatch = useAppDispatch();
   const { showListFlag } = useAppSelector(state => state.showMenu);
 
@@ -31,4 +31,4 @@ const FilterFlagButton = () => {
   );
 };
 
-export default FilterFlagButton;
+export default DisplayModeButton;
