@@ -61,7 +61,7 @@ const StoreDetailSection = () => {
           </p>
         </li>
       </ul>
-      <hr />
+      <hr className={s.lightHr} />
       <div className={s.requestModifyWrapper}>
         <Image className={s.requestModifyImage} src={pencil} alt="modifyImage" />
         <p className={s.requestModifyText}>정보 수정 요청</p>
