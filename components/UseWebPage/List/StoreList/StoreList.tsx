@@ -26,17 +26,26 @@ const StoreList = ({ store }: storeI | any) => {
     GlobalContextValue.marker.forEach(marker => {
       // 마커들 중 선택한 마커 찾기
       if (marker.title === store.store_id) {
-        if (marker !== GlobalContextValue.currentClickedMarker) {
-          GlobalContextValue.currentClickedMarker.setIcon({
-            url: GlobalContextValue.currentClickedMarker.icon.url.replace('_big', ''),
+        // 큰 아이콘으로 변경
+        const split = marker.icon.url.split('.');
+        if (marker.icon.url.includes('big') === false) {
+          console.log('big');
+          marker.setIcon({
+            url: split[0] + '_big.' + split[1],
           });
-          GlobalContextValue.currentClickedMarker = marker;
         }
 
-        const split = marker.icon.url.split('.');
-        marker.setIcon({
-          url: split[0] + '_big.' + split[1],
-        });
+        // 클릭한 마커 설정
+        if (GlobalContextValue.currentClickedMarker === null) {
+          GlobalContextValue.currentClickedMarker = marker;
+        } else {
+          if (marker !== GlobalContextValue.currentClickedMarker) {
+            GlobalContextValue.currentClickedMarker.setIcon({
+              url: GlobalContextValue.currentClickedMarker.icon.url.replace('_big', ''),
+            });
+          }
+          GlobalContextValue.currentClickedMarker = marker;
+        }
       }
     });
 
