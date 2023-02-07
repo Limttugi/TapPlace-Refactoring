@@ -11,9 +11,11 @@ import FeedbackList from '../../List/FeedbackList/FeedbackList';
 import { feedbackI, SET_STORE_DETAIL_INFO } from '@/redux/slices/store';
 import { useContext } from 'react';
 import GlobalContext from '@/context/GlobalContext';
+import proj4 from 'proj4';
 
 const StoreDetailSection = () => {
   const dispatch = useAppDispatch();
+  const { currentLocation } = useAppSelector(state => state.location);
   const GlobalContextValue = useContext(GlobalContext);
 
   const { storeDetailInfo, storeFeedbackInfo } = useAppSelector(state => state.store);
@@ -31,6 +33,19 @@ const StoreDetailSection = () => {
 
   const handleMoveAppStore = () => {};
 
+  const handleFindWay = () => {
+    if (storeDetailInfo) {
+      const start = proj4('EPSG:4326', 'EPSG:3857', [
+        Number(currentLocation.longitude),
+        Number(currentLocation.latitude),
+      ]);
+      const arrive = proj4('EPSG:4326', 'EPSG:3857', [Number(storeDetailInfo.x), Number(storeDetailInfo.y)]);
+      window.open(
+        `https://map.naver.com/v5/directions/${start[0]},${start[1]},내위치,,/${arrive[0]},${arrive[1]},${storeDetailInfo.place_name},,/~/transit?c=${arrive[0]},${arrive[1]},13,0,0,0,dh`,
+      );
+    }
+  };
+
   return (
     <section className={s.detailContainer}>
       <div className={s.topContainer}>
@@ -40,7 +55,7 @@ const StoreDetailSection = () => {
         </div>
         <Image className={s.closeImage} src={close} alt="closeImage" onClick={handleCloseStoreDetailInfo} />
       </div>
-      <button className={s.findWayWrapper}>
+      <button className={s.findWayWrapper} onClick={handleFindWay}>
         <Image className={s.findWayImage} src={findWay} alt="findWay" />
         <p className={s.findWayText}>길찾기</p>
       </button>

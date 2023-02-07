@@ -51,11 +51,11 @@ const StoreList = ({ store }: storeI | any) => {
           GlobalContextValue.currentClickedMarker = marker;
         }
       }
+      dispatch(SET_SHOW_LIST_FLAG(false));
+      dispatch(SET_STORE_FEEDBACK_INFO(feedback.data.feedback));
+      dispatch(SET_STORE_DETAIL_INFO(store));
+      return;
     });
-
-    dispatch(SET_SHOW_LIST_FLAG(false));
-    dispatch(SET_STORE_FEEDBACK_INFO(feedback.data.feedback));
-    dispatch(SET_STORE_DETAIL_INFO(store));
   };
 
   return (
