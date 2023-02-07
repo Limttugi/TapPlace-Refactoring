@@ -112,7 +112,7 @@ const useMarker = () => {
     }
   };
 
-  return { markerImageDivideByCategory, markerAddClickEvent };
+  return { markerImageDivideByCategory, markerAddClickEvent, handleMapSetCenter };
 };
 
 export default useMarker;

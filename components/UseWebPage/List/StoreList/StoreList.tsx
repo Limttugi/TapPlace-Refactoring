@@ -15,18 +15,21 @@ import { useAppDispatch } from '@/redux/hooks';
 import { SET_SHOW_LIST_FLAG } from '@/redux/slices/showMenu';
 import { useContext } from 'react';
 import GlobalContext from '@/context/GlobalContext';
+import useMarker from '@/hooks/useMarker';
 
 const StoreList = ({ store }: storeI | any) => {
   const dispatch = useAppDispatch();
   const GlobalContextValue = useContext(GlobalContext);
+  const { mapRef, marker } = GlobalContextValue;
+  const { handleMapSetCenter } = useMarker();
 
   const handleShowStoreDetailInfo = async () => {
     const feedback = await getStoreFeedback(store.store_id, store.pays);
 
-    GlobalContextValue.marker.forEach(marker => {
+    marker.forEach(marker => {
       // 마커들 중 선택한 마커 찾기
       if (marker.title === store.store_id) {
-        // 큰 아이콘으로 변경
+        // 큰 아이콘으로 변경 후 센터로 이동
         const split = marker.icon.url.split('.');
         if (marker.icon.url.includes('big') === false) {
           console.log('big');
@@ -34,6 +37,7 @@ const StoreList = ({ store }: storeI | any) => {
             url: split[0] + '_big.' + split[1],
           });
         }
+        handleMapSetCenter({ mapRef, marker });
 
         // 클릭한 마커 설정
         if (GlobalContextValue.currentClickedMarker === null) {

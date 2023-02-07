@@ -38,8 +38,9 @@ const useMap = () => {
         center: new naver.maps.LatLng(currentLocation.latitude, currentLocation.longitude),
         scaleControl: false,
       });
+      GlobalContextValue.mapRef = mapRef;
     }
-  }, [LOADING_MY_LOCATION, currentLocation.latitude, currentLocation.longitude]);
+  }, [GlobalContextValue, LOADING_MY_LOCATION, currentLocation.latitude, currentLocation.longitude]);
 
   // 지도에 가맹점 마커 표시
   const handleDisplayMarker = useCallback(
@@ -61,7 +62,7 @@ const useMap = () => {
       });
       GlobalContextValue.marker = ALL_STORE;
     },
-    [markerAddClickEvent, markerImageDivideByCategory],
+    [GlobalContextValue, markerAddClickEvent, markerImageDivideByCategory],
   );
 
   // 반경 내 가맹점 가져오기
