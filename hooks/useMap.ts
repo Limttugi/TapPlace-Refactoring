@@ -33,7 +33,6 @@ const useMap = () => {
   // 지도 렌더링
   const mapRendering = useCallback(() => {
     if (!LOADING_MY_LOCATION) {
-      console.log('mapRendering');
       mapRef.current = new naver.maps.Map('map', {
         center: new naver.maps.LatLng(currentLocation.latitude, currentLocation.longitude),
         scaleControl: false,
@@ -65,6 +64,22 @@ const useMap = () => {
     [GlobalContextValue, markerAddClickEvent, markerImageDivideByCategory],
   );
 
+  // 반경 원 그리기
+  const handleCreateRadiusCircle = useCallback(() => {
+    const circle = new naver.maps.Circle({
+      map: mapRef.current,
+      center: new naver.maps.LatLng(currentLocation.latitude, currentLocation.longitude),
+      radius: 2000,
+      fillColor: 'rgba(78, 119, 251, 0.03)',
+      strokeColor: 'rgba(78, 119, 251, 0.5)',
+      strokeWeight: 1,
+    });
+
+    if (GlobalContextValue.circle) GlobalContextValue.circle.setMap(null);
+
+    GlobalContextValue.circle = circle;
+  }, [GlobalContextValue, currentLocation.latitude, currentLocation.longitude]);
+
   // 반경 내 가맹점 가져오기
   const handleGetStore = useCallback(async () => {
     const res = await getStore(currentLocation);
@@ -73,15 +88,15 @@ const useMap = () => {
     } else {
       handleDisplayMarker(res.data.stores);
       dispatch(SET_STORES(res.data.stores));
+      handleCreateRadiusCircle();
     }
-  }, [currentLocation, dispatch, handleDisplayMarker]);
+  }, [currentLocation, dispatch, handleCreateRadiusCircle, handleDisplayMarker]);
 
   useEffect(() => {
     if (!LOADING_MY_LOCATION) handleGetStore();
-  }, [LOADING_MY_LOCATION, currentLocation, handleGetStore]);
+  }, [LOADING_MY_LOCATION, currentLocation, handleCreateRadiusCircle, handleGetStore]);
 
   return {
-    mapRef,
     mapRendering,
     handleGetStore,
   };
