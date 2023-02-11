@@ -2,7 +2,7 @@ import { getStoreFeedback } from '@/api/store';
 import GlobalContext from '@/context/GlobalContext';
 import { useAppSelector } from '@/redux/hooks';
 import { SET_STORE_DETAIL_INFO, SET_STORE_FEEDBACK_INFO } from '@/redux/slices/store';
-import { useCallback, useContext } from 'react';
+import { useCallback, useContext, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { storeI, storeImageI } from './useMap';
 
@@ -20,6 +20,7 @@ const useMarker = () => {
   const dispatch = useDispatch();
   const GlobalContextValue = useContext(GlobalContext);
   const { viewType } = useAppSelector(state => state.common);
+  let priorClickedMarker = useRef<naver.maps.Marker | any | null>(null);
 
   // 가맹점 카테고리에 따른 마커 이미지 분류
   const markerImageDivideByCategory = useCallback((store: storeI) => {
@@ -94,17 +95,16 @@ const useMarker = () => {
   // 마커 클릭 이벤트
   const markerAddClickEvent = useCallback(
     ({ mapRef, marker, storeImage, storeInfo }: markerClickEventI) => {
-      let priorClickedMarker: naver.maps.Marker | any | null = null;
       return naver.maps.Event.addListener(marker, 'click', async () => {
         GlobalContextValue.currentClickedMarker = marker;
         dispatch(SET_STORE_DETAIL_INFO(storeInfo));
         // 전에 클릭 된 마커랑 현재 클릭한 마커가 같지 않은 경우
-        if (priorClickedMarker !== null && marker !== priorClickedMarker) {
-          priorClickedMarker.setIcon({
-            url: priorClickedMarker.icon.url.replace('_big', ''),
+        if (priorClickedMarker.current !== null && marker !== priorClickedMarker.current) {
+          priorClickedMarker.current.setIcon({
+            url: priorClickedMarker.current.icon.url.replace('_big', ''),
           });
         }
-        priorClickedMarker = marker;
+        priorClickedMarker.current = marker;
         marker.setIcon({
           url: storeImage.imageSrc_big,
         });
