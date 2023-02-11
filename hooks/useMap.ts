@@ -94,7 +94,7 @@ const useMap = () => {
 
   useEffect(() => {
     if (!LOADING_MY_LOCATION) handleGetStore();
-  }, [LOADING_MY_LOCATION, currentLocation, handleCreateRadiusCircle, handleGetStore]);
+  }, [LOADING_MY_LOCATION, handleGetStore]);
 
   return {
     mapRendering,

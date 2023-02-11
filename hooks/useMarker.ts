@@ -20,7 +20,6 @@ const useMarker = () => {
   const dispatch = useDispatch();
   const GlobalContextValue = useContext(GlobalContext);
   const { viewType } = useAppSelector(state => state.common);
-  let priorClickedMarker: naver.maps.Marker | any | null = null;
 
   // 가맹점 카테고리에 따른 마커 이미지 분류
   const markerImageDivideByCategory = useCallback((store: storeI) => {
@@ -73,44 +72,51 @@ const useMarker = () => {
     }
   }, []);
 
-  // 마커 클릭 이벤트
-  const markerAddClickEvent = ({ mapRef, marker, storeImage, storeInfo }: markerClickEventI) => {
-    return naver.maps.Event.addListener(marker, 'click', async () => {
-      GlobalContextValue.currentClickedMarker = marker;
-      dispatch(SET_STORE_DETAIL_INFO(storeInfo));
-      // 전에 클릭 된 마커랑 현재 클릭한 마커가 같지 않은 경우
-      if (priorClickedMarker !== null && marker !== priorClickedMarker) {
-        priorClickedMarker.setIcon({
-          url: priorClickedMarker.icon.url.replace('_big', ''),
-        });
-      }
-      priorClickedMarker = marker;
-      marker.setIcon({
-        url: storeImage.imageSrc_big,
-      });
-      // 가맹점 피드백 정보 저장
-      const feedback = await getStoreFeedback(storeInfo.store_id, storeInfo.pays);
-      dispatch(SET_STORE_FEEDBACK_INFO(feedback.data.feedback));
-
-      handleMapSetCenter({ mapRef, marker });
-    });
-  };
-
   // 클릭 시 지도를 마커 기준 중앙으로 이동
-  const handleMapSetCenter = ({ mapRef, marker }: setCenterI) => {
-    let lat: number = marker.position._lat;
-    const lng: number = marker.position._lng;
+  const handleMapSetCenter = useCallback(
+    ({ mapRef, marker }: setCenterI) => {
+      let lat: number = marker.position._lat;
+      const lng: number = marker.position._lng;
 
-    if (viewType === 'DESKTOP') {
-      mapRef.current.setCenter(marker.position);
-    } else if (viewType === 'TABLET') {
-      lat = lat - window.innerWidth / 128000;
-      mapRef.current.setCenter(new naver.maps.LatLng(lat, lng));
-    } else if (viewType === 'MOBILE') {
-      lat = lat - window.innerWidth / 62500;
-      mapRef.current.setCenter(new naver.maps.LatLng(lat, lng));
-    }
-  };
+      if (viewType === 'DESKTOP') {
+        mapRef.current.setCenter(marker.position);
+      } else if (viewType === 'TABLET') {
+        lat = lat - window.innerWidth / 128000;
+        mapRef.current.setCenter(new naver.maps.LatLng(lat, lng));
+      } else if (viewType === 'MOBILE') {
+        lat = lat - window.innerWidth / 62500;
+        mapRef.current.setCenter(new naver.maps.LatLng(lat, lng));
+      }
+    },
+    [viewType],
+  );
+
+  // 마커 클릭 이벤트
+  const markerAddClickEvent = useCallback(
+    ({ mapRef, marker, storeImage, storeInfo }: markerClickEventI) => {
+      let priorClickedMarker: naver.maps.Marker | any | null = null;
+      return naver.maps.Event.addListener(marker, 'click', async () => {
+        GlobalContextValue.currentClickedMarker = marker;
+        dispatch(SET_STORE_DETAIL_INFO(storeInfo));
+        // 전에 클릭 된 마커랑 현재 클릭한 마커가 같지 않은 경우
+        if (priorClickedMarker !== null && marker !== priorClickedMarker) {
+          priorClickedMarker.setIcon({
+            url: priorClickedMarker.icon.url.replace('_big', ''),
+          });
+        }
+        priorClickedMarker = marker;
+        marker.setIcon({
+          url: storeImage.imageSrc_big,
+        });
+        // 가맹점 피드백 정보 저장
+        const feedback = await getStoreFeedback(storeInfo.store_id, storeInfo.pays);
+        dispatch(SET_STORE_FEEDBACK_INFO(feedback.data.feedback));
+
+        handleMapSetCenter({ mapRef, marker });
+      });
+    },
+    [GlobalContextValue, dispatch, handleMapSetCenter],
+  );
 
   return { markerImageDivideByCategory, markerAddClickEvent, handleMapSetCenter };
 };
