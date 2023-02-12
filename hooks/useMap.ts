@@ -2,8 +2,9 @@ import { getStore } from '@/api/store';
 import GlobalContext from '@/context/GlobalContext';
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import { SET_STORES } from '@/redux/slices/store';
-import { useCallback, useContext, useEffect, useRef, useState } from 'react';
+import { useCallback, useContext, useEffect, useRef } from 'react';
 import useMarker from './useMarker';
+import { SET_DRAGGING_FLAG, SET_DRAG_CENTER } from '@/redux/slices/location';
 
 export interface storeI {
   num: number;
@@ -27,45 +28,56 @@ const useMap = () => {
   const dispatch = useAppDispatch();
   const GlobalContextValue = useContext(GlobalContext);
   const { markerImageDivideByCategory, markerAddClickEvent } = useMarker();
-  const { currentLocation, LOADING_MY_LOCATION } = useAppSelector(state => state.location);
+  const { currentLocation, LOADING_MY_LOCATION, dragFlag } = useAppSelector(state => state.location);
   const mapRef = useRef<HTMLElement | null | any>(null);
 
   // 지도 렌더링
-  const mapRendering = useCallback(() => {
-    if (!LOADING_MY_LOCATION) {
+  const mapRendering = () => {
+    if (mapRef.current === null) {
+      console.log('mapRender');
       mapRef.current = new naver.maps.Map('map', {
         center: new naver.maps.LatLng(currentLocation.latitude, currentLocation.longitude),
         scaleControl: false,
       });
+
       GlobalContextValue.mapRef = mapRef;
+      naver.maps.Event.addListener(mapRef.current, 'idle', () => {
+        dispatch(SET_DRAGGING_FLAG(true));
+        const { _lat, _lng } = mapRef.current.getCenter();
+        dispatch(SET_DRAG_CENTER({ latitude: _lat, longitude: _lng }));
+      });
     }
-  }, [GlobalContextValue, LOADING_MY_LOCATION, currentLocation.latitude, currentLocation.longitude]);
+  };
 
   // 지도에 가맹점 마커 표시
-  const handleDisplayMarker = useCallback(
-    (stores: Array<storeI>) => {
-      const ALL_STORE: Array<naver.maps.Marker> = [];
+  const handleDisplayMarker = (stores: Array<storeI>) => {
+    const ALL_STORE: Array<naver.maps.Marker> = [];
 
-      stores.forEach(storeInfo => {
-        const storeImage: storeImageI = markerImageDivideByCategory(storeInfo);
-        const marker = new naver.maps.Marker({
-          title: storeInfo.store_id,
-          map: mapRef.current,
-          position: new naver.maps.LatLng(Number(storeInfo.y), Number(storeInfo.x)),
-          icon: {
-            url: storeImage.imageSrc,
-          },
-        });
-        ALL_STORE.push(marker);
-        markerAddClickEvent({ mapRef, marker, storeImage, storeInfo });
+    stores.forEach(storeInfo => {
+      const storeImage: storeImageI = markerImageDivideByCategory(storeInfo);
+      const marker = new naver.maps.Marker({
+        title: storeInfo.store_id,
+        map: mapRef.current,
+        position: new naver.maps.LatLng(Number(storeInfo.y), Number(storeInfo.x)),
+        icon: {
+          url: storeImage.imageSrc,
+        },
       });
-      GlobalContextValue.marker = ALL_STORE;
-    },
-    [GlobalContextValue, markerAddClickEvent, markerImageDivideByCategory],
-  );
+      ALL_STORE.push(marker);
+      markerAddClickEvent({ mapRef, marker, storeImage, storeInfo });
+    });
+
+    if (GlobalContextValue.marker) {
+      GlobalContextValue.marker.forEach(marker => {
+        marker.setMap(null);
+      });
+    }
+
+    GlobalContextValue.marker = ALL_STORE;
+  };
 
   // 반경 원 그리기
-  const handleCreateRadiusCircle = useCallback(() => {
+  const handleCreateRadiusCircle = () => {
     const circle = new naver.maps.Circle({
       map: mapRef.current,
       center: new naver.maps.LatLng(currentLocation.latitude, currentLocation.longitude),
@@ -78,10 +90,10 @@ const useMap = () => {
     if (GlobalContextValue.circle) GlobalContextValue.circle.setMap(null);
 
     GlobalContextValue.circle = circle;
-  }, [GlobalContextValue, currentLocation.latitude, currentLocation.longitude]);
+  };
 
   // 반경 내 가맹점 가져오기
-  const handleGetStore = useCallback(async () => {
+  const handleGetStore = async () => {
     const res = await getStore(currentLocation);
     if (res.status !== 200) {
       return alert('예기치 못한 오류가 발생했습니다\n다시 시도해주세요');
@@ -90,11 +102,17 @@ const useMap = () => {
       dispatch(SET_STORES(res.data.stores));
       handleCreateRadiusCircle();
     }
-  }, [currentLocation, dispatch, handleCreateRadiusCircle, handleDisplayMarker]);
+  };
 
   useEffect(() => {
-    if (!LOADING_MY_LOCATION) handleGetStore();
-  }, [LOADING_MY_LOCATION, handleGetStore]);
+    if (!LOADING_MY_LOCATION) {
+      handleGetStore();
+    }
+  }, [LOADING_MY_LOCATION]);
+
+  useEffect(() => {
+    handleGetStore();
+  }, [currentLocation]);
 
   return {
     mapRendering,

@@ -4,6 +4,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
   LOADING_MY_LOCATION : true - 가져오는 중 / false - 가져오기 끝
   currentLocation : 최근 위치 위경도
   currentAddress : 최근 위치 주소
+  dragFlag : 지도 드래그 플래그
 */
 
 export interface locationSliceI {
@@ -13,6 +14,11 @@ export interface locationSliceI {
     longitude: number;
   };
   currentAddress: string;
+  dragFlag: boolean;
+  dragCenter: {
+    latitude: number;
+    longitude: number;
+  };
 }
 
 const initialState: locationSliceI = {
@@ -22,6 +28,11 @@ const initialState: locationSliceI = {
     longitude: 127.105499,
   },
   currentAddress: '',
+  dragFlag: false,
+  dragCenter: {
+    latitude: 0,
+    longitude: 0,
+  },
 };
 
 export const location = createSlice({
@@ -38,10 +49,23 @@ export const location = createSlice({
     SET_CURRENT_ADDRESS(state, action: PayloadAction<string>) {
       state.currentAddress = action.payload;
     },
+    SET_DRAGGING_FLAG(state, action) {
+      state.dragFlag = action.payload;
+    },
+    SET_DRAG_CENTER(state, action: PayloadAction<{ latitude: number; longitude: number }>) {
+      state.dragCenter.latitude = action.payload.latitude;
+      state.dragCenter.longitude = action.payload.longitude;
+    },
   },
   // extraReducers: builder => {},
 });
 
-export const { LOADING_MY_LOCATION_SUCCESS, SET_CURRENT_LOCATION, SET_CURRENT_ADDRESS } = location.actions;
+export const {
+  LOADING_MY_LOCATION_SUCCESS,
+  SET_CURRENT_LOCATION,
+  SET_CURRENT_ADDRESS,
+  SET_DRAGGING_FLAG,
+  SET_DRAG_CENTER,
+} = location.actions;
 
 export default location;

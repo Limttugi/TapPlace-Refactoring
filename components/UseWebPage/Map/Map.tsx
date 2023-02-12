@@ -2,8 +2,10 @@ import s from './Map.module.scss';
 
 import useMap from '@/hooks/useMap';
 import { useAppSelector } from '@/redux/hooks';
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import useLocation from '@/hooks/useLocation';
+import locationPin from '@/img/locationPin.webp';
+import Image from 'next/image';
 
 const Map = () => {
   const { mapRendering } = useMap();
@@ -15,10 +17,10 @@ const Map = () => {
   }, [handleGetFirstLocation]);
 
   useEffect(() => {
-    mapRendering();
+    if (!LOADING_MY_LOCATION) mapRendering();
   }, [LOADING_MY_LOCATION, mapRendering]);
 
   return <div id="map" className={s.map}></div>;
 };
 
-export default Map;
+export default React.memo(Map);

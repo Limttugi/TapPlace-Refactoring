@@ -1,5 +1,6 @@
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import { LOADING_MY_LOCATION_SUCCESS, SET_CURRENT_ADDRESS, SET_CURRENT_LOCATION } from '@/redux/slices/location';
+import { useCallback } from 'react';
 
 type latlngT = string | naver.maps.Coord | naver.maps.CoordLiteral;
 
@@ -8,7 +9,7 @@ const useLocation = () => {
   const { currentLocation, currentAddress, LOADING_MY_LOCATION } = useAppSelector(state => state.location);
 
   // 최초 위치(위경도) 가져오기
-  const handleGetFirstLocation = () => {
+  const handleGetFirstLocation = useCallback(() => {
     if ('geolocation' in navigator) {
       navigator.geolocation.getCurrentPosition(position => {
         const _latitude = position.coords.latitude;
@@ -30,7 +31,7 @@ const useLocation = () => {
       if (!LOADING_MY_LOCATION)
         handleGetCurrentAddress(new naver.maps.LatLng(currentLocation.latitude, currentLocation.longitude));
     }
-  };
+  }, []);
 
   // 현재 위치 주소 검색
   const handleGetCurrentAddress = (latlng: latlngT) => {
