@@ -4,8 +4,6 @@ import useMap from '@/hooks/useMap';
 import { useAppSelector } from '@/redux/hooks';
 import React, { useEffect } from 'react';
 import useLocation from '@/hooks/useLocation';
-import locationPin from '@/img/locationPin.webp';
-import Image from 'next/image';
 
 const Map = () => {
   const { mapRendering } = useMap();
