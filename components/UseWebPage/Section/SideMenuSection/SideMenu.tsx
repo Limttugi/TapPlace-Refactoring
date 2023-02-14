@@ -1,12 +1,12 @@
 import s from './SideMenuSection.module.scss';
 
 import { useAppSelector } from '@/redux/hooks';
-import StoreSearch from '../../Input/SearchStore/StoreSearch';
 import CurrentAddress from './CurrentAddress/CurrentAddress';
 import FilterButton from '../../Button/FilterButton/FilterButton';
 import StoreContainer from './StoreContainer/StoreContainer';
 import StoreDetail from '../StoreDetailSection/StoreDetail';
 import FilterSection from '../FilterSection/FilterSection';
+import SearchStore from '../../Input/SearchStore/SearchStore';
 
 const SideMenuSection = () => {
   const { viewType } = useAppSelector(state => state.common);
@@ -17,7 +17,7 @@ const SideMenuSection = () => {
     <>
       {viewType === 'DESKTOP' && (
         <section className={s.container}>
-          <StoreSearch />
+          <SearchStore />
           <CurrentAddress />
           <FilterButton />
           <StoreContainer />
@@ -25,7 +25,7 @@ const SideMenuSection = () => {
       )}
       {viewType === 'TABLET' && !storeDetailInfo && (
         <section className={s.container}>
-          <StoreSearch />
+          <SearchStore />
           <div className={s.AddressFilterContainer}>
             <CurrentAddress />
             <FilterButton />
@@ -34,7 +34,7 @@ const SideMenuSection = () => {
       )}
       {viewType === 'MOBILE' && !storeDetailInfo && (
         <section className={s.container}>
-          <StoreSearch />
+          <SearchStore />
           <CurrentAddress />
         </section>
       )}

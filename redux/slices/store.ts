@@ -5,6 +5,10 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
   stores : 내 주변 가맹점들
   storeDetailInfo : 클릭한 마커/가맹점의 상세정보
   storeFeedbackInfo : 클릭한 마커/가맹점의 피드백 정보
+  filertingStore : 필터링(가맹점 카테고리) 배열
+  filteringPayment : 필터링(간편결제 종류) 배열
+  searchWord : 필터링 (검색) 문자열
+  filteringResultStore : 가맹점 필터링 한 결과
 */
 
 export interface feedbackI {
@@ -24,6 +28,8 @@ export interface storeSliceI {
   storeFeedbackInfo: Array<feedbackI>;
   filteringStore: Array<string>;
   filteringPayment: Array<string>;
+  searchWord: string;
+  filteringResultStore: Array<storeI>;
 }
 
 const initialState: storeSliceI = {
@@ -32,6 +38,8 @@ const initialState: storeSliceI = {
   storeFeedbackInfo: [],
   filteringStore: [],
   filteringPayment: [],
+  searchWord: '',
+  filteringResultStore: [],
 };
 
 export const store = createSlice({
@@ -51,9 +59,13 @@ export const store = createSlice({
       state.filteringStore = action.payload[0];
       state.filteringPayment = action.payload[1];
     },
+    SET_SEARCH_WORD(state, action: PayloadAction<string>) {
+      state.searchWord = action.payload;
+    },
   },
 });
 
-export const { SET_STORES, SET_STORE_DETAIL_INFO, SET_STORE_FEEDBACK_INFO, SET_APPLY_FILTER } = store.actions;
+export const { SET_STORES, SET_STORE_DETAIL_INFO, SET_STORE_FEEDBACK_INFO, SET_APPLY_FILTER, SET_SEARCH_WORD } =
+  store.actions;
 
 export default store;
