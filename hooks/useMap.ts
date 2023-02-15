@@ -71,7 +71,6 @@ const useMap = () => {
   // 지도 렌더링
   const mapRendering = () => {
     if (mapRef.current === null) {
-      console.log('mapRender');
       mapRef.current = new naver.maps.Map('map', {
         center: new naver.maps.LatLng(currentLocation.latitude, currentLocation.longitude),
         scaleControl: false,
@@ -99,6 +98,7 @@ const useMap = () => {
 
   // 지도에 가맹점 마커 표시
   const handleDisplayMarker = (stores: Array<storeI>) => {
+    const storeArray: Array<storeI> = [];
     if (searchWord !== '') {
       stores = stores.filter(storeInfo => {
         if (storeInfo.place_name.includes(searchWord)) return storeInfo;
@@ -107,18 +107,20 @@ const useMap = () => {
 
     if (filteringStore.length !== 0) {
       FILTERING_CATEGORY.forEach(category => {
-        stores = stores.filter(storeInfo => {
-          if (storeInfo.category_group_name === category) return storeInfo;
+        stores.map(storeInfo => {
+          if (storeInfo.category_group_name === category) return storeArray.push(storeInfo);
         });
       });
+      stores = storeArray;
     }
 
     if (filteringPayment.length !== 0) {
       FILTERING_PAYMENT.forEach(payment => {
-        stores = stores.filter(storeInfo => {
-          if (storeInfo.pays.includes(payment)) return storeInfo;
+        stores.map(storeInfo => {
+          if (storeInfo.pays.includes(payment)) return storeArray.push(storeInfo);
         });
       });
+      stores = storeArray;
     }
 
     stores.forEach(storeInfo => {

@@ -8,7 +8,6 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
   filertingStore : 필터링(가맹점 카테고리) 배열
   filteringPayment : 필터링(간편결제 종류) 배열
   searchWord : 필터링 (검색) 문자열
-  filteringResultStore : 가맹점 필터링 한 결과
 */
 
 export interface feedbackI {
@@ -29,7 +28,6 @@ export interface storeSliceI {
   filteringStore: Array<string>;
   filteringPayment: Array<string>;
   searchWord: string;
-  filteringResultStore: Array<storeI>;
 }
 
 const initialState: storeSliceI = {
@@ -39,7 +37,6 @@ const initialState: storeSliceI = {
   filteringStore: [],
   filteringPayment: [],
   searchWord: '',
-  filteringResultStore: [],
 };
 
 export const store = createSlice({

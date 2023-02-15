@@ -18,6 +18,15 @@
   }
 }
 
+@mixin filterActive {
+  border: 1px solid $mainColor;
+  color: $mainColor;
+  border: 1px solid rgba(78, 119, 251, 0.6);
+  img {
+    margin-bottom: 0.1rem;
+  }
+}
+
 @include mobile {
   .container {
     @include flex-row-pos(flex-start, center);
@@ -31,6 +40,9 @@
     .button {
       @include buttonCS;
     }
+    .active {
+      @include filterActive;
+    }
   }
 }
 
@@ -39,6 +51,9 @@
     @include flex-row;
     .button {
       @include buttonCS;
+    }
+    .active {
+      @include filterActive;
     }
   }
 }
@@ -49,6 +64,9 @@
     margin: 2rem 4rem 3.2rem 4rem;
     .button {
       @include buttonCS;
+    }
+    .active {
+      @include filterActive;
     }
   }
 }
