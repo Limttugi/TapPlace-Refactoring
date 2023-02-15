@@ -114,6 +114,7 @@
 @include desktop {
   .container {
     @include containerCS;
+    width: 100%;
     height: 25.5rem;
     padding: 6.6rem 36rem;
     .topContainer {

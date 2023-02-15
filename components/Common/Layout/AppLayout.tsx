@@ -14,7 +14,7 @@ const AppLayout = ({ children }: Props) => {
   return (
     <>
       <Header />
-      <main className={s.mainContainer}>{children}</main>
+      <main className={pathname !== '/useweb' ? `${s._mainContainer}` : `${s.mainContainer}`}>{children}</main>
       {pathname !== '/useweb' && <Footer />}
     </>
   );
