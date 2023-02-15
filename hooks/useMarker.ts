@@ -1,6 +1,7 @@
 import { getStoreFeedback } from '@/api/store';
 import GlobalContext from '@/context/GlobalContext';
 import { useAppSelector } from '@/redux/hooks';
+import { SET_DRAGGING_FLAG } from '@/redux/slices/location';
 import { SET_STORE_DETAIL_INFO, SET_STORE_FEEDBACK_INFO } from '@/redux/slices/store';
 import { useCallback, useContext, useRef } from 'react';
 import { useDispatch } from 'react-redux';
@@ -21,6 +22,7 @@ const useMarker = () => {
   const GlobalContextValue = useContext(GlobalContext);
   const { viewType } = useAppSelector(state => state.common);
   let priorClickedMarker = useRef<naver.maps.Marker | any | null>(null);
+  const dragFlag = useAppSelector(state => state.location.dragFlag);
 
   // 가맹점 카테고리에 따른 마커 이미지 분류
   const markerImageDivideByCategory = useCallback((store: storeI) => {
@@ -113,6 +115,7 @@ const useMarker = () => {
         dispatch(SET_STORE_FEEDBACK_INFO(feedback.data.feedback));
 
         handleMapSetCenter({ mapRef, marker });
+        dispatch(SET_DRAGGING_FLAG(false));
       });
     },
     [GlobalContextValue, dispatch, handleMapSetCenter],

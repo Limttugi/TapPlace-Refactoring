@@ -11,17 +11,19 @@ import Image from 'next/image';
 import { storeI } from '@/hooks/useMap';
 import { SET_STORE_DETAIL_INFO, SET_STORE_FEEDBACK_INFO } from '@/redux/slices/store';
 import { getStoreFeedback } from '@/api/store';
-import { useAppDispatch } from '@/redux/hooks';
+import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import { SET_SHOW_LIST_FLAG } from '@/redux/slices/showMenu';
 import { useContext } from 'react';
 import GlobalContext from '@/context/GlobalContext';
 import useMarker from '@/hooks/useMarker';
+import { SET_DRAGGING_FLAG } from '@/redux/slices/location';
 
 const StoreList = ({ store }: storeI | any) => {
   const dispatch = useAppDispatch();
   const GlobalContextValue = useContext(GlobalContext);
   const { mapRef, marker } = GlobalContextValue;
   const { handleMapSetCenter } = useMarker();
+  const dragFlag = useAppSelector(state => state.location.dragFlag);
 
   const handleShowStoreDetailInfo = async () => {
     const feedback = await getStoreFeedback(store.store_id, store.pays);
@@ -54,6 +56,7 @@ const StoreList = ({ store }: storeI | any) => {
       dispatch(SET_SHOW_LIST_FLAG(false));
       dispatch(SET_STORE_FEEDBACK_INFO(feedback.data.feedback));
       dispatch(SET_STORE_DETAIL_INFO(store));
+      dispatch(SET_DRAGGING_FLAG(false));
       return;
     });
   };

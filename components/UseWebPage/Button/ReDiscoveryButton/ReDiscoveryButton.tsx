@@ -11,6 +11,7 @@ const ReDiscoveryButton = () => {
 
   const handleReDiscoveryStore = () => {
     dispatch(SET_CURRENT_LOCATION({ latitude: dragCenter.latitude, longitude: dragCenter.longitude }));
+    dispatch(SET_DRAGGING_FLAG(false));
   };
 
   return (

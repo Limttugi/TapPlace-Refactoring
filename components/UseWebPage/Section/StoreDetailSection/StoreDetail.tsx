@@ -9,9 +9,10 @@ import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import Image from 'next/image';
 import FeedbackList from '../../List/FeedbackList/FeedbackList';
 import { feedbackI, SET_STORE_DETAIL_INFO } from '@/redux/slices/store';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import GlobalContext from '@/context/GlobalContext';
 import proj4 from 'proj4';
+import { SET_DRAGGING_FLAG } from '@/redux/slices/location';
 
 const StoreDetailSection = () => {
   const dispatch = useAppDispatch();
@@ -23,7 +24,6 @@ const StoreDetailSection = () => {
   const handleCloseStoreDetailInfo = () => {
     const clickedMarker: naver.maps.Marker | any = GlobalContextValue.currentClickedMarker;
 
-    console.log(clickedMarker);
     clickedMarker.setIcon({
       url: clickedMarker.icon.url.replace('_big', ''),
     });
