@@ -4,9 +4,9 @@ import { useAppSelector } from '@/redux/hooks';
 import CurrentAddress from './CurrentAddress/CurrentAddress';
 import FilterButton from '../../Button/FilterButton/FilterButton';
 import StoreContainer from './StoreContainer/StoreContainer';
-import StoreDetail from '../StoreDetailSection/StoreDetail';
 import FilterSection from '../FilterSection/FilterSection';
 import SearchStore from '../../Input/SearchStore/SearchStore';
+import StoreDetailSection from '../StoreDetailSection/StoreDetailSection';
 
 const SideMenuSection = () => {
   const { viewType } = useAppSelector(state => state.common);
@@ -39,7 +39,7 @@ const SideMenuSection = () => {
         </section>
       )}
       <FilterSection />
-      {storeDetailInfo && !showListFlag && <StoreDetail />}
+      {storeDetailInfo && !showListFlag && <StoreDetailSection />}
     </>
   );
 };

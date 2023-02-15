@@ -268,7 +268,7 @@
 @include desktop {
   .detailContainer {
     @include detailContainerCS;
-    @include width-height(47rem, 98rem);
+    @include width-height(47rem, 96%);
     display: flex;
     flex-direction: column;
     left: 49rem;

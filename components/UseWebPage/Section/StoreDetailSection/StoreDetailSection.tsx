@@ -12,7 +12,6 @@ import { feedbackI, SET_STORE_DETAIL_INFO } from '@/redux/slices/store';
 import { useContext, useEffect } from 'react';
 import GlobalContext from '@/context/GlobalContext';
 import proj4 from 'proj4';
-import { SET_DRAGGING_FLAG } from '@/redux/slices/location';
 
 const StoreDetailSection = () => {
   const dispatch = useAppDispatch();
@@ -31,7 +30,9 @@ const StoreDetailSection = () => {
     dispatch(SET_STORE_DETAIL_INFO(null));
   };
 
-  const handleMoveAppStore = () => {};
+  const handleMoveAppStore = () => {
+    window.open('https://apps.apple.com/app/%ED%83%AD%ED%94%8C%EB%A0%88%EC%9D%B4%EC%8A%A4/id1643830783');
+  };
 
   const handleFindWay = () => {
     if (storeDetailInfo) {
