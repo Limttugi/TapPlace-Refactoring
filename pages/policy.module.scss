@@ -1,0 +1,253 @@
+@import '@/styles/mixins.scss';
+
+@mixin nJoContentCS {
+  font-weight: 400;
+  line-height: 155%;
+  color: #707070;
+}
+
+@mixin nJoTitleCS {
+  font-weight: 400;
+  color: #333333;
+}
+
+@mixin tableCS {
+  width: 100%;
+  border-spacing: 0;
+  table-layout: fixed;
+  td,
+  th {
+    border: 1px solid #e6e6e6;
+    font-weight: 400;
+    text-align: center;
+  }
+  th {
+    background-color: #f7f7f7;
+  }
+  td {
+    color: #707070;
+    line-height: 155%;
+  }
+}
+
+@include mobile {
+  .container {
+    padding: 3rem 2.4rem 8rem 2.4rem;
+    .open {
+      @include nJoContentCS;
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+    .application {
+      @include nJoContentCS;
+      font-size: 1.2rem;
+      color: #4d4d4d;
+    }
+    .policyTitle {
+      border-bottom: 1px solid #e6e6e6;
+      padding-bottom: 1.2rem;
+      margin-bottom: 3rem;
+      font-size: 2.4rem;
+      font-weight: 400;
+    }
+    .nJoWrapper {
+      margin-bottom: 4.6rem;
+      .nJoTitle {
+        @include nJoTitleCS;
+        font-size: 1.8rem;
+        margin-bottom: 0.8rem;
+      }
+      .nJoContent {
+        @include nJoContentCS;
+        font-size: 1.4rem;
+      }
+      .nJoContentSubContainer {
+        margin-top: 1.8rem;
+        margin-left: 2rem;
+        color: black;
+      }
+      .tableName {
+        font-size: 1.4rem;
+        font-weight: 400;
+        margin-top: 2rem;
+      }
+      table {
+        @include tableCS;
+        margin-top: 3rem;
+        tbody {
+          td,
+          th {
+            font-size: 1.2rem;
+          }
+          th {
+            padding: 1rem 0;
+            border-bottom: none;
+          }
+          td {
+            padding: 1.4rem 1.8rem;
+          }
+        }
+      }
+      .columnTable {
+        margin-top: 1.4rem;
+        td,
+        th {
+          padding: 1.4rem 1rem;
+          border-bottom: none;
+          font-size: 1.4rem;
+          &:last-of-type {
+            border-bottom: 1px solid #e6e6e6;
+          }
+        }
+      }
+    }
+  }
+}
+
+@include tablet {
+  .container {
+    padding: 4rem 2.4rem 11rem 2.4rem;
+    .open {
+      @include nJoContentCS;
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+    }
+    .application {
+      @include nJoContentCS;
+      font-size: 1.4rem;
+      color: #4d4d4d;
+    }
+    .policyTitle {
+      border-bottom: 1px solid #e6e6e6;
+      padding-bottom: 1.4rem;
+      margin-bottom: 3rem;
+      font-size: 2.6rem;
+      font-weight: 400;
+    }
+    .nJoWrapper {
+      margin-bottom: 4.6rem;
+      .nJoTitle {
+        @include nJoTitleCS;
+        font-size: 2rem;
+        margin-bottom: 0.8rem;
+      }
+      .nJoContent {
+        @include nJoContentCS;
+        font-size: 1.4rem;
+      }
+      .nJoContentSubContainer {
+        margin-top: 1.8rem;
+        margin-left: 2rem;
+        color: black;
+      }
+      .tableName {
+        font-size: 1.6rem;
+        font-weight: 400;
+        margin-top: 2.2rem;
+      }
+      table {
+        @include tableCS;
+        margin-top: 3rem;
+        tbody {
+          td,
+          th {
+            font-size: 1.4rem;
+          }
+          th {
+            padding: 1rem 0;
+            border-bottom: none;
+          }
+          td {
+            padding: 1.4rem 1.8rem;
+          }
+        }
+      }
+      .columnTable {
+        margin-top: 1.4rem;
+        td,
+        th {
+          padding: 1.4rem 0;
+          border-bottom: none;
+          font-size: 1.4rem;
+          &:last-of-type {
+            border-bottom: 1px solid #e6e6e6;
+          }
+        }
+      }
+    }
+  }
+}
+
+@include desktop {
+  .container {
+    padding: 8rem 36rem 15rem 36rem;
+    .open {
+      @include nJoContentCS;
+      font-size: 1.6rem;
+      margin-bottom: 1.2rem;
+    }
+    .application {
+      @include nJoContentCS;
+      font-size: 1.6rem;
+      color: #4d4d4d;
+    }
+    .policyTitle {
+      border-bottom: 1px solid #e6e6e6;
+      padding-bottom: 1.6rem;
+      margin-bottom: 4rem;
+      font-size: 2.8rem;
+      font-weight: 400;
+    }
+    .nJoWrapper {
+      margin-bottom: 5.6rem;
+      .nJoTitle {
+        @include nJoTitleCS;
+        font-size: 2.2rem;
+        margin-bottom: 0.8rem;
+      }
+      .nJoContent {
+        @include nJoContentCS;
+        font-size: 1.6rem;
+      }
+      .nJoContentSubContainer {
+        margin-top: 2.4rem;
+        margin-left: 2.8rem;
+        color: black;
+      }
+      .tableName {
+        font-size: 1.8rem;
+        font-weight: 400;
+        margin-top: 2.4rem;
+      }
+      table {
+        @include tableCS;
+        margin-top: 3.2rem;
+        tbody {
+          td,
+          th {
+            font-size: 1.6rem;
+          }
+          th {
+            padding: 1.2rem 0;
+            border-bottom: none;
+          }
+          td {
+            padding: 1.6rem 2rem;
+          }
+        }
+      }
+      .columnTable {
+        margin-top: 1.6rem;
+        td,
+        th {
+          padding: 1.6rem 0;
+          border-bottom: none;
+          font-size: 1.6rem;
+          &:last-of-type {
+            border-bottom: 1px solid #e6e6e6;
+          }
+        }
+      }
+    }
+  }
+}

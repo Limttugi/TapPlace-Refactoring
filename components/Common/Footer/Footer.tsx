@@ -3,6 +3,7 @@ import s from './Footer.module.scss';
 import Image from 'next/image';
 import logo from '@/img/Logo/TapPlace/tapplace_logo_black.webp';
 import { useAppSelector } from '@/redux/hooks';
+import Link from 'next/link';
 
 const Footer = () => {
   const { viewType } = useAppSelector(state => state.common);
@@ -11,10 +12,14 @@ const Footer = () => {
     <footer className={s.container}>
       {viewType === 'MOBILE' ? (
         <>
-          <Image className={s.logo} src={logo} alt='tapplceLogo' />
+          <Image className={s.logo} src={logo} alt="tapplceLogo" />
           <ul className={s.shortcutContainer}>
-            <li className={s.listItem}>서비스 이용약관</li>
-            <li className={s.listItem}>개인정보처리방침</li>
+            <Link href="/consent" className={s.listItem}>
+              서비스 이용약관
+            </Link>
+            <Link href="/policy" className={s.listItem}>
+              개인정보처리방침
+            </Link>
             <li className={s.listItem}>E-mail : http://tapplace.co.kr</li>
           </ul>
           <ul className={s.tapplaceInfoContainer}>
@@ -27,10 +32,14 @@ const Footer = () => {
       ) : (
         <>
           <div className={s.topContainer}>
-            <Image className={s.logo} src={logo} alt='tapplceLogo' />
+            <Image className={s.logo} src={logo} alt="tapplceLogo" />
             <ul className={s.shortcutContainer}>
-              <li className={s.listItem}>서비스 이용약관</li>
-              <li className={s.listItem}>개인정보처리방침</li>
+              <Link href="/terms" className={s.listItem}>
+                서비스 이용약관
+              </Link>
+              <Link href="/policy" className={s.listItem}>
+                개인정보처리방침
+              </Link>
               <li className={s.listItem}>E-mail : http://tapplace.co.kr</li>
             </ul>
           </div>
