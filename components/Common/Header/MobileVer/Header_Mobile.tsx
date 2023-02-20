@@ -26,23 +26,31 @@ const Header_Mobile = () => {
   return (
     <>
       <header className={s.container}>
-        <Image className={s.logo} src={tapplaceLogo} alt='tapplceLogo' placeholder='blur' />
+        <Image
+          className={s.logo}
+          src={tapplaceLogo}
+          alt="tapplceLogo"
+          placeholder="blur"
+          onClick={() => {
+            window.location.href = '/';
+          }}
+        />
         {!menuToggle ? (
           <FontAwesomeIcon className={s.menuToggleButton} icon={faBars} onClick={() => setMenuToggle(true)} />
         ) : (
           <>
             <FontAwesomeIcon className={s.menuToggleButton} icon={faXmark} onClick={() => setMenuToggle(false)} />
             <ul ref={menuRef} className={s.menuContainer}>
-              <Link href='/' className={s.menuList}>
+              <Link href="/" className={s.menuList}>
                 서비스 소개
               </Link>
-              <Link href='/notice' className={s.menuList}>
+              <Link href="/notice" className={s.menuList}>
                 공지사항
               </Link>
-              <Link href='/faq' className={s.menuList}>
+              <Link href="/faq" className={s.menuList}>
                 FAQ
               </Link>
-              <Link href='/useweb' className={s.menuList}>
+              <Link href="/useweb" className={s.menuList}>
                 웹으로 이용하기
               </Link>
             </ul>

@@ -12,7 +12,14 @@ const Footer = () => {
     <footer className={s.container}>
       {viewType === 'MOBILE' ? (
         <>
-          <Image className={s.logo} src={logo} alt="tapplceLogo" />
+          <Image
+            className={s.logo}
+            src={logo}
+            alt="tapplceLogo"
+            onClick={() => {
+              window.location.href = '/';
+            }}
+          />
           <ul className={s.shortcutContainer}>
             <Link href="/consent" className={s.listItem}>
               서비스 이용약관
@@ -32,7 +39,14 @@ const Footer = () => {
       ) : (
         <>
           <div className={s.topContainer}>
-            <Image className={s.logo} src={logo} alt="tapplceLogo" />
+            <Image
+              className={s.logo}
+              src={logo}
+              alt="tapplceLogo"
+              onClick={() => {
+                window.location.href = '/';
+              }}
+            />
             <ul className={s.shortcutContainer}>
               <Link href="/terms" className={s.listItem}>
                 서비스 이용약관

@@ -23,23 +23,30 @@ const Header = () => {
         <Header_Mobile />
       ) : (
         <header className={pathname === '/useweb' ? `${s.container} ${s.useWebVersion}` : s.container}>
-          <Image className={s.logo} src={tapplaceLogo} alt='tapplceLogo' placeholder='blur' />
+          <Image
+            className={s.logo}
+            src={tapplaceLogo}
+            alt="tapplceLogo"
+            placeholder="blur"
+            onClick={() => {
+              window.location.href = '/';
+            }}
+          />
           <ul className={s.menuContainer}>
-            <Link href='/' id={pathname === '/' ? `${s.active}` : ''} className={s.menuList}>
+            <Link href="/" id={pathname === '/' ? `${s.active}` : ''} className={s.menuList}>
               서비스 소개
             </Link>
             <Link
-              href='#'
+              href="#"
               id={pathname === '/notice' ? `${s.active}` : ''}
               className={s.menuList}
-              onClick={onClickAlert}
-            >
+              onClick={onClickAlert}>
               공지사항
             </Link>
-            <Link href='#' id={pathname === '/faq' ? `${s.active}` : ''} className={s.menuList} onClick={onClickAlert}>
+            <Link href="#" id={pathname === '/faq' ? `${s.active}` : ''} className={s.menuList} onClick={onClickAlert}>
               FAQ
             </Link>
-            <Link href='/useweb' id={pathname === '/useweb' ? `${s.active}` : ''} className={s.menuList}>
+            <Link href="/useweb" id={pathname === '/useweb' ? `${s.active}` : ''} className={s.menuList}>
               웹으로 이용하기
             </Link>
           </ul>
