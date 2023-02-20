@@ -182,40 +182,44 @@ const ProcessingPolicy = () => {
           </li>
           <h2 className={s.tableName}>▶ 개인정보 보호책임자</h2>
           <table className={s.columnTable}>
-            <tr>
-              <th>성명</th>
-              <td>박상현</td>
-            </tr>
-            <tr>
-              <th>직책</th>
-              <td>대표</td>
-            </tr>
-            <tr>
-              <th>직급</th>
-              <td>대표</td>
-            </tr>
-            <tr>
-              <th>연락처</th>
-              <td>
-                070-8064-6708, help@tapplace.co.kr
-                <br />※ 개인정보 보호 담당부서로 연결됩니다.
-              </td>
-            </tr>
+            <tbody>
+              <tr>
+                <th>성명</th>
+                <td>박상현</td>
+              </tr>
+              <tr>
+                <th>직책</th>
+                <td>대표</td>
+              </tr>
+              <tr>
+                <th>직급</th>
+                <td>대표</td>
+              </tr>
+              <tr>
+                <th>연락처</th>
+                <td>
+                  070-8064-6708, help@tapplace.co.kr
+                  <br />※ 개인정보 보호 담당부서로 연결됩니다.
+                </td>
+              </tr>
+            </tbody>
           </table>
           <h2 className={s.tableName}>▶ 개인정보 보호 담당부서</h2>
           <table className={s.columnTable} style={{ marginBottom: '2.4rem' }}>
-            <tr>
-              <th>부서명</th>
-              <td>개발</td>
-            </tr>
-            <tr>
-              <th>담당자</th>
-              <td>박상현</td>
-            </tr>
-            <tr>
-              <th>연락처</th>
-              <td>070-8064-6708, help@tapplace.co.kr</td>
-            </tr>
+            <tbody>
+              <tr>
+                <th>부서명</th>
+                <td>개발</td>
+              </tr>
+              <tr>
+                <th>담당자</th>
+                <td>박상현</td>
+              </tr>
+              <tr>
+                <th>연락처</th>
+                <td>070-8064-6708, help@tapplace.co.kr</td>
+              </tr>
+            </tbody>
           </table>
           <li className={s.nJoContent}>
             ② 정보주체께서는 탭플레이스 의 서비스(또는 사업)을 이용하시면서 발생한 모든 개인정보 보호 관련 문의,
@@ -233,18 +237,20 @@ const ProcessingPolicy = () => {
           </li>
           <h2 className={s.tableName}>▶ 개인정보 보호책임자</h2>
           <table className={s.columnTable}>
-            <tr>
-              <th>부서명</th>
-              <td>개발</td>
-            </tr>
-            <tr>
-              <th>담당자</th>
-              <td>박상현</td>
-            </tr>
-            <tr>
-              <th>연락처</th>
-              <td>070-8064-6708, help@tapplace.co.kr</td>
-            </tr>
+            <tbody>
+              <tr>
+                <th>부서명</th>
+                <td>개발</td>
+              </tr>
+              <tr>
+                <th>담당자</th>
+                <td>박상현</td>
+              </tr>
+              <tr>
+                <th>연락처</th>
+                <td>070-8064-6708, help@tapplace.co.kr</td>
+              </tr>
+            </tbody>
           </table>
         </ul>
       </article>

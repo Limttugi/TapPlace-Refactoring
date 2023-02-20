@@ -10,25 +10,20 @@ interface Props {
 }
 
 const AppLayout = ({ children }: Props) => {
-  // const [userAgent, setUserAgent] = useState<boolean | null>(null);
   const pathname: string = useRouter().pathname;
+  const [userAgent, setUserAgent] = useState<boolean>();
 
-  // useEffect(() => {
-  //   setUserAgent(window.navigator.userAgent.includes('TAPPLACE_APP'));
-  // }, []);
+  useEffect(() => {
+    setUserAgent(!navigator.userAgent.includes('TAPPLACE_APP'));
+  }, []);
 
   return (
     <>
-      <Header />
+      {userAgent && <Header />}
       <main className={pathname !== '/useweb' ? `${s._mainContainer}` : `${s.mainContainer}`}>{children}</main>
-      {pathname !== '/useweb' && <Footer />}
+      {pathname !== '/useweb' && userAgent && <Footer />}
     </>
   );
 };
-
-// AppLayout.getInitialProps = async ({ req }: any) => {
-//   const userAgent = req ? req.headers['user-agent'] : navigator.userAgent;
-//   return { userAgent };
-// };
 
 export default AppLayout;
