@@ -8,11 +8,13 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 export interface showMenuSliceI {
   showListFlag: boolean;
   showFilteringFlag: boolean;
+  showVisitModalFlag: boolean;
 }
 
 const initialState: showMenuSliceI = {
   showListFlag: false,
   showFilteringFlag: false,
+  showVisitModalFlag: true,
 };
 
 export const showMenu = createSlice({
@@ -25,9 +27,12 @@ export const showMenu = createSlice({
     SET_SHOW_FILTERING_FLAG(state, action: PayloadAction<boolean>) {
       state.showFilteringFlag = action.payload;
     },
+    SET_SHOW_VISIT_MODAL_FLAG(state, action: PayloadAction<boolean>) {
+      state.showVisitModalFlag = action.payload;
+    },
   },
 });
 
-export const { SET_SHOW_LIST_FLAG, SET_SHOW_FILTERING_FLAG } = showMenu.actions;
+export const { SET_SHOW_LIST_FLAG, SET_SHOW_FILTERING_FLAG, SET_SHOW_VISIT_MODAL_FLAG } = showMenu.actions;
 
 export default showMenu;

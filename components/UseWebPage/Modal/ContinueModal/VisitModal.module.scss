@@ -1,0 +1,157 @@
+@import '@/styles/mixins.scss';
+
+@mixin containerCS {
+  @include flex-column-pos(center, center);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: rgba(0, 0, 0, 0.5) 0 0 0 9999px;
+  background-color: white;
+  z-index: 1;
+  border-radius: 2rem;
+}
+
+@mixin checkListCS {
+  @include flex-row-pos(center, center);
+  font-weight: 400;
+  color: #4d4d4d;
+}
+
+@mixin buttonCS {
+  background: none;
+}
+
+@mixin continueButtonCS {
+  @include buttonCS;
+  color: $mainColor;
+  font-weight: 400;
+  text-align: center;
+}
+
+@mixin notSeeingButtonCS {
+  @include buttonCS;
+  color: #707070;
+  font-weight: 400;
+  text-align: center;
+}
+
+@include mobile {
+  .container {
+    @include containerCS;
+    @include width-height(32rem, 60rem);
+    padding: 2.4rem 2.4rem 3rem 2.4rem;
+    .mainTitle {
+      font-size: 1.7rem;
+      font-weight: 400;
+      line-height: 140%;
+      text-align: center;
+    }
+    .mainImage {
+      @include width-height(20rem, 21rem);
+      margin: 2.8rem 0 3.2rem 0;
+    }
+    .checkContainer {
+      @include flex-column-pos(center, flex-start);
+      gap: 1rem;
+      margin-bottom: 2.6rem;
+      .checkList {
+        @include checkListCS;
+        font-size: 1.5rem;
+        img {
+          @include width-height(2rem, 2rem);
+          margin-right: 0.6rem;
+        }
+      }
+    }
+    .continueButton {
+      @include continueButtonCS;
+      margin: 1.6rem 0 2.4rem 0;
+      font-size: 1.6rem;
+    }
+    .notSeeingButton {
+      @include notSeeingButtonCS;
+      font-size: 1.4rem;
+    }
+  }
+}
+
+@include tablet {
+  .container {
+    @include containerCS;
+    @include width-height(47rem, 77rem);
+    padding: 4.5rem 4.5rem 3rem 4.5rem;
+    .mainTitle {
+      font-size: 2.5rem;
+      font-weight: 400;
+      line-height: 140%;
+      text-align: center;
+    }
+    .mainImage {
+      @include width-height(26rem, 27rem);
+      margin: 3.2rem 0 3.6rem 0;
+    }
+    .checkContainer {
+      @include flex-column-pos(center, flex-start);
+      gap: 1rem;
+      margin-bottom: 3.3rem;
+      .checkList {
+        @include checkListCS;
+        font-size: 1.6rem;
+        img {
+          @include width-height(2rem, 2rem);
+          margin-right: 0.6rem;
+        }
+      }
+    }
+    .continueButton {
+      @include continueButtonCS;
+      margin: 3.5rem 0 4rem 0;
+      font-size: 1.7rem;
+    }
+    .notSeeingButton {
+      @include notSeeingButtonCS;
+      font-size: 1.4rem;
+    }
+  }
+}
+
+@include desktop {
+  .container {
+    @include containerCS;
+    @include width-height(47rem, 80rem);
+    padding: 4.5rem 4.5rem 3rem 4.5rem;
+    .mainTitle {
+      font-size: 2.5rem;
+      font-weight: 400;
+      line-height: 140%;
+      text-align: center;
+    }
+    .mainImage {
+      @include width-height(29rem, 30rem);
+      margin: 3.2rem 0 3.6rem 0;
+    }
+    .checkContainer {
+      @include flex-column-pos(center, flex-start);
+      gap: 1rem;
+      margin-bottom: 3.3rem;
+      .checkList {
+        @include checkListCS;
+        font-size: 1.6rem;
+        img {
+          @include width-height(2rem, 2rem);
+          margin-right: 0.6rem;
+        }
+      }
+    }
+    .continueButton {
+      @include continueButtonCS;
+      margin: 3.5rem 0 4rem 0;
+      font-size: 1.7rem;
+    }
+    .notSeeingButton {
+      @include notSeeingButtonCS;
+      font-size: 1.4rem;
+    }
+  }
+}

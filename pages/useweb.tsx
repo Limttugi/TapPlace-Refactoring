@@ -10,16 +10,18 @@ import DisplayModeButton from '@/components/UseWebPage/Button/DisplayModeButton/
 import Image from 'next/image';
 import locationPin from '@/img/locationPin.webp';
 import ReDiscoveryButton from '@/components/UseWebPage/Button/ReDiscoveryButton/ReDiscoveryButton';
+import VisitModal from '@/components/UseWebPage/Modal/ContinueModal/VisitModal';
 
 const Useweb = () => {
   const { viewType } = useAppSelector(state => state.common);
   const { LOADING_MY_LOCATION, dragFlag } = useAppSelector(state => state.location);
-  const { showListFlag } = useAppSelector(state => state.showMenu);
+  const { showListFlag, showVisitModalFlag } = useAppSelector(state => state.showMenu);
 
   return (
     <>
       {LOADING_MY_LOCATION && <LoadingSpinner />}
       <div className={s.container}>
+        {showVisitModalFlag && <VisitModal />}
         <SideMenu />
         <div className={s.mapContainer}>
           <Map />
