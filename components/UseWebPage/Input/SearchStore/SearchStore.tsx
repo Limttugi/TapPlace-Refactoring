@@ -39,7 +39,9 @@ const SearchStore = () => {
         onChange={changeSearchWord}
         onKeyDown={pressEnterKey}
       />
-      {searchWord && <Image src={search_close} alt="searchReset" onClick={handleResetSearchWord} />}
+      {searchWord && (
+        <Image src={search_close} alt="searchReset" onClick={handleResetSearchWord} style={{ cursor: 'pointer' }} />
+      )}
     </div>
   );
 };

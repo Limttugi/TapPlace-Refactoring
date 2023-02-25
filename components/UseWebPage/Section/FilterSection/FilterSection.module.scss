@@ -29,6 +29,7 @@
 @mixin backImgCs {
   @include width-height(2.4rem, 2.4rem);
   margin-left: 2rem;
+  cursor: pointer;
 }
 
 @mixin headerTextCS {

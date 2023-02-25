@@ -2,6 +2,7 @@
 
 .list {
   border-top: 1px solid lightgray;
+  cursor: pointer;
   &:last-child {
     border-bottom: 1px solid lightgray;
   }

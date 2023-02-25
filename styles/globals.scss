@@ -1,4 +1,8 @@
 @import './mixins';
+@font-face {
+  font-family: 'SDGothic';
+  src: url('./AppleSDGothicNeoSB.ttf') format('truetype');
+}
 
 * {
   box-sizing: border-box;
@@ -14,8 +18,11 @@ body {
 }
 
 html {
+  width: 100%;
+  overflow: auto;
   scroll-behavior: smooth;
-  font-family: 'Noto Sans KR', sans-serif;
+  font-family: 'SDGothic';
+  cursor: default;
   // 375px 일 때 1rem = 10px
   @include mobile {
     font-size: 2.66666vw;
@@ -28,6 +35,12 @@ html {
   @include desktop {
     font-size: 0.52083vw;
   }
+}
+
+input,
+textarea,
+button {
+  font-family: inherit;
 }
 
 a {
