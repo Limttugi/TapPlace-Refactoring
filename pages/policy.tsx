@@ -3,7 +3,7 @@ import s from './policy.module.scss';
 const ProcessingPolicy = () => {
   return (
     <section className={s.container}>
-      <h1 className={s.policyTitle}>탭플레이스 서비스 이용약관</h1>
+      <h1 className={s.policyTitle}>탭플레이스 개인정보처리방침</h1>
       <article className={s.nJoWrapper}>
         <p className={s.open}>
           {`< 탭플레이스 >`} (&apos;https://www.tapplace.co.kr&apos;이하 &apos;탭플레이스&apos;)은(는) 「개인정보
