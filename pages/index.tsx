@@ -1,3 +1,4 @@
+import MainTemplates from '@/components/_Templates/Main-Templates/MainTemplates';
 import CheckAfterDownlaod from '@/components/MainPage/Section/CheckAfterDownload/CheckAfterDownload';
 import DisplayPayment from '@/components/MainPage/Section/DisplayPayment/DisplayPayment';
 import MainDescription from '@/components/MainPage/Section/MainDescription/MainDescription';
@@ -8,7 +9,7 @@ import StoreRegistering from '@/components/MainPage/Section/StoreRegistering/Sto
 
 const Index = () => {
   return (
-    <>
+    <MainTemplates>
       <MainDescription />
       <DisplayPayment />
       <StoreInquiry />
@@ -16,7 +17,7 @@ const Index = () => {
       <StoreRegistering />
       <MemberIntroduction />
       <CheckAfterDownlaod />
-    </>
+    </MainTemplates>
   );
 };
 

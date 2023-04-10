@@ -1,0 +1,5 @@
+@import '@/styles/mixins.scss';
+
+.button {
+  @include width-height(1.6rem, 1.6rem);
+}

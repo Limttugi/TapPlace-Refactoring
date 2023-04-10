@@ -11,6 +11,7 @@ import Image from 'next/image';
 import locationPin from '@/img/locationPin.webp';
 import ReDiscoveryButton from '@/components/UseWebPage/Button/ReDiscoveryButton/ReDiscoveryButton';
 import VisitModal from '@/components/UseWebPage/Modal/ContinueModal/VisitModal';
+import MainTemplates from '@/components/_Templates/Main-Templates/MainTemplates';
 
 const Useweb = () => {
   const { viewType } = useAppSelector(state => state.common);
@@ -18,7 +19,7 @@ const Useweb = () => {
   const { showListFlag, showVisitModalFlag } = useAppSelector(state => state.showMenu);
 
   return (
-    <>
+    <MainTemplates>
       {LOADING_MY_LOCATION && <LoadingSpinner />}
       <div className={s.container}>
         {showVisitModalFlag && <VisitModal />}
@@ -27,7 +28,7 @@ const Useweb = () => {
           <Map />
           {dragFlag && (
             <>
-              <Image className={s.pin} src={locationPin} alt="locationpin" />
+              <Image className={s.pin} src={locationPin} alt='locationpin' />
               <ReDiscoveryButton />
             </>
           )}
@@ -41,7 +42,7 @@ const Useweb = () => {
         </>
       )}
       {viewType !== 'DESKTOP' && <DisplayModeButton />}
-    </>
+    </MainTemplates>
   );
 };
 

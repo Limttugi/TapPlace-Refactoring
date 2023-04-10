@@ -1,13 +1,13 @@
+import { useEffect } from 'react';
+import Head from 'next/head';
+import type { AppProps } from 'next/app';
+import wrapper from '@/redux/store';
+
 import '@/styles/globals.scss';
 
-import type { AppProps } from 'next/app';
-import Head from 'next/head';
 import { useAppDispatch } from '@/redux/hooks';
-import { useEffect } from 'react';
 import { SET_VIEW_TYPE } from '@/redux/slices/common';
 import setViewType from '@/utils/setViewType';
-import wrapper from '@/redux/store';
-import AppLayout from '@/components/Common/Layout/AppLayout';
 import GlobalContext, { GlobalContextValue } from '@/context/GlobalContext';
 
 function App({ Component, pageProps }: AppProps) {
@@ -29,15 +29,15 @@ function App({ Component, pageProps }: AppProps) {
   });
 
   return (
-    <AppLayout>
+    <>
       <Head>
         <title>TapPlace</title>
-        <link rel="icon" href="/img/Logo/tapplace_icon.webp" />
+        <link rel='icon' href='/img/Logo/tapplace_icon.webp' />
       </Head>
       <GlobalContext.Provider value={GlobalContextValue}>
         <Component {...pageProps} />
       </GlobalContext.Provider>
-    </AppLayout>
+    </>
   );
 }
 
