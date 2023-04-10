@@ -11,7 +11,7 @@ interface NavListLink_I {
 }
 
 const NavListLink = ({ text, href, pathname, onClickEvent }: NavListLink_I) => {
-  const viewType = useAppSelector(state => state.common.viewType);
+  const { viewType } = useAppSelector(state => state.viewType);
 
   return (
     <>

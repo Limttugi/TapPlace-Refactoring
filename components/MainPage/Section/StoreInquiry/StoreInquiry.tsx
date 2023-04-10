@@ -9,7 +9,7 @@ import { useAppSelector } from '@/redux/hooks';
 import StoreInquiry_Mobile from './MobilerVer/StoreInquiry_Mobile';
 
 const StoreInquiry = () => {
-  const { viewType } = useAppSelector(state => state.common);
+  const { viewType } = useAppSelector(state => state.viewType);
 
   return (
     <>

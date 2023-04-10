@@ -12,7 +12,7 @@ export interface MemberInfoI {
 }
 
 const MemberInfo = ({ name, imgSrc, position }: MemberInfoI) => {
-  const { viewType } = useAppSelector(state => state.common);
+  const { viewType } = useAppSelector(state => state.viewType);
   const { memberRef, onMouseOver } = HoverEvent();
 
   return (

@@ -2,13 +2,13 @@ import { configureStore, Reducer, AnyAction, CombinedState } from '@reduxjs/tool
 import { HYDRATE, createWrapper } from 'next-redux-wrapper';
 import { combineReducers } from 'redux';
 import showMenu, { showMenuSliceI } from './slices/showMenu';
-import common, { commonStateSliceI } from './slices/common';
 import location, { locationSliceI } from './slices/location';
 import store, { storeSliceI } from './slices/store';
+import viewType, { viewTypeStateSlice_I } from './slices/viewType';
 
 // 리듀서 State 타입 정의
 export interface ReducerStates {
-  common: commonStateSliceI;
+  viewType: viewTypeStateSlice_I;
   location: locationSliceI;
   showMenu: showMenuSliceI;
   store: storeSliceI;
@@ -23,7 +23,7 @@ const rootReducer = (state: ReducerStates, action: AnyAction): CombinedState<Red
     // 슬라이스 통합
     default: {
       const combinedReducer = combineReducers({
-        common: common.reducer,
+        viewType: viewType.reducer,
         location: location.reducer,
         showMenu: showMenu.reducer,
         store: store.reducer,

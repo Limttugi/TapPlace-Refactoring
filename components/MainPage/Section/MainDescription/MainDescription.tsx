@@ -8,7 +8,7 @@ import mock_1_desktop from '@/img/MockUp/mock_1_desktop.webp';
 import DownloadButton from '../../Button/Download/DownloadButton';
 
 const MainDescription = () => {
-  const { viewType } = useAppSelector(state => state.common);
+  const { viewType } = useAppSelector(state => state.viewType);
 
   return (
     <section className={s.container}>

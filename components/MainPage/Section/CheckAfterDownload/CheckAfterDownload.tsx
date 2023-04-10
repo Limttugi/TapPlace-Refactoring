@@ -5,7 +5,7 @@ import DownloadButton from '../../Button/Download/DownloadButton';
 import CheckAfterDownload_Mobile from './MobileVer/CheckAfterDownload_Mobile';
 
 const CheckAfterDownlaod = () => {
-  const { viewType } = useAppSelector(state => state.common);
+  const { viewType } = useAppSelector(state => state.viewType);
 
   return (
     <>

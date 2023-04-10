@@ -4,7 +4,7 @@ import { useAppSelector } from '@/redux/hooks';
 import PaymentSlider from '../../Slider/Payment/PaymentSlider';
 
 const DisplayPayment = () => {
-  const { viewType } = useAppSelector(state => state.common);
+  const { viewType } = useAppSelector(state => state.viewType);
 
   return (
     <section className={s.container}>

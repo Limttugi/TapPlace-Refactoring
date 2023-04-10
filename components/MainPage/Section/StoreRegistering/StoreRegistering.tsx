@@ -6,7 +6,7 @@ import mockup from '@/img/MockUp/mock_4.webp';
 import { useAppSelector } from '@/redux/hooks';
 
 const StoreRegistering = () => {
-  const { viewType } = useAppSelector(state => state.common);
+  const { viewType } = useAppSelector(state => state.viewType);
 
   return (
     <section className={s.container}>

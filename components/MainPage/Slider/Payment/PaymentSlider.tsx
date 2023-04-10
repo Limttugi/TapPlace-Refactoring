@@ -12,7 +12,7 @@ import master from '@/img/Logo/Payment/master.webp';
 import { useAppSelector } from '@/redux/hooks';
 
 const PaymentSlider = () => {
-  const { viewType } = useAppSelector(state => state.common);
+  const { viewType } = useAppSelector(state => state.viewType);
 
   return (
     <div className={s.container}>

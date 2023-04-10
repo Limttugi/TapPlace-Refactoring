@@ -4,7 +4,7 @@ import { useAppSelector } from '@/redux/hooks';
 import MemberSlider from '../../Slider/Member/MemberSlider';
 
 const MemberIntroduction = () => {
-  const { viewType } = useAppSelector(state => state.common);
+  const { viewType } = useAppSelector(state => state.viewType);
 
   return (
     <section className={s.container}>

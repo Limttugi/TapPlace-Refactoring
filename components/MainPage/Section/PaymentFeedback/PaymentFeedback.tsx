@@ -8,7 +8,7 @@ import titleImage from '@/img/MockUp/mock_3_titleImg.webp';
 import PaymentFeedback_Mobile from './MobileVer/PaymentFeedback_Mobile';
 
 const PaymentFeedback = () => {
-  const { viewType } = useAppSelector(state => state.common);
+  const { viewType } = useAppSelector(state => state.viewType);
 
   return (
     <>

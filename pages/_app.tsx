@@ -6,9 +6,9 @@ import wrapper from '@/redux/store';
 import '@/styles/globals.scss';
 
 import { useAppDispatch } from '@/redux/hooks';
-import { SET_VIEW_TYPE } from '@/redux/slices/common';
 import setViewType from '@/utils/setViewType';
 import GlobalContext, { GlobalContextValue } from '@/context/GlobalContext';
+import { SET_VIEW_TYPE } from '@/redux/slices/viewType';
 
 function App({ Component, pageProps }: AppProps) {
   const dispatch = useAppDispatch();
@@ -16,11 +16,13 @@ function App({ Component, pageProps }: AppProps) {
   // Window Reszie 이벤트 추가
   useEffect(() => {
     const width = window.innerWidth;
-    dispatch(SET_VIEW_TYPE(setViewType(width)));
+    // dispatch(SET_VIEW_TYPE(setViewType(width)));
+    dispatch(SET_VIEW_TYPE(width));
 
     const resizeWindow = () => {
       const width = window.innerWidth;
-      dispatch(SET_VIEW_TYPE(setViewType(width)));
+      // dispatch(SET_VIEW_TYPE(setViewType(width)));
+      dispatch(SET_VIEW_TYPE(width));
     };
 
     window.addEventListener('resize', resizeWindow);

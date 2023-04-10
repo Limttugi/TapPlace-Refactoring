@@ -16,7 +16,7 @@ interface NavListLinkContainer_I {
 }
 
 const NavListLinkContainer = ({ pathname, navShowToggle, setNavShowToggle }: NavListLinkContainer_I) => {
-  const viewType = useAppSelector(state => state.common.viewType);
+  const { viewType } = useAppSelector(state => state.viewType);
   const navRef = useRef<HTMLElement>(null);
 
   const handleAlertImplementingService = () => alert(IMPLEMENTING_SERVICE);
