@@ -1,11 +1,10 @@
 import { Dispatch, useEffect, useRef } from 'react';
-import { useRouter } from 'next/router';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faXmark } from '@fortawesome/free-solid-svg-icons';
 
 import s from './NavListLinkContainer.module.scss';
 
-import NavListLink from '@/components/_Atoms/Link/NavList-Link/NavListLink';
+import NavListLink from '@/components/_Atoms/Link/NavList_Link/NavListLink';
 import { useAppSelector } from '@/redux/hooks';
 import { IMPLEMENTING_SERVICE } from '@/constants/ALERT';
 
