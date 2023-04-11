@@ -3,8 +3,8 @@ import { useRouter } from 'next/router';
 
 import s from './Header.module.scss';
 
-import MainLogoLink from '@/components/_Atoms/Link/MainLogo-Link/MainLogoLink';
-import NavListLinkContainer from '@/components/_Molecules/Navigation/NavListLink-Container/NavListLinkContainer';
+import MainLogo_Link from '@/components/_Atoms/Link/MainLogo_Link/MainLogo_Link';
+import NavListLink_Container from '@/components/_Molecules/Navigation/NavListLink_Container/NavListLink_Container';
 
 const Header = () => {
   const pathname: string = useRouter().pathname;
@@ -17,13 +17,21 @@ const Header = () => {
           id={s.useWebHeader}
           className={navShowToggle ? `${s.headerContainer} ${s.shadow}` : `${s.headerContainer}`}
         >
-          <MainLogoLink />
-          <NavListLinkContainer pathname={pathname} navShowToggle={navShowToggle} setNavShowToggle={setNavShowToggle} />
+          <MainLogo_Link />
+          <NavListLink_Container
+            pathname={pathname}
+            navShowToggle={navShowToggle}
+            setNavShowToggle={setNavShowToggle}
+          />
         </header>
       ) : (
         <header className={navShowToggle ? `${s.headerContainer} ${s.shadow}` : `${s.headerContainer}`}>
-          <MainLogoLink />
-          <NavListLinkContainer pathname={pathname} navShowToggle={navShowToggle} setNavShowToggle={setNavShowToggle} />
+          <MainLogo_Link />
+          <NavListLink_Container
+            pathname={pathname}
+            navShowToggle={navShowToggle}
+            setNavShowToggle={setNavShowToggle}
+          />
         </header>
       )}
     </>

@@ -1,17 +1,17 @@
 import Link from 'next/link';
 
-import s from './NavListLink.module.scss';
+import s from './NavList_Link.module.scss';
 
 import { useAppSelector } from '@/redux/hooks';
 
-interface NavListLink_I {
+interface NavList_Link_I {
   text: string;
   href: string;
   pathname: string;
   onClickEvent?: () => void;
 }
 
-const NavListLink = ({ text, href, pathname, onClickEvent }: NavListLink_I) => {
+const NavList_Link = ({ text, href, pathname, onClickEvent }: NavList_Link_I) => {
   const { viewType } = useAppSelector(state => state.viewType);
 
   return (
@@ -31,4 +31,4 @@ const NavListLink = ({ text, href, pathname, onClickEvent }: NavListLink_I) => {
   );
 };
 
-export default NavListLink;
+export default NavList_Link;
