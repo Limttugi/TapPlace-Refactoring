@@ -1,34 +1,13 @@
-import { useEffect } from 'react';
-import Head from 'next/head';
+import { Provider } from 'react-redux';
 import type { AppProps } from 'next/app';
-import wrapper from '@/redux/store';
+import Head from 'next/head';
 
 import '@/styles/globals.scss';
 
-import { useAppDispatch } from '@/redux/hooks';
-import setViewType from '@/utils/setViewType';
-import GlobalContext, { GlobalContextValue } from '@/context/GlobalContext';
-import { SET_VIEW_TYPE } from '@/redux/slices/viewType';
+import wrapper from '@/redux/store';
 
-function App({ Component, pageProps }: AppProps) {
-  const dispatch = useAppDispatch();
-
-  // Window Reszie 이벤트 추가
-  useEffect(() => {
-    const width = window.innerWidth;
-    // dispatch(SET_VIEW_TYPE(setViewType(width)));
-    dispatch(SET_VIEW_TYPE(width));
-
-    const resizeWindow = () => {
-      const width = window.innerWidth;
-      // dispatch(SET_VIEW_TYPE(setViewType(width)));
-      dispatch(SET_VIEW_TYPE(width));
-    };
-
-    window.addEventListener('resize', resizeWindow);
-
-    return () => window.removeEventListener('resize', resizeWindow);
-  });
+function App({ Component, ...rest }: AppProps) {
+  const { store, props } = wrapper.useWrappedStore(rest);
 
   return (
     <>
@@ -36,11 +15,11 @@ function App({ Component, pageProps }: AppProps) {
         <title>TapPlace</title>
         <link rel='icon' href='/img/Logo/tapplace_icon.webp' />
       </Head>
-      <GlobalContext.Provider value={GlobalContextValue}>
-        <Component {...pageProps} />
-      </GlobalContext.Provider>
+      <Provider store={store}>
+        <Component {...props.pageProps} />
+      </Provider>
     </>
   );
 }
 
-export default wrapper.withRedux(App);
+export default App;
