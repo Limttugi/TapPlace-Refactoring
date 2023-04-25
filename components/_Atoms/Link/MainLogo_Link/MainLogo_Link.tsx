@@ -9,7 +9,7 @@ const MainLogo_Link = () => {
   return (
     <h1 className={s.linkContainer} data-service-name='TapPlace'>
       <Link href='/'>
-        <Image src={MainLogo} alt='탭플레이스' />
+        <Image src={MainLogo} alt='탭플레이스' priority />
       </Link>
     </h1>
   );

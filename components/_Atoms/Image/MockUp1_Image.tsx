@@ -12,9 +12,9 @@ const MockUp1_Image = () => {
   return (
     <>
       {viewType === 'MOBILE' ? (
-        <Image src={mockup_image_1_mobile} alt='mockup_image_1' className={s.img} />
+        <Image src={mockup_image_1_mobile} alt='mockup_image_1' className={s.img} priority />
       ) : (
-        <Image src={mockup_image_1_desktop} alt='mockup_image_1' className={s.img} />
+        <Image src={mockup_image_1_desktop} alt='mockup_image_1' className={s.img} priority />
       )}
     </>
   );
