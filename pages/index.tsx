@@ -12,6 +12,7 @@ import StoreInquiry from '@/components/MainPage/Section/StoreInquiry/StoreInquir
 import StoreRegistering from '@/components/MainPage/Section/StoreRegistering/StoreRegistering';
 import { useAppDispatch } from '@/redux/hooks';
 import { SET_VIEW_TYPE } from '@/redux/slices/viewType';
+import PaymentSlider from '@/components/_Molecules/Slider/PaymentSlider';
 
 const Index = () => {
   const dispatch = useAppDispatch();
@@ -33,6 +34,7 @@ const Index = () => {
   return (
     <MainTemplates>
       <IntroService_Section />
+      <PaymentSlider />
       {/* <MainDescription />
       <DisplayPayment />
       <StoreInquiry />
