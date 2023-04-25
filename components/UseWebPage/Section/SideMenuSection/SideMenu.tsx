@@ -9,7 +9,7 @@ import SearchStore from '../../Input/SearchStore/SearchStore';
 import StoreDetailSection from '../StoreDetailSection/StoreDetailSection';
 
 const SideMenuSection = () => {
-  const { viewType } = useAppSelector(state => state.common);
+  const { viewType } = useAppSelector(state => state.viewType);
   const { showListFlag } = useAppSelector(state => state.showMenu);
   const { storeDetailInfo } = useAppSelector(state => state.store);
 

@@ -11,7 +11,7 @@ const MainTemplates = ({ children }: MainTemplates_I) => {
   return (
     <>
       <Header />
-      <main>{children}</main>
+      <main className={s.mainContainer}>{children}</main>
       {/* <Footer /> */}
     </>
   );

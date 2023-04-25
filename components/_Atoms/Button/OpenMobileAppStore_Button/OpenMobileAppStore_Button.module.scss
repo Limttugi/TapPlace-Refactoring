@@ -1,0 +1,17 @@
+@import '@/styles/mixins.scss';
+
+.storeButton {
+  @include flex-row-pos(center, center);
+  border-radius: 1.2rem;
+  width: 16.5rem;
+  height: 6rem;
+  font-size: 1.7rem;
+  font-weight: 400;
+  color: white;
+  background-color: #23252d;
+  > img {
+    margin-right: 0.8rem;
+    width: 2.4rem;
+    height: 2.4rem;
+  }
+}

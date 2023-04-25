@@ -20,7 +20,7 @@ interface setCenterI {
 const useMarker = () => {
   const dispatch = useDispatch();
   const GlobalContextValue = useContext(GlobalContext);
-  const { viewType } = useAppSelector(state => state.common);
+  const { viewType } = useAppSelector(state => state.viewType);
   let priorClickedMarker = useRef<naver.maps.Marker | any | null>(null);
   const dragFlag = useAppSelector(state => state.location.dragFlag);
 

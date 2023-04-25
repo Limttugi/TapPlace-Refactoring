@@ -1,0 +1,29 @@
+@import '@/styles/mixins.scss';
+
+.text {
+  font-weight: 400;
+}
+
+@include mobile {
+  .text {
+    text-align: center;
+    font-size: 2.5rem;
+    line-height: 135%;
+  }
+}
+
+@include tablet {
+  .text {
+    text-align: center;
+    font-size: 4rem;
+    line-height: 135%;
+  }
+}
+
+@include desktop {
+  .text {
+    text-align: left;
+    font-size: 6rem;
+    line-height: 138%;
+  }
+}

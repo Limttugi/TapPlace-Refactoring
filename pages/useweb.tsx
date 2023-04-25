@@ -14,7 +14,7 @@ import VisitModal from '@/components/UseWebPage/Modal/ContinueModal/VisitModal';
 import MainTemplates from '@/components/_Templates/Main-Templates/MainTemplates';
 
 const Useweb = () => {
-  const { viewType } = useAppSelector(state => state.common);
+  const { viewType } = useAppSelector(state => state.viewType);
   const { LOADING_MY_LOCATION, dragFlag } = useAppSelector(state => state.location);
   const { showListFlag, showVisitModalFlag } = useAppSelector(state => state.showMenu);
 

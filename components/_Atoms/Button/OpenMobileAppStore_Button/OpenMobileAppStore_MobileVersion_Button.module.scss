@@ -1,0 +1,27 @@
+@import '@/styles/mixins.scss';
+
+.button {
+  @include flex-row-pos(center, center);
+  @include width-height(23rem, 4.8rem);
+  border-radius: 1.2rem;
+  background-color: $mainColor;
+  font-size: 1.7rem;
+  font-weight: 400;
+  color: $white;
+  margin: 3.2rem 0 1.2rem 0;
+  > img {
+    margin-right: 0.8rem;
+  }
+
+  &.onlylBtn {
+    margin: 4rem 0 12rem 0;
+  }
+}
+
+.goUseWeb {
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 2.1rem;
+  color: $mainColor;
+  margin-bottom: 2.4rem;
+}

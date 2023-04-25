@@ -1,0 +1,21 @@
+@import '@/styles/mixins.scss';
+
+@include mobile {
+  .container {
+    @include flex-column-pos(center, center);
+  }
+}
+
+@include tablet {
+  .container {
+    display: flex;
+    gap: 0.8rem;
+  }
+}
+
+@include desktop {
+  .container {
+    display: flex;
+    gap: 1.6rem;
+  }
+}
