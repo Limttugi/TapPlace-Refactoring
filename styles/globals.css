@@ -1,0 +1,85 @@
+@font-face {
+  font-family: "SDGothic";
+  src: url("./AppleSDGothicNeoSB.ttf") format("truetype");
+}
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  height: 100%;
+  overflow: scroll;
+}
+
+html {
+  width: 100%;
+  overflow: auto;
+  scroll-behavior: smooth;
+  font-family: "SDGothic";
+  cursor: default;
+}
+@media all and (max-width: 767px) {
+  html {
+    font-size: 2.66666vw;
+  }
+}
+@media all and (min-width: 768px) and (max-width: 1023px) {
+  html {
+    font-size: 1.30208vw;
+  }
+}
+@media all and (min-width: 1024px) {
+  html {
+    font-size: 0.52083vw;
+  }
+}
+
+body {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+main {
+  min-height: 82.5rem;
+}
+
+input,
+textarea,
+button {
+  font-family: inherit;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+}
+
+#__next {
+  height: 100%;
+}
+
+.a11y-hidden {
+  clip: rect(1px, 1px, 1px, 1px);
+  -webkit-clip-path: inset(50%);
+          clip-path: inset(50%);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+}/*# sourceMappingURL=globals.css.map */

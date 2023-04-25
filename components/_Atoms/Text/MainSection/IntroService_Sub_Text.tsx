@@ -1,8 +1,8 @@
-import s from './MainSection_Text_Line_2.module.scss';
+import s from './IntroService_Sub_Text.module.scss';
 
 import { useAppSelector } from '@/redux/hooks';
 
-const MainSection_Terxt_Line_2 = () => {
+const IntroService_Sub_Text = () => {
   const viewType = useAppSelector(state => state.viewType.viewType);
 
   return (
@@ -16,4 +16,4 @@ const MainSection_Terxt_Line_2 = () => {
   );
 };
 
-export default MainSection_Terxt_Line_2;
+export default IntroService_Sub_Text;

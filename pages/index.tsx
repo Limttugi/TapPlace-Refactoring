@@ -1,5 +1,7 @@
+import { useEffect } from 'react';
+
 import AppStoreButton_Container from '@/components/_Molecules/Container/AppStoreButton_Container/AppStoreButton_Container';
-import MainSection_1 from '@/components/_Organisms/Section/MainSection_1';
+import IntroService_Section from '@/components/_Organisms/Section/IntroService_Section';
 import MainTemplates from '@/components/_Templates/Main-Templates/MainTemplates';
 import CheckAfterDownlaod from '@/components/MainPage/Section/CheckAfterDownload/CheckAfterDownload';
 import DisplayPayment from '@/components/MainPage/Section/DisplayPayment/DisplayPayment';
@@ -10,7 +12,6 @@ import StoreInquiry from '@/components/MainPage/Section/StoreInquiry/StoreInquir
 import StoreRegistering from '@/components/MainPage/Section/StoreRegistering/StoreRegistering';
 import { useAppDispatch } from '@/redux/hooks';
 import { SET_VIEW_TYPE } from '@/redux/slices/viewType';
-import { useEffect } from 'react';
 
 const Index = () => {
   const dispatch = useAppDispatch();
@@ -31,7 +32,7 @@ const Index = () => {
 
   return (
     <MainTemplates>
-      <MainSection_1 />
+      <IntroService_Section />
       {/* <MainDescription />
       <DisplayPayment />
       <StoreInquiry />
