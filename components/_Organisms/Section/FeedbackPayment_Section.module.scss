@@ -1,0 +1,39 @@
+@import '@/styles/mixins.scss';
+
+.container {
+  background: linear-gradient(
+    252.25deg,
+    rgba(244, 245, 250, 0.8) 0%,
+    rgba(244, 245, 250, 0.208) 48.86%,
+    rgba(244, 245, 250, 0.8) 100%
+  );
+}
+
+@include mobile {
+  .container {
+    @include flex-column;
+    padding: 5.6rem 2.4rem;
+  }
+}
+
+@include tablet {
+  .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    align-items: center;
+    justify-items: center;
+    padding: 7.2rem;
+  }
+}
+
+@include desktop {
+  .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    align-items: center;
+    justify-items: center;
+    padding: 10rem 36rem;
+  }
+}
