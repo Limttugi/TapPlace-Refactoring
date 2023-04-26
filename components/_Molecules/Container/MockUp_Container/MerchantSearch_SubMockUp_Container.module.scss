@@ -1,0 +1,22 @@
+@import '@/styles/mixins.scss';
+
+@include mobile {
+  .wrapper {
+    @include flex-column;
+    gap: 1.6rem;
+  }
+}
+
+@include tablet {
+  .wrapper {
+    @include flex-column;
+    gap: 1.6rem;
+  }
+}
+
+@include desktop {
+  .wrapper {
+    @include flex-column;
+    gap: 1.8rem;
+  }
+}
