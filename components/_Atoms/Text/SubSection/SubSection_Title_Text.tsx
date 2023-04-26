@@ -5,7 +5,7 @@ import s from './SubSection_Title_Text.module.scss';
 interface SubSection_Title_Text_I {
   imgSrc: StaticImageData;
   text: '가맹점 조회' | '결제수단 피드백' | '가맹점 등록';
-  alignItems: 'flexEnd' | 'center';
+  alignItems: 'center' | 'baseLine';
 }
 
 const SubSection_Title_Text = ({ imgSrc, text, alignItems }: SubSection_Title_Text_I) => {
