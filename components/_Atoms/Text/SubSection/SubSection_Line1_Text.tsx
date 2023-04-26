@@ -5,7 +5,7 @@ interface SubSection_Line1_Text_I {
 }
 
 const SubSection_Line1_Text = ({ text }: SubSection_Line1_Text_I) => {
-  return <h3 className={s.text}>{text}</h3>;
+  return <div className={s.text}>{text}</div>;
 };
 
 export default SubSection_Line1_Text;

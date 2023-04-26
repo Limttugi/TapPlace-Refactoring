@@ -11,7 +11,7 @@ interface SubSection_Title_Text_I {
 const SubSection_Title_Text = ({ imgSrc, text, alignItems }: SubSection_Title_Text_I) => {
   return (
     <h2 className={`${s.title} ${s[alignItems]}`}>
-      <Image src={imgSrc} alt='subSectionTitleImage' />
+      <Image src={imgSrc} alt={`${text}이미지`} aria-hidden='true' />
       <p>{text}</p>
     </h2>
   );
