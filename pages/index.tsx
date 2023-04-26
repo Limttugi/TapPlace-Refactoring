@@ -1,18 +1,15 @@
 import { useEffect } from 'react';
 
-import AppStoreButton_Container from '@/components/_Molecules/Container/AppStoreButton_Container/AppStoreButton_Container';
-import IntroService_Section from '@/components/_Organisms/Section/IntroService_Section';
 import MainTemplates from '@/components/_Templates/Main-Templates/MainTemplates';
-import CheckAfterDownlaod from '@/components/MainPage/Section/CheckAfterDownload/CheckAfterDownload';
-import DisplayPayment from '@/components/MainPage/Section/DisplayPayment/DisplayPayment';
-import MainDescription from '@/components/MainPage/Section/MainDescription/MainDescription';
+import IntroServiceSection from '@/components/_Organisms/Section/IntroService';
+import PaymentSlider from '@/components/_Molecules/Slider/Payment/Payment';
+import MerchantSearchSection from '@/components/_Organisms/Section/MerchantSearch';
+import FeedbackPaymentSection from '@/components/_Organisms/Section/FeedbackPayment';
+import MerchantRegistrationSection from '@/components/_Organisms/Section/MerchantRegistration';
 import MemberIntroduction from '@/components/MainPage/Section/MemberIntroduction/MemberIntroduction';
-import PaymentFeedback from '@/components/MainPage/Section/PaymentFeedback/PaymentFeedback';
-import StoreInquiry from '@/components/MainPage/Section/StoreInquiry/StoreInquiry';
-import StoreRegistering from '@/components/MainPage/Section/StoreRegistering/StoreRegistering';
+import CheckAfterDownlaod from '@/components/MainPage/Section/CheckAfterDownload/CheckAfterDownload';
 import { useAppDispatch } from '@/redux/hooks';
 import { SET_VIEW_TYPE } from '@/redux/slices/viewType';
-import PaymentSlider from '@/components/_Molecules/Slider/PaymentSlider';
 
 const Index = () => {
   const dispatch = useAppDispatch();
@@ -33,15 +30,13 @@ const Index = () => {
 
   return (
     <MainTemplates>
-      <IntroService_Section />
+      <IntroServiceSection />
       <PaymentSlider />
-      {/* <MainDescription />
-      <DisplayPayment />
-      <StoreInquiry />
-      <PaymentFeedback />
-      <StoreRegistering />
+      <MerchantSearchSection />
+      <FeedbackPaymentSection />
+      <MerchantRegistrationSection />
       <MemberIntroduction />
-      <CheckAfterDownlaod /> */}
+      {/* <CheckAfterDownlaod /> */}
     </MainTemplates>
   );
 };
