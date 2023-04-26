@@ -16,7 +16,7 @@ const PaymentSlider = () => {
   const { viewType } = useAppSelector(state => state.viewType);
 
   return (
-    <>
+    <div>
       <Payment_Slider_Text />
       <div className={s.container}>
         <Image className={s.image} src={visa} alt='paymentLogo_visa' />
@@ -40,7 +40,7 @@ const PaymentSlider = () => {
           </>
         )}
       </div>
-    </>
+    </div>
   );
 };
 

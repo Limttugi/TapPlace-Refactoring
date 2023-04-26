@@ -3,8 +3,8 @@ import Image from 'next/image';
 import s from './IntroService_MockUp_Image.module.scss';
 
 import { useAppSelector } from '@/redux/hooks';
-import mockup_image_1_desktop from '@/img/MockUp/mock_1_desktop.webp';
-import mockup_image_1_mobile from '@/img/MockUp/mock_1_mobile.webp';
+import IntroService_MockUp_Desktop_Image from '@/img/MockUp/IntroService_MockUp_Desktop_Image.webp';
+import IntroService_MockUp_Mobile_Image from '@/img/MockUp/IntroService_MockUp_Mobile_Image.webp';
 
 const IntroService_MockUp_Image = () => {
   const viewType = useAppSelector(state => state.viewType.viewType);
@@ -12,9 +12,9 @@ const IntroService_MockUp_Image = () => {
   return (
     <>
       {viewType === 'MOBILE' ? (
-        <Image src={mockup_image_1_mobile} alt='mockup_image_1' className={s.img} priority />
+        <Image src={IntroService_MockUp_Mobile_Image} alt='mockup_image_1' className={s.img} priority />
       ) : (
-        <Image src={mockup_image_1_desktop} alt='mockup_image_1' className={s.img} priority />
+        <Image src={IntroService_MockUp_Desktop_Image} alt='mockup_image_1' className={s.img} priority />
       )}
     </>
   );
