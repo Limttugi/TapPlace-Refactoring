@@ -5,7 +5,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 */
 
 export interface viewTypeStateSlice_I {
-  viewType: string;
+  viewType: 'MOBILE' | 'TABLET' | 'DESKTOP';
 }
 
 export const initialState: viewTypeStateSlice_I = {
