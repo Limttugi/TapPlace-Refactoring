@@ -1,0 +1,23 @@
+@import '@/styles/mixins.scss';
+
+.container {
+  @include flex-column-pos(center, center);
+}
+
+@include mobile {
+  .container {
+    padding: 12rem 0;
+  }
+}
+
+@include tablet {
+  .container {
+    padding: 15rem 0;
+  }
+}
+
+@include desktop {
+  .container {
+    padding: 20rem 0;
+  }
+}

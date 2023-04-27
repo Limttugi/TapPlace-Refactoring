@@ -1,0 +1,43 @@
+@import '@/styles/mixins.scss';
+
+.container {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  &::-webkit-scrollbar {
+    height: 0.4rem;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: $mainColor;
+  }
+  &::-webkit-scrollbar-track {
+    background-color: #ecf0f3;
+  }
+}
+
+@include mobile {
+  .container {
+    gap: 4rem;
+    width: calc(100% - 2.4rem);
+    margin-top: 1.6rem;
+    padding-bottom: 5.2rem;
+  }
+}
+
+@include tablet {
+  .container {
+    gap: 3rem;
+    width: calc(100% - 4.8rem);
+    margin-top: 4rem;
+    padding-bottom: 6.8rem;
+  }
+}
+
+@include desktop {
+  .container {
+    gap: 6rem;
+    width: 80%;
+    margin-top: 9rem;
+    padding-bottom: 8.8rem;
+  }
+}

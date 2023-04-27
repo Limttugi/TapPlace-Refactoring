@@ -1,0 +1,25 @@
+@import '@/styles/mixins.scss';
+
+.memberImage {
+  border: 1px solid lightgray;
+}
+
+@include mobile {
+  .memberImage {
+    width: 26rem;
+    height: 26rem;
+  }
+}
+
+@include tablet {
+  .memberImage {
+    width: 26rem;
+    height: 26rem;
+  }
+}
+@include desktop {
+  .memberImage {
+    width: 36rem;
+    height: 36rem;
+  }
+}
