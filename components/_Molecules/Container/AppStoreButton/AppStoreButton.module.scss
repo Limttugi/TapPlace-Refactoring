@@ -3,6 +3,9 @@
 @include mobile {
   .container {
     @include flex-column-pos(center, center);
+    &.DownloadSection {
+      margin-top: 0.8rem;
+    }
   }
 }
 
@@ -10,6 +13,9 @@
   .container {
     display: flex;
     gap: 0.8rem;
+    &.DownloadSection {
+      margin-top: 4rem;
+    }
   }
 }
 
@@ -17,5 +23,8 @@
   .container {
     display: flex;
     gap: 1.6rem;
+    &.DownloadSection {
+      margin-top: 5.2rem;
+    }
   }
 }

@@ -6,11 +6,11 @@ import OpenMobileAppStoreButton_MobileVersion from '@/components/_Atoms/Button/O
 import store_apple from '@/img/StoreButton/store_apple.webp';
 import store_google from '@/img/StoreButton/store_google.webp';
 
-const AppStoreButtonContainer = () => {
+const AppStoreButtonContainer = ({ marginTop }: { marginTop: 'DownloadSection' }) => {
   const { viewType } = useAppSelector(state => state.viewType);
 
   return (
-    <div className={s.container}>
+    <div className={`${s.container} ${s[marginTop]}`}>
       {viewType === 'MOBILE' && <OpenMobileAppStoreButton_MobileVersion version='normal' />}
 
       {viewType !== 'MOBILE' && (

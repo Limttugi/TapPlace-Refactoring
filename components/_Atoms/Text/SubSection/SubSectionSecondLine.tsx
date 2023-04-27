@@ -1,7 +1,7 @@
 import s from './SubSectionSecondLine.module.scss';
 
 interface SubSectionSecondLineText_I {
-  text: Array<string | JSX.Element>;
+  text: Array<string | JSX.Element> | string;
 }
 
 const SubSectionSecondLineText = ({ text }: SubSectionSecondLineText_I) => {

@@ -2,12 +2,12 @@ import { useEffect } from 'react';
 
 import MainTemplates from '@/components/_Templates/Main-Templates/MainTemplates';
 import IntroServiceSection from '@/components/_Organisms/Section/IntroService';
-import PaymentSlider from '@/components/_Molecules/Slider/Payment/Payment';
+import PaymentSlider from '@/components/_Organisms/Slider/Payment/Payment';
 import MerchantSearchSection from '@/components/_Organisms/Section/MerchantSearch';
 import FeedbackPaymentSection from '@/components/_Organisms/Section/FeedbackPayment';
 import MerchantRegistrationSection from '@/components/_Organisms/Section/MerchantRegistration';
-import MemberIntroduction from '@/components/MainPage/Section/MemberIntroduction/MemberIntroduction';
-import CheckAfterDownlaod from '@/components/MainPage/Section/CheckAfterDownload/CheckAfterDownload';
+import MemberSlider from '@/components/_Organisms/Slider/Member/Member';
+import DownloadAndCheckMerchantSection from '@/components/_Organisms/Section/DownloadAndCheckMerchant';
 import { useAppDispatch } from '@/redux/hooks';
 import { SET_VIEW_TYPE } from '@/redux/slices/viewType';
 
@@ -35,8 +35,8 @@ const Index = () => {
       <MerchantSearchSection />
       <FeedbackPaymentSection />
       <MerchantRegistrationSection />
-      <MemberIntroduction />
-      {/* <CheckAfterDownlaod /> */}
+      <MemberSlider />
+      <DownloadAndCheckMerchantSection />
     </MainTemplates>
   );
 };
