@@ -1,3 +1,4 @@
+import Footer from '@/components/_Organisms/Footer/Footer';
 import s from './MainTemplates.module.scss';
 
 import Header from '@/components/_Organisms/Header/Header';
@@ -12,7 +13,7 @@ const MainTemplates = ({ children }: MainTemplates_I) => {
     <>
       <Header />
       <main className={s.mainContainer}>{children}</main>
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 };
