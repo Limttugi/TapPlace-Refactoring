@@ -7,6 +7,8 @@ import HamburgerButton from '@/components/_Atoms/FontAwesome/Navigation/Hamburge
 import NavList from '@/components/_Atoms/Link/NavList/NavList';
 import { useAppSelector } from '@/redux/hooks';
 import { IMPLEMENTING_SERVICE } from '@/constants/ALERT';
+import { useRecoilValue } from 'recoil';
+import { breakpointState } from '@/recoil/atoms/breakpoint';
 
 interface HeaderNavigation_I {
   pathname: string;
@@ -15,7 +17,8 @@ interface HeaderNavigation_I {
 }
 
 const HeaderNavigation = ({ pathname, navShowToggle, setNavShowToggle }: HeaderNavigation_I) => {
-  const { viewType } = useAppSelector(state => state.viewType);
+  // const { viewType } = useAppSelector(state => state.viewType);
+  const BREAKPOINT = useRecoilValue(breakpointState);
   const navRef = useRef<HTMLElement>(null);
 
   const handleAlertImplementingService = () => alert(IMPLEMENTING_SERVICE);
@@ -33,7 +36,7 @@ const HeaderNavigation = ({ pathname, navShowToggle, setNavShowToggle }: HeaderN
 
   return (
     <>
-      {viewType === 'MOBILE' && navShowToggle && (
+      {BREAKPOINT === 'MOBILE' && navShowToggle && (
         <>
           <XButton onClickEvent={() => setNavShowToggle(false)} />
           <nav className={s.navigationContainer_mobile} ref={navRef}>
@@ -47,9 +50,9 @@ const HeaderNavigation = ({ pathname, navShowToggle, setNavShowToggle }: HeaderN
         </>
       )}
 
-      {viewType === 'MOBILE' && !navShowToggle && <HamburgerButton onClickEvent={() => setNavShowToggle(true)} />}
+      {BREAKPOINT === 'MOBILE' && !navShowToggle && <HamburgerButton onClickEvent={() => setNavShowToggle(true)} />}
 
-      {viewType !== 'MOBILE' && (
+      {BREAKPOINT !== 'MOBILE' && (
         <nav className={s.navigationContainer}>
           <ul>
             <NavList text='서비스 소개' href='/' pathname={pathname} />

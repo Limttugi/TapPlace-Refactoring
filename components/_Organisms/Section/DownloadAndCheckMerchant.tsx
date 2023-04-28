@@ -1,17 +1,20 @@
-import AppStoreButtonContainer from '@/components/_Molecules/Container/AppStoreButton/AppStoreButton';
+import { useRecoilValue } from 'recoil';
+
 import s from './DownloadAndCheckMerchant.module.scss';
+
+import AppStoreButtonContainer from '@/components/_Molecules/Container/AppStoreButton/AppStoreButton';
 import SubSectionFirstLineText from '@/components/_Atoms/Text/SubSection/SubSectionFirstLine';
 import SubSectionSecondLineText from '@/components/_Atoms/Text/SubSection/SubSectionSecondLine';
-import { useAppSelector } from '@/redux/hooks';
+import { breakpointState } from '@/recoil/atoms/breakpoint';
 
 const DownloadAndCheckMerchantSection = () => {
-  const viewType = useAppSelector(state => state.viewType.viewType);
+  const BREAKPOINT = useRecoilValue(breakpointState);
 
   return (
     <section className={s.container}>
       <SubSectionFirstLineText
         text={
-          viewType === 'MOBILE'
+          BREAKPOINT === 'MOBILE'
             ? [
                 '지금 탭플레이스를 다운받고',
                 <br key='' />,

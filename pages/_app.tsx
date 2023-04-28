@@ -4,20 +4,20 @@ import Head from 'next/head';
 
 import '@/styles/globals.scss';
 
-import wrapper from '@/redux/store';
+import { RecoilRoot } from 'recoil';
+import { useEffect } from 'react';
+import useResize from '@/hooks/useResize';
 
-function App({ Component, ...rest }: AppProps) {
-  const { store, props } = wrapper.useWrappedStore(rest);
-
+function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
         <title>TapPlace</title>
         <link rel='icon' href='/img/Logo/tapplace_icon.webp' />
       </Head>
-      <Provider store={store}>
-        <Component {...props.pageProps} />
-      </Provider>
+      <RecoilRoot>
+        <Component {...pageProps} />
+      </RecoilRoot>
     </>
   );
 }

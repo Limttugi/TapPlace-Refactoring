@@ -1,13 +1,15 @@
+import { useRecoilValue } from 'recoil';
+
 import s from './MemberSlider.module.scss';
 
-import { useAppSelector } from '@/redux/hooks';
+import { breakpointState } from '@/recoil/atoms/breakpoint';
 
 const MemberSliderText = () => {
-  const viewType = useAppSelector(state => state.viewType.viewType);
+  const BREAKPOINT = useRecoilValue(breakpointState);
 
   return (
     <div className={s.text}>
-      {viewType === 'MOBILE' ? (
+      {BREAKPOINT === 'MOBILE' ? (
         <>
           탭플레이스 멤버들을
           <br />
