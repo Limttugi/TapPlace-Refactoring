@@ -1,7 +1,7 @@
 import s from './MemberIntroductionList.module.scss';
 
 import MemberIntroductionList from '@/components/_Atoms/List/MemberIntroduction/MemberIntroduction';
-import MemberList from '@/constants/Member';
+import MemberList from '@/constants/MEMBER';
 
 const MemberIntroductionListContainer = () => {
   return (

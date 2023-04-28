@@ -11,7 +11,7 @@ import Image from 'next/image';
 import locationPin from '@/img/locationPin.webp';
 import ReDiscoveryButton from '@/components/UseWebPage/Button/ReDiscoveryButton/ReDiscoveryButton';
 import VisitModal from '@/components/UseWebPage/Modal/ContinueModal/VisitModal';
-import MainTemplates from '@/components/_Templates/Main-Templates/MainTemplates';
+import MainTemplates from '@/components/_Templates/Main/MainTemplates';
 
 const Useweb = () => {
   const { viewType } = useAppSelector(state => state.viewType);

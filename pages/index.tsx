@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-import MainTemplates from '@/components/_Templates/Main-Templates/MainTemplates';
+import ServiceIntroductionTemplate from '@/components/_Templates/ServiceIntroduction/ServiceIntroduction';
 import IntroServiceSection from '@/components/_Organisms/Section/IntroService';
 import PaymentSlider from '@/components/_Organisms/Slider/Payment/Payment';
 import MerchantSearchSection from '@/components/_Organisms/Section/MerchantSearch';
@@ -29,7 +29,7 @@ const Index = () => {
   }, [dispatch]);
 
   return (
-    <MainTemplates>
+    <ServiceIntroductionTemplate>
       <IntroServiceSection />
       <PaymentSlider />
       <MerchantSearchSection />
@@ -37,7 +37,7 @@ const Index = () => {
       <MerchantRegistrationSection />
       <MemberSlider />
       <DownloadAndCheckMerchantSection />
-    </MainTemplates>
+    </ServiceIntroductionTemplate>
   );
 };
 

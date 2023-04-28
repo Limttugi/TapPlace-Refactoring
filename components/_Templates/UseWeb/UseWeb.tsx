@@ -1,14 +1,13 @@
 import Footer from '@/components/_Organisms/Footer/Footer';
-import s from './MainTemplates.module.scss';
+import s from './UseWeb.module.scss';
 
 import Header from '@/components/_Organisms/Header/Header';
-import { useAppSelector } from '@/redux/hooks';
 
-interface MainTemplates_I {
+interface UseWebTemplate_I {
   children: React.ReactNode;
 }
 
-const MainTemplates = ({ children }: MainTemplates_I) => {
+const UseWebTemplate = ({ children }: UseWebTemplate_I) => {
   return (
     <>
       <Header />
@@ -18,4 +17,4 @@ const MainTemplates = ({ children }: MainTemplates_I) => {
   );
 };
 
-export default MainTemplates;
+export default UseWebTemplate;
