@@ -7,7 +7,7 @@ import MerchantRegistrationImageSrc from '@/img/MockUp/MerchantRegistration_Mock
 const MerchantRegistrationImage = () => {
   return (
     <div className={s.wrapper}>
-      <Image src={MerchantRegistrationImageSrc} alt='MerchantRegistrationhMockUpImage' />
+      <Image className={s.img} src={MerchantRegistrationImageSrc} alt='MerchantRegistrationhMockUpImage' />
     </div>
   );
 };

@@ -14,12 +14,12 @@ const DownloadAndCheckMerchantSection = () => {
           viewType === 'MOBILE'
             ? [
                 '지금 탭플레이스를 다운받고',
-                <br key='br' />,
+                <br key='' />,
                 '내 주변 간편결제 가맹점을',
-                <br key='br' />,
+                <br key=' ' />,
                 '바로 확인해보세요',
               ]
-            : ['지금 탭플레이스를 다운받고', <br key='br' />, '내 주변 간편결제 가맹점을 바로 확인해보세요']
+            : ['지금 탭플레이스를 다운받고', <br key='  ' />, '내 주변 간편결제 가맹점을 바로 확인해보세요']
         }
       />
       <SubSectionSecondLineText text='지금 내 주변의 간편결제 가맹점을 찾아보세요' />
