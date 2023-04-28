@@ -1,0 +1,40 @@
+// @import '@/styles/mixins.scss';
+
+// @mixin containerCS {
+//   position: relative;
+//   height: 100%;
+// }
+
+// @include mobile {
+//   .container {
+//     @include flex-column-pos(center, center);
+//     @include containerCS;
+//   }
+// }
+
+// @include tablet {
+//   .container {
+//     @include flex-column-pos(center, center);
+//     @include containerCS;
+//   }
+// }
+
+// @include desktop {
+//   .container {
+//     @include flex-row;
+//     @include containerCS;
+//   }
+// }
+
+// .mapContainer {
+//   position: relative;
+//   @include width-height(100%, 100%);
+// }
+
+// .pin {
+//   @include width-height(7.6rem, 6rem);
+//   position: absolute;
+//   top: calc(50% - 6rem);
+//   left: 50%;
+//   transform: translate(-50%, -50%);
+// }

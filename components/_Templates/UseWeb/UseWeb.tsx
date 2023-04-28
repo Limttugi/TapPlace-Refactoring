@@ -1,4 +1,3 @@
-import Footer from '@/components/_Organisms/Footer/Footer';
 import s from './UseWeb.module.scss';
 
 import Header from '@/components/_Organisms/Header/Header';
@@ -12,7 +11,6 @@ const UseWebTemplate = ({ children }: UseWebTemplate_I) => {
     <>
       <Header />
       <main className={s.mainContainer}>{children}</main>
-      <Footer />
     </>
   );
 };
