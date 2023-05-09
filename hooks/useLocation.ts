@@ -7,7 +7,7 @@ const useLocation = () => {
   const setCurrentLocation = useSetRecoilState(currentLocationState);
   const setLoadingBringMyLocation = useSetRecoilState(loadingBringMyLocationState);
 
-  const getCurrentPosition = useCallback(() => {
+  const getCurrentLocation = useCallback(() => {
     if ('geolocation' in navigator) {
       navigator.geolocation.getCurrentPosition(position => {
         setCurrentLocation({ latitude: position.coords.latitude, longitude: position.coords.longitude });
@@ -22,7 +22,7 @@ const useLocation = () => {
   }, [setCurrentLocation, setLoadingBringMyLocation]);
 
   return {
-    getCurrentPosition,
+    getCurrentLocation,
   };
 };
 

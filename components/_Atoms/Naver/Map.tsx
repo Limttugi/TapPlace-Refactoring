@@ -9,12 +9,12 @@ import { loadingBringMyLocationState } from '@/recoil/atoms/location';
 
 const Map = () => {
   const { mapElement, mapRendering } = useMap();
-  const { getCurrentPosition } = useLocation();
+  const { getCurrentLocation } = useLocation();
   const loadingBringMyLocation = useRecoilValue(loadingBringMyLocationState);
 
   useEffect(() => {
-    getCurrentPosition();
-  }, [getCurrentPosition]);
+    getCurrentLocation();
+  }, [getCurrentLocation]);
 
   useEffect(() => {
     loadingBringMyLocation && mapRendering();
