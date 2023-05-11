@@ -1,5 +1,9 @@
 @import '@/styles/mixins.scss';
 
+.container {
+  display: flex;
+}
+
 @include mobile {
 }
 
@@ -7,8 +11,8 @@
 }
 
 @include desktop {
-  .mainContainer {
-    display: flex;
-    padding-top: 6rem;
+  .container {
+    gap: 0.6rem;
+    padding: 2rem 0 3.2rem 4rem;
   }
 }

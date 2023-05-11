@@ -1,13 +1,14 @@
 import { useCallback } from 'react';
-import { useSetRecoilState } from 'recoil';
+import { useRecoilState, useSetRecoilState } from 'recoil';
 
-import { currentLocationState, loadingBringMyLocationState } from '@/recoil/atoms/location';
+import { currentAddressState, currentLocationState, loadingBringMyLocationState } from '@/recoil/atoms/location';
 
 const useLocation = () => {
-  const setCurrentLocation = useSetRecoilState(currentLocationState);
+  const [currentLocation, setCurrentLocation] = useRecoilState(currentLocationState);
   const setLoadingBringMyLocation = useSetRecoilState(loadingBringMyLocationState);
+  const setCurrentAddress = useSetRecoilState(currentAddressState);
 
-  const getCurrentLocation = useCallback(() => {
+  const getCurrentLocation = () => {
     if ('geolocation' in navigator) {
       navigator.geolocation.getCurrentPosition(position => {
         setCurrentLocation({ latitude: position.coords.latitude, longitude: position.coords.longitude });
@@ -19,10 +20,29 @@ const useLocation = () => {
       setCurrentLocation({ latitude: 37.3585704, longitude: 127.105399 });
       setLoadingBringMyLocation(true);
     }
-  }, [setCurrentLocation, setLoadingBringMyLocation]);
+  };
+
+  const getCurrentAddress = () => {
+    naver.maps.Service.reverseGeocode(
+      {
+        coords: new naver.maps.LatLng(currentLocation.latitude, currentLocation.longitude),
+        orders: [naver.maps.Service.OrderType.ADDR, naver.maps.Service.OrderType.ROAD_ADDR].join(','),
+      },
+      function (status, response) {
+        if (status === naver.maps.Service.Status.ERROR) {
+          return console.log('something wrong');
+        }
+        const currentAddress = response.v2.address.jibunAddress
+          .split(' ')
+          .filter(str => str.slice(-1) === '구' || str.slice(-1) === '동');
+        return setCurrentAddress(currentAddress.join(' '));
+      },
+    );
+  };
 
   return {
     getCurrentLocation,
+    getCurrentAddress,
   };
 };
 

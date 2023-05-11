@@ -1,0 +1,35 @@
+@import '@/styles/mixins.scss';
+
+@include mobile {
+}
+
+@include tablet {
+}
+
+@include desktop {
+  .container {
+    border: 0.2rem solid $mainColor;
+    border-radius: 1rem;
+    box-shadow: 0px 0px 12px rgba(78, 119, 251, 0.4);
+    display: flex;
+    align-items: center;
+    width: 39rem;
+    height: 5.2rem;
+    padding: 0 2rem;
+    margin: 4.4rem auto;
+    img {
+      cursor: pointer;
+      margin-right: 1rem;
+    }
+    input {
+      flex: 1;
+      border: none;
+      outline: none;
+      &::placeholder {
+        color: #707070;
+        font-size: 1.7rem;
+        font-weight: 400;
+      }
+    }
+  }
+}

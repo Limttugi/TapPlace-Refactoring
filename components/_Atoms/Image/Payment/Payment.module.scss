@@ -1,0 +1,22 @@
+@import '@/styles/mixins.scss';
+
+@include mobile {
+  .paymentImage {
+    width: 2.8rem;
+    height: 2.8rem;
+  }
+}
+
+@include tablet {
+  .paymentImage {
+    width: 3.8rem;
+    height: 3.8rem;
+  }
+}
+
+@include desktop {
+  .paymentImage {
+    width: 3.8rem;
+    height: 3.8rem;
+  }
+}

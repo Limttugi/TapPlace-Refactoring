@@ -1,0 +1,7 @@
+@import '@/styles/mixins.scss';
+
+.sideMenuSection {
+  @include flex-column();
+  width: 47rem;
+  height: calc(100vh - 6rem);
+}
