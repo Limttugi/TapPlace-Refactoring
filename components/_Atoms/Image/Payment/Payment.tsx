@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import Image, { StaticImageData } from 'next/image';
 
 import s from './Payment.module.scss';
 
@@ -11,18 +11,22 @@ import paycoImageSrc from '@/img/Logo/Payment/Rectangle/payco.webp';
 import zeroImageSrc from '@/img/Logo/Payment/Rectangle/zero.webp';
 
 interface PaymentImage_I {
-  payment: 'apple' | 'contactless' | 'google' | 'kakao' | 'naver' | 'payco' | 'zero';
+  payment: string;
+}
+
+interface SrcType {
+  [key: string]: StaticImageData;
 }
 
 const PaymentImage = ({ payment }: PaymentImage_I) => {
-  const src = {
-    apple: appleImageSrc,
-    contactless: contactlessImageSrc,
-    google: googleImageSrc,
-    kakao: kakaoImageSrc,
-    naver: naverImageSrc,
+  const src: SrcType = {
+    kakaopay: kakaoImageSrc,
+    naverpay: naverImageSrc,
     payco: paycoImageSrc,
-    zero: zeroImageSrc,
+    zeropay: zeroImageSrc,
+    apple: appleImageSrc,
+    google: googleImageSrc,
+    conless: contactlessImageSrc,
   };
 
   return <Image className={s.paymentImage} src={src[payment]} alt='paymentImage' />;

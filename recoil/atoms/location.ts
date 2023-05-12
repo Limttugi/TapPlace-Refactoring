@@ -1,18 +1,14 @@
 import { atom } from 'recoil';
-
-interface currentLocationState_I {
-  latitude: number | undefined;
-  longitude: number | undefined;
-}
+import { Location_I } from '@/types/location';
 
 export const loadingBringMyLocationState = atom<boolean>({
   key: 'loadingBringMyLocationState',
   default: false,
 });
 
-export const currentLocationState = atom<currentLocationState_I>({
+export const currentLocationState = atom<Location_I>({
   key: 'currentLocationState',
-  default: { latitude: undefined, longitude: undefined },
+  default: { latitude: 0, longitude: 0 },
 });
 
 export const currentAddressState = atom<string>({

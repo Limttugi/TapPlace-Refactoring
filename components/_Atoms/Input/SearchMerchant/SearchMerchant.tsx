@@ -1,4 +1,5 @@
 import Image from 'next/image';
+
 import s from './SearchMerchantInput.module.scss';
 
 import searchImageSrc from '@/img/SearchInput/search_list.webp';
@@ -6,7 +7,7 @@ import searchImageSrc from '@/img/SearchInput/search_list.webp';
 const SearchMerchantInput = () => {
   return (
     <div className={s.container}>
-      <Image src={searchImageSrc} alt='' />
+      <Image src={searchImageSrc} alt='magnifier image' />
       <input type='text' placeholder='가맹점을 찾아보세요' />
     </div>
   );
