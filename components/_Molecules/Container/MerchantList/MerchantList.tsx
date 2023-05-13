@@ -1,16 +1,19 @@
-import { useEffect, useState } from 'react';
-import { useRecoilValue } from 'recoil';
+import { useEffect } from 'react';
+import { useRecoilState, useRecoilValue } from 'recoil';
 
 import s from './MerchantList.module.scss';
 
 import MerchantList from '@/components/_Atoms/List/Merchant/Merchant';
-import { getMerchantList } from '@/api/merchant';
-import { merchantInfo_I } from '@/types/merchant';
 import { currentLocationState } from '@/recoil/atoms/location';
+import { merchantListState } from '@/recoil/atoms/merchant';
+import { merchantInfo_I } from '@/types/merchant';
+import { getMerchantList } from '@/api/merchant';
+import useMerchant from '@/hooks/useMerchant';
 
 const MerchantListContainer = () => {
   const currentLocation = useRecoilValue(currentLocationState);
-  const [merchantList, setMerchantList] = useState([]);
+  const [merchantList, setMerchantList] = useRecoilState(merchantListState);
+  const getUniquePayment = useMerchant().getUniquePayment;
 
   useEffect(() => {
     const handleGetMerchantList = async () => {
@@ -19,12 +22,15 @@ const MerchantListContainer = () => {
     };
 
     handleGetMerchantList();
-  }, [currentLocation]);
+  }, [currentLocation, setMerchantList]);
 
   return (
     <ul className={s.container}>
-      {merchantList.map((merchantInfo: merchantInfo_I) => {
-        return <MerchantList key={merchantInfo.num} {...merchantInfo} />;
+      {merchantList?.map((merchantInfo: merchantInfo_I) => {
+        const payments = getUniquePayment(merchantInfo.pays);
+        const info = { ...merchantInfo, pays: payments };
+
+        return <MerchantList key={merchantInfo.num} {...info} />;
       })}
     </ul>
   );

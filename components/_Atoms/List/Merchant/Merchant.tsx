@@ -2,13 +2,9 @@ import s from './Merchant.module.scss';
 
 import PaymentImage from '../../Image/Payment/Payment';
 import { merchantInfo_I } from '@/types/merchant';
-import useMerchant from '@/hooks/useMerchant';
 
 const MerchantList = (info: merchantInfo_I) => {
   const { num, place_name, road_address_name, address_name, category_group_name, distance, pays } = info;
-  // google_visa, google_master같은 중복 제거
-  const getUniquePayment = useMerchant().getUniquePayment;
-  const payments = getUniquePayment(pays);
 
   return (
     <li className={s.container}>
@@ -21,7 +17,7 @@ const MerchantList = (info: merchantInfo_I) => {
         <p className={s.merchantAddress}>{road_address_name ? road_address_name : address_name}</p>
       </div>
       <ul className={s.paymentImageListContainer}>
-        {payments.map(pay => {
+        {info.pays?.map(pay => {
           return <PaymentImage key={pay + num} payment={pay} />;
         })}
       </ul>

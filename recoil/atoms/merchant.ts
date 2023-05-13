@@ -1,0 +1,8 @@
+import { atom } from 'recoil';
+
+import { merchantInfo_I } from '@/types/merchant';
+
+export const merchantListState = atom<Array<merchantInfo_I>>({
+  key: 'merchantListState',
+  default: undefined,
+});

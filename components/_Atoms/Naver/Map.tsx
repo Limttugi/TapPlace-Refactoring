@@ -1,28 +1,23 @@
 import React, { useEffect } from 'react';
-import { useRecoilValue } from 'recoil';
 
 import s from './Map.module.scss';
 
 import useMap from '@/hooks/useMap';
-import useLocation from '@/hooks/useLocation';
-import { loadingBringMyLocationState } from '@/recoil/atoms/location';
 
 const Map = () => {
-  const { mapElement, mapRendering } = useMap();
-  const { getCurrentLocation } = useLocation();
-  const loadingBringMyLocation = useRecoilValue(loadingBringMyLocationState);
+  const { mapRendering, drawCircleMyRadius } = useMap();
 
   useEffect(() => {
-    getCurrentLocation();
-  }, [getCurrentLocation]);
+    mapRendering();
+  }, [mapRendering]);
 
   useEffect(() => {
-    loadingBringMyLocation && mapRendering();
-  }, [loadingBringMyLocation, mapRendering]);
+    drawCircleMyRadius();
+  }, [drawCircleMyRadius]);
 
   return (
     <>
-      <div ref={mapElement} className={s.map} />
+      <div id='map' className={s.map} />
     </>
   );
 };

@@ -1,37 +1,46 @@
+import { useEffect } from 'react';
 import { useRecoilValue } from 'recoil';
 
 import s from './useweb.module.scss';
 
-import UseWebTemplate from '@/components/_Templates/UseWeb/UseWeb';
-import LoadingSpinner from '@/components/_Atoms/LoadingSpinner/LoadingSpinner';
-import SearchMerchantInput from '@/components/_Atoms/Input/SearchMerchant/SearchMerchant';
 import Map from '@/components/_Atoms/Naver/Map';
-import useResize from '@/hooks/useResize';
-import { currentLocationState, loadingBringMyLocationState } from '@/recoil/atoms/location';
+import SearchMerchantInput from '@/components/_Atoms/Input/SearchMerchant/SearchMerchant';
+import LoadingSpinner from '@/components/_Atoms/LoadingSpinner/LoadingSpinner';
 import CurrentLocationAddressText from '@/components/_Atoms/Text/CurrentLocationAddress/CurrentLocationAddress';
-import ShowFilterMenuButton from '@/components/_Atoms/Button/ShowFilterMenu/ShowFilterMenu';
 import ShowFilterMenuButtonContainer from '@/components/_Molecules/Container/ShowFilterMenuButton/ShowFilterMenuButton';
-import PaymentImage from '@/components/_Atoms/Image/Payment/Payment';
-import MerchantList from '@/components/_Atoms/List/Merchant/Merchant';
 import MerchantListContainer from '@/components/_Molecules/Container/MerchantList/MerchantList';
+import UseWebTemplate from '@/components/_Templates/UseWeb/UseWeb';
+import { loadingBringMyLocationState } from '@/recoil/atoms/location';
+import useResize from '@/hooks/useResize';
+import useLocation from '@/hooks/useLocation';
 
 const UseWeb = () => {
   useResize();
-  const loadingBringMyLocation = useRecoilValue(loadingBringMyLocationState);
+  const getCurrentLocation = useLocation().getCurrentLocation;
+
+  const isBringMyLocation = useRecoilValue(loadingBringMyLocationState);
+
+  useEffect(() => {
+    getCurrentLocation();
+  }, [getCurrentLocation]);
 
   return (
     <UseWebTemplate>
-      {loadingBringMyLocation ? (
-        <section className={s.sideMenuSection}>
-          <SearchMerchantInput />
-          <CurrentLocationAddressText />
-          <ShowFilterMenuButtonContainer />
-          <MerchantListContainer />
-        </section>
-      ) : (
-        <LoadingSpinner />
-      )}
-      <Map />
+      <>
+        {isBringMyLocation ? (
+          <LoadingSpinner />
+        ) : (
+          <>
+            <section className={s.sideMenuSection}>
+              <SearchMerchantInput />
+              <CurrentLocationAddressText />
+              <ShowFilterMenuButtonContainer />
+              <MerchantListContainer />
+            </section>
+            <Map />
+          </>
+        )}
+      </>
     </UseWebTemplate>
   );
 };

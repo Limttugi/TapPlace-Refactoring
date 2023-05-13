@@ -13,7 +13,7 @@ const CurrentLocationAddressText = () => {
   const getCurrentAddress = useLocation().getCurrentAddress;
 
   useEffect(() => {
-    loadingBringMyLocation && getCurrentAddress();
+    !loadingBringMyLocation && getCurrentAddress();
   }, [currentLocation, loadingBringMyLocation, getCurrentAddress]);
 
   return <div className={s.text}>{currentAddress} 주변 1km</div>;

@@ -3,7 +3,7 @@ import { Location_I } from '@/types/location';
 
 export const loadingBringMyLocationState = atom<boolean>({
   key: 'loadingBringMyLocationState',
-  default: false,
+  default: true,
 });
 
 export const currentLocationState = atom<Location_I>({
