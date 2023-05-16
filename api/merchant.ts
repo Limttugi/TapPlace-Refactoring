@@ -12,7 +12,7 @@ export const getMerchantList = async ({ longitude, latitude }: Location_I) => {
     const res = await instance.post('/store/around', {
       x1: longitude.toString(),
       y1: latitude.toString(),
-      distance: 2,
+      distance: 1,
       pays: PAYS,
       user_id: '',
     });

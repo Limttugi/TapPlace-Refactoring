@@ -11,3 +11,9 @@ export interface merchantInfo_I {
   distance: number;
   num: number;
 }
+
+export interface merchantMarker_I {
+  marker: naver.maps.Marker;
+  bigImg: string;
+  store_id: string;
+}
