@@ -8,13 +8,18 @@ interface GetMerchantFeedback_I {
 }
 
 export const getMerchantList = async ({ longitude, latitude }: Location_I) => {
-  return await instance.post('/store/around', {
-    x1: longitude.toString(),
-    y1: latitude.toString(),
-    distance: 1,
-    pays: PAYS,
-    user_id: '',
-  });
+  try {
+    const res = await instance.post('/store/around', {
+      x1: longitude.toString(),
+      y1: latitude.toString(),
+      distance: 1,
+      pays: PAYS,
+      user_id: '',
+    });
+    return res.data.stores;
+  } catch (err) {
+    console.error(err);
+  }
 };
 
 export const getMerchantFeedback = async ({ store_id, pays }: GetMerchantFeedback_I) => {

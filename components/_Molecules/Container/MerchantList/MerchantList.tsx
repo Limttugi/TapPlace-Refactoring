@@ -14,19 +14,14 @@ const MerchantListContainer = () => {
   const searchLocation = useRecoilValue(searchLocationAtom);
   const [merchantList, setMerchantList] = useRecoilState(merchantListAtom);
 
-  const handleGetMerchantList = useCallback(async () => {
-    try {
-      const res = await getMerchantList(searchLocation);
-      setMerchantList(res.data.stores);
-    } catch (err) {
-      console.error(err);
-      throw err;
-    }
-  }, [searchLocation, setMerchantList]);
-
   useEffect(() => {
+    const handleGetMerchantList = async () => {
+      const stores = await getMerchantList(searchLocation);
+      setMerchantList(stores);
+    };
+
     handleGetMerchantList();
-  }, [handleGetMerchantList]);
+  }, [searchLocation, setMerchantList]);
 
   return (
     <ul className={s.container}>
