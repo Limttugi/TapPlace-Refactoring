@@ -1,33 +1,37 @@
-import { useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 import { useRecoilState, useRecoilValue } from 'recoil';
 
 import s from './MerchantList.module.scss';
 
 import MerchantList from '@/components/_Atoms/List/Merchant/Merchant';
-import { currentLocationState } from '@/recoil/atoms/location';
-import { merchantListState } from '@/recoil/atoms/merchant';
-import { merchantInfo_I } from '@/types/merchant';
+import getUniquePayments from '@/utils/getUniquePayment';
 import { getMerchantList } from '@/api/merchant';
-import useMerchant from '@/hooks/useMerchant';
+import { merchantListAtom } from '@/recoil/atoms/merchant';
+import { searchLocationAtom } from '@/recoil/atoms/location';
+import { merchantInfo_I } from '@/types/merchant';
 
 const MerchantListContainer = () => {
-  const currentLocation = useRecoilValue(currentLocationState);
-  const [merchantList, setMerchantList] = useRecoilState(merchantListState);
-  const getUniquePayment = useMerchant().getUniquePayment;
+  const searchLocation = useRecoilValue(searchLocationAtom);
+  const [merchantList, setMerchantList] = useRecoilState(merchantListAtom);
+
+  const handleGetMerchantList = useCallback(async () => {
+    try {
+      const res = await getMerchantList(searchLocation);
+      setMerchantList(res.data.stores);
+    } catch (err) {
+      console.error(err);
+      throw err;
+    }
+  }, [searchLocation, setMerchantList]);
 
   useEffect(() => {
-    const handleGetMerchantList = async () => {
-      const stores = await getMerchantList(currentLocation);
-      setMerchantList(stores);
-    };
-
     handleGetMerchantList();
-  }, [currentLocation, setMerchantList]);
+  }, [handleGetMerchantList]);
 
   return (
     <ul className={s.container}>
-      {merchantList?.map((merchantInfo: merchantInfo_I) => {
-        const payments = getUniquePayment(merchantInfo.pays);
+      {merchantList.map((merchantInfo: merchantInfo_I) => {
+        const payments = getUniquePayments(merchantInfo.pays);
         const info = { ...merchantInfo, pays: payments };
 
         return <MerchantList key={merchantInfo.num} {...info} />;

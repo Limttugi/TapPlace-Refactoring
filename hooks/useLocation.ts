@@ -1,49 +1,63 @@
 import { useCallback } from 'react';
 import { useRecoilState, useSetRecoilState } from 'recoil';
 
-import { currentAddressState, currentLocationState, loadingBringMyLocationState } from '@/recoil/atoms/location';
+import { bringMyLocationAtom, searchLocationAtom } from '@/recoil/atoms/location';
+import { getCurrentLocation } from '@/utils/getCurrentLocation';
 
 const useLocation = () => {
-  const [currentLocation, setCurrentLocation] = useRecoilState(currentLocationState);
-  const setLoadingBringMyLocation = useSetRecoilState(loadingBringMyLocationState);
-  const setCurrentAddress = useSetRecoilState(currentAddressState);
+  const [bringMyLocationState, setBringMyLocationState] = useRecoilState(bringMyLocationAtom);
+  const setSearchLocation = useSetRecoilState(searchLocationAtom);
 
-  const getCurrentLocation = () => {
-    if ('geolocation' in navigator) {
-      navigator.geolocation.getCurrentPosition(position => {
-        setCurrentLocation({ latitude: position.coords.latitude, longitude: position.coords.longitude });
-        setLoadingBringMyLocation(false);
-      });
-    } //
-    else {
-      alert('현재 위치를 알 수 없어 기본 위치로 지정합니다\n가급적이면 위치 정보 수집을 동의해주세요');
-      setCurrentLocation({ latitude: 37.3585704, longitude: 127.105399 });
-      setLoadingBringMyLocation(false);
+  // 처음 위치 관련 state 정하기 - 현재 좌표, 좌표를 가져왔는지
+  const setCurrentLocationState = useCallback(async () => {
+    try {
+      const position = await getCurrentLocation();
+      setBringMyLocationState(prev => ({
+        ...prev,
+        isBringMyLocation: true,
+        currentLocation: position,
+      }));
+      setSearchLocation(position);
+    } catch (err) {
+      console.error(err);
+      setBringMyLocationState(prev => ({
+        ...prev,
+        isBringMyLocation: true,
+        currentLocation: {
+          latitude: 37.3585704,
+          longitude: 127.105399,
+        },
+      }));
+      setSearchLocation({ latitude: 37.3585704, longitude: 127.105399 });
     }
-  };
+  }, [setBringMyLocationState, setSearchLocation]);
 
-  const getCurrentAddress = () => {
+  // 현재 좌표에 따른 주소 저장
+  const setCurrentAddress = useCallback(() => {
+    const { latitude, longitude } = bringMyLocationState.currentLocation;
+
     naver.maps.Service.reverseGeocode(
       {
-        coords: new naver.maps.LatLng(currentLocation.latitude, currentLocation.longitude),
+        coords: new naver.maps.LatLng(latitude, longitude),
         orders: [naver.maps.Service.OrderType.ADDR, naver.maps.Service.OrderType.ROAD_ADDR].join(','),
       },
       function (status, response) {
         if (status === naver.maps.Service.Status.ERROR) {
           return console.log('something wrong');
         }
+
         const currentAddress = response.v2.address.jibunAddress
           .split(' ')
-          .filter(str => str.slice(-1) === '구' || str.slice(-1) === '동');
-        return setCurrentAddress(currentAddress.join(' '));
+          .filter(str => str.slice(-1) === '구' || str.slice(-1) === '동')
+          .join(' ');
+        setBringMyLocationState(prevState => ({ ...prevState, currentAddress }));
       },
     );
-  };
+  }, [bringMyLocationState.currentLocation, setBringMyLocationState]);
 
-  return {
-    getCurrentLocation,
-    getCurrentAddress,
-  };
+  // 가맹점 가져와야함
+
+  return { setCurrentLocationState, setCurrentAddress };
 };
 
 export default useLocation;

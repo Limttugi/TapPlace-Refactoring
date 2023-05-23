@@ -2,11 +2,14 @@ import s from './Merchant.module.scss';
 
 import PaymentImage from '../../Image/Payment/Payment';
 import { merchantInfo_I } from '@/types/merchant';
+// import useMap from '@/hooks/useMap';
 
 const MerchantList = (info: merchantInfo_I) => {
   const { num, place_name, road_address_name, address_name, category_group_name, distance, pays } = info;
+  // const markerArray = useMap().markerArray;
 
   return (
+    // <li className={s.container} onClick={() => console.log(markerArray)}>
     <li className={s.container}>
       <div className={s.merchantInfoWrapper}>
         <h3 className={s.merchantName}>{place_name}</h3>

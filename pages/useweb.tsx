@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useLayoutEffect } from 'react';
 import { useRecoilValue } from 'recoil';
 
 import s from './useweb.module.scss';
@@ -10,24 +10,23 @@ import CurrentLocationAddressText from '@/components/_Atoms/Text/CurrentLocation
 import ShowFilterMenuButtonContainer from '@/components/_Molecules/Container/ShowFilterMenuButton/ShowFilterMenuButton';
 import MerchantListContainer from '@/components/_Molecules/Container/MerchantList/MerchantList';
 import UseWebTemplate from '@/components/_Templates/UseWeb/UseWeb';
-import { loadingBringMyLocationState } from '@/recoil/atoms/location';
+import { bringMyLocationAtom } from '@/recoil/atoms/location';
 import useResize from '@/hooks/useResize';
 import useLocation from '@/hooks/useLocation';
 
 const UseWeb = () => {
   useResize();
-  const getCurrentLocation = useLocation().getCurrentLocation;
+  const setCurrentLocationState = useLocation().setCurrentLocationState;
+  const bringMyLocation = useRecoilValue(bringMyLocationAtom);
 
-  const isBringMyLocation = useRecoilValue(loadingBringMyLocationState);
-
-  useEffect(() => {
-    getCurrentLocation();
-  }, [getCurrentLocation]);
+  useLayoutEffect(() => {
+    setCurrentLocationState();
+  }, [setCurrentLocationState]);
 
   return (
     <UseWebTemplate>
       <>
-        {isBringMyLocation ? (
+        {!bringMyLocation.isBringMyLocation ? (
           <LoadingSpinner />
         ) : (
           <>
