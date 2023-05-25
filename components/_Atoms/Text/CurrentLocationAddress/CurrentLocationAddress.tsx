@@ -2,7 +2,7 @@ import { useRecoilValue } from 'recoil';
 
 import s from './CurrentLocationAddress.module.scss';
 
-import { bringMyLocationAtom, currentAddressState, searchLocationAtom } from '@/recoil/atoms/location';
+import { bringMyLocationAtom } from '@/recoil/atoms/location';
 import { useEffect } from 'react';
 import useLocation from '@/hooks/useLocation';
 

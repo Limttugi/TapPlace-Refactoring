@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useState } from 'react';
+import { useLayoutEffect, useState } from 'react';
 import { useRecoilValue } from 'recoil';
 
 import s from './useweb.module.scss';
@@ -15,6 +15,7 @@ import useResize from '@/hooks/useResize';
 import useLocation from '@/hooks/useLocation';
 import { markerStateAtom } from '@/recoil/atoms/marker';
 import MerchantDetailModal from '@/components/_Organisms/Modal/MarkerDetail/MerchantDetail';
+import { NaverContext, NaverContextValue } from '@/context/naver';
 
 const UseWeb = () => {
   useResize();
@@ -32,7 +33,7 @@ const UseWeb = () => {
         {!bringMyLocation.isBringMyLocation ? (
           <LoadingSpinner />
         ) : (
-          <>
+          <NaverContext.Provider value={NaverContextValue}>
             <section className={s.sideMenuSection}>
               <SearchMerchantInput />
               <CurrentLocationAddressText />
@@ -41,7 +42,7 @@ const UseWeb = () => {
             </section>
             <Map />
             {showMarkerDetail && <MerchantDetailModal />}
-          </>
+          </NaverContext.Provider>
         )}
       </>
     </UseWebTemplate>

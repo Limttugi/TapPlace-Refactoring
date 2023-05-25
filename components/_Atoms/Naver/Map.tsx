@@ -15,6 +15,10 @@ const Map = () => {
     drawCircleMyRadius();
   }, [drawCircleMyRadius]);
 
+  useEffect(() => {
+    drawMerchantMarker();
+  }, [drawMerchantMarker]);
+
   return (
     <section className={s.mapContainer}>
       <h2 className='a11y-hidden'>네이버 지도</h2>

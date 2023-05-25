@@ -12,8 +12,7 @@ export interface merchantInfo_I {
   num: number;
 }
 
-export interface merchantMarker_I {
-  marker: naver.maps.Marker;
+export interface MerchantMarker_I {
   store_id: string;
   x: number;
   y: number;

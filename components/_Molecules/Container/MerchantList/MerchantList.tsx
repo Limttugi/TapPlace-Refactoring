@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useRecoilState, useRecoilValue } from 'recoil';
 
 import s from './MerchantList.module.scss';

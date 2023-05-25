@@ -15,7 +15,6 @@ import FeedbackListContainer from '@/components/_Molecules/Container/Feedback/Fe
 import FindRouteButton from '@/components/_Atoms/Button/FindRoute/FindRoute';
 import FeedbackInAppButton from '@/components/_Atoms/Button/FeedbackInApp/FeedbackInApp';
 import FeedbackModalCloseButton from '@/components/_Atoms/Button/FeedbackModalClose/FeedbackModalClose';
-import useMap from '@/hooks/useMap';
 
 const MerchantDetailModal = () => {
   const markerState = useRecoilValue(markerStateAtom);
@@ -48,7 +47,7 @@ const MerchantDetailModal = () => {
           <h4>{info?.category_group_name}</h4>
         </div>
 
-        <FeedbackModalCloseButton title={info?.place_name} />
+        <FeedbackModalCloseButton />
 
         <FindRouteButton x={info?.x} y={info?.y} place_name={info?.place_name} />
 
