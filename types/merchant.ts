@@ -14,6 +14,18 @@ export interface merchantInfo_I {
 
 export interface merchantMarker_I {
   marker: naver.maps.Marker;
-  bigImg: string;
+  store_id: string;
+  x: number;
+  y: number;
+}
+
+export interface FeedbackInfo_I {
+  exist: boolean;
+  fail: number;
+  success: number;
+  last_state: string;
+  last_time: string;
+  num: number;
+  pay: string;
   store_id: string;
 }

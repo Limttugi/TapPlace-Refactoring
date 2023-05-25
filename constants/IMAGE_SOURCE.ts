@@ -8,11 +8,11 @@ import naverImageSrc from '@/img/Logo/Payment/Rectangle/naver.webp';
 import paycoImageSrc from '@/img/Logo/Payment/Rectangle/payco.webp';
 import zeroImageSrc from '@/img/Logo/Payment/Rectangle/zero.webp';
 
-interface PAYMENT_SRC_I {
+interface IMAGE_SRC_I {
   [key: string]: StaticImageData;
 }
 
-export const PAYMENT_SRC: PAYMENT_SRC_I = {
+export const PAYMENT_SRC: IMAGE_SRC_I = {
   kakaopay: kakaoImageSrc,
   naverpay: naverImageSrc,
   payco: paycoImageSrc,
@@ -41,22 +41,22 @@ export const MARKER_SRC: MARKER_SRC_I = {
   '': ['/img/Marker/etc.webp', '/img/Marker/etc_big.webp'],
 };
 
-// export const PAYMENT_DETAIL_SRC = {
-//   kakaopay: '',
-//   naverpay: '',
-//   payco: '',
-//   zeropay: '',
-//   apple_visa: '',
-//   apple_master: '',
-//   apple_jcb: '',
-//   apple_amex: '',
-//   google_visa: '',
-//   google_master: '',
-//   google_maestro: '',
-//   google_amex: '',
-//   conless_visa: '',
-//   conless_master: '',
-//   conless_union: '',
-//   conless_jcb: '',
-//   conless_amex: '',
-// };
+export const PAYMENT_FEEDBACK_SRC: IMAGE_SRC_I = {
+  kakaopay: kakaoImageSrc,
+  naverpay: naverImageSrc,
+  payco: paycoImageSrc,
+  zeropay: zeroImageSrc,
+  apple_visa: appleImageSrc,
+  apple_master: appleImageSrc,
+  apple_jcb: appleImageSrc,
+  apple_amex: appleImageSrc,
+  google_visa: googleImageSrc,
+  google_master: googleImageSrc,
+  google_maestro: googleImageSrc,
+  google_amex: googleImageSrc,
+  conless_visa: contactlessImageSrc,
+  conless_master: contactlessImageSrc,
+  conless_union: contactlessImageSrc,
+  conless_jcb: contactlessImageSrc,
+  conless_amex: contactlessImageSrc,
+};

@@ -1,0 +1,79 @@
+@import '@/styles/mixins.scss';
+
+.paymentImage {
+  width: 3.8rem;
+  height: 3.8rem;
+}
+@include mobile {
+}
+
+@include tablet {
+}
+
+@include desktop {
+  .container {
+    border-bottom: 0.1px solid rgba(219, 222, 232, 0.6);
+    display: flex;
+    flex-direction: column;
+    padding: 1.6rem 0;
+    .paymentWrapper {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      margin-bottom: 1.6rem;
+      h5 {
+        font-size: 1.8rem;
+        font-weight: 400;
+        line-height: 2.4rem;
+        color: $color-333333;
+      }
+    }
+    .currentFeedbackWrapper {
+      display: flex;
+      align-items: flex-end;
+      span {
+        font-size: 1.6rem;
+        font-weight: 400;
+        line-height: 2.2rem;
+        &.success {
+          color: $mainColor;
+        }
+        &.fail {
+          color: red;
+        }
+      }
+      time {
+        font-size: 1.5rem;
+        font-weight: 400;
+        line-height: 2rem;
+        color: $color-9e9e9e;
+        margin-left: 0.8rem;
+      }
+    }
+    .progress {
+      width: 100%;
+      height: 1.2rem;
+      appearance: none;
+      margin: {
+        top: 1.2rem;
+        bottom: 0.8rem;
+      }
+      &::-webkit-progress-bar {
+        border-radius: 10rem;
+        background: #e6e6e6;
+      }
+      &::-webkit-progress-value {
+        border-radius: 10rem;
+        background: $mainColor;
+      }
+    }
+    .progressPercent {
+      display: flex;
+      justify-content: space-between;
+      font-size: 1.5rem;
+      font-weight: 400;
+      line-height: 2rem;
+      color: $color-707070;
+    }
+  }
+}

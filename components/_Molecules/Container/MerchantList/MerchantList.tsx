@@ -25,6 +25,7 @@ const MerchantListContainer = () => {
 
   return (
     <ul className={s.container}>
+      <h2 className='a11y-hidden'>가맹점 리스트</h2>
       {merchantList.map((merchantInfo: merchantInfo_I) => {
         const payments = getUniquePayments(merchantInfo.pays);
         const info = { ...merchantInfo, pays: payments };

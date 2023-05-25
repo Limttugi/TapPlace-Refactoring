@@ -1,0 +1,26 @@
+@import '@/styles/mixins.scss';
+
+@include mobile {
+}
+
+@include tablet {
+}
+
+@include desktop {
+  .button {
+    @include flex-row-pos(center, center);
+    gap: 1rem;
+    border: 0.1rem solid $mainColor;
+    border-radius: 1rem;
+    color: $mainColor;
+    font-size: 1.7rem;
+    font-weight: 400;
+    background-color: white;
+    margin: 3.2rem 2rem 0.8rem 2rem;
+    padding: 1.1rem 0;
+    img {
+      width: 2.8rem;
+      height: 2.8rem;
+    }
+  }
+}

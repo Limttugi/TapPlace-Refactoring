@@ -10,15 +10,17 @@ const Map = () => {
   useEffect(() => {
     mapRendering();
   }, [mapRendering]);
+
   useEffect(() => {
     drawCircleMyRadius();
   }, [drawCircleMyRadius]);
 
-  useEffect(() => {
-    drawMerchantMarker();
-  }, [drawMerchantMarker]);
-
-  return <div id='map' className={s.map} />;
+  return (
+    <section className={s.mapContainer}>
+      <h2 className='a11y-hidden'>네이버 지도</h2>
+      <div id='map' className={s.map} />
+    </section>
+  );
 };
 
 export default Map;

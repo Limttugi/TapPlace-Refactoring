@@ -1,4 +1,8 @@
-.map {
+.mapContainer {
   flex: 1;
   height: calc(100vh - 6rem);
+}
+
+.map {
+  height: 100%;
 }
