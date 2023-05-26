@@ -81,3 +81,12 @@ button {
   padding: 0;
   position: absolute;
 }
+
+.infowindow {
+  border: none;
+  display: flex;
+  padding: 1rem;
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: $color-212121;
+}

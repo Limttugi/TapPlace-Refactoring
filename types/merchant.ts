@@ -1,4 +1,4 @@
-export interface merchantInfo_I {
+export interface MerchantInfo_I {
   x: string;
   y: string;
   store_id: string;

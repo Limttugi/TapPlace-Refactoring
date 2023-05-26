@@ -3,7 +3,6 @@ import { useRecoilValue } from 'recoil';
 
 import s from './useweb.module.scss';
 
-import Map from '@/components/_Atoms/Naver/Map';
 import SearchMerchantInput from '@/components/_Atoms/Input/SearchMerchant/SearchMerchant';
 import LoadingSpinner from '@/components/_Atoms/LoadingSpinner/LoadingSpinner';
 import CurrentLocationAddressText from '@/components/_Atoms/Text/CurrentLocationAddress/CurrentLocationAddress';
@@ -16,6 +15,7 @@ import useLocation from '@/hooks/useLocation';
 import { markerStateAtom } from '@/recoil/atoms/marker';
 import MerchantDetailModal from '@/components/_Organisms/Modal/MarkerDetail/MerchantDetail';
 import { NaverContext, NaverContextValue } from '@/context/naver';
+import Map from '@/components/_Atoms/Naver/Map/Map';
 
 const UseWeb = () => {
   useResize();

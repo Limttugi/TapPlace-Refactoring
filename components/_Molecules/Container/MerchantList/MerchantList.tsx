@@ -8,7 +8,7 @@ import getUniquePayments from '@/utils/getUniquePayment';
 import { getMerchantList } from '@/api/merchant';
 import { merchantListAtom } from '@/recoil/atoms/merchant';
 import { searchLocationAtom } from '@/recoil/atoms/location';
-import { merchantInfo_I } from '@/types/merchant';
+import { MerchantInfo_I } from '@/types/merchant';
 
 const MerchantListContainer = () => {
   const searchLocation = useRecoilValue(searchLocationAtom);
@@ -26,7 +26,7 @@ const MerchantListContainer = () => {
   return (
     <ul className={s.container}>
       <h2 className='a11y-hidden'>가맹점 리스트</h2>
-      {merchantList.map((merchantInfo: merchantInfo_I) => {
+      {merchantList.map((merchantInfo: MerchantInfo_I) => {
         const payments = getUniquePayments(merchantInfo.pays);
         const info = { ...merchantInfo, pays: payments };
 
