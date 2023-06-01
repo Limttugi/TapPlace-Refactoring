@@ -9,12 +9,14 @@ interface GetMerchantFeedback_I {
 
 export const getMerchantInfo = async (store_id: string) => {
   try {
-    const res = await instance.post('/pay/list', {
-      store_id,
-      pays: PAYS,
-      user_id: '',
-    });
-    return res.data;
+    if (store_id !== '') {
+      const res = await instance.post('/pay/list', {
+        store_id,
+        pays: PAYS,
+        user_id: '',
+      });
+      return res.data;
+    }
   } catch (err) {
     console.error(err);
     throw err;
@@ -39,11 +41,13 @@ export const getMerchantList = async ({ longitude, latitude }: Location_I) => {
 
 export const getMerchantFeedback = async ({ store_id, pays }: GetMerchantFeedback_I) => {
   try {
-    const res = await instance.post('/pay/list/more', {
-      store_id,
-      pays,
-    });
-    return res.data.feedback;
+    if (store_id !== '') {
+      const res = await instance.post('/pay/list/more', {
+        store_id,
+        pays,
+      });
+      return res.data.feedback;
+    }
   } catch (err) {
     console.error(err);
     throw err;

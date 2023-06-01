@@ -1,4 +1,4 @@
-import { useCallback, useRef } from 'react';
+import { useCallback } from 'react';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 
 import { bringMyLocationAtom, searchLocationAtom } from '@/recoil/atoms/location';
@@ -7,8 +7,10 @@ import { MARKER_SRC } from '@/constants/IMAGE_SOURCE';
 import { merchantListAtom } from '@/recoil/atoms/merchant';
 import { markerStateAtom } from '@/recoil/atoms/marker';
 import { NaverContextValue } from '@/context/naver';
+import useMarker from './useMarker';
 
 const useMap = () => {
+  const changeSmallMarker = useMarker().changeSmallMarker;
   const { currentLocation } = useRecoilValue(bringMyLocationAtom);
   const merchantList = useRecoilValue(merchantListAtom);
   const searchLocation = useRecoilValue(searchLocationAtom);
@@ -16,13 +18,16 @@ const useMap = () => {
 
   // 지도 렌더링
   const mapRendering = useCallback(() => {
-    if (!NaverContextValue.map)
+    if (!NaverContextValue.map) {
+      console.log('map');
       NaverContextValue.map = new naver.maps.Map('map', {
         center: new naver.maps.LatLng(currentLocation.latitude, currentLocation.longitude),
         zoom: 16,
         scaleControl: false,
       });
+    }
   }, [currentLocation]);
+
   // 반경을 나타내는 원 그리기
   const drawCircleMyRadius = useCallback(() => {
     NaverContextValue.circle && NaverContextValue.circle.setMap(null);
@@ -36,46 +41,49 @@ const useMap = () => {
     });
     NaverContextValue.circle = circle;
   }, [searchLocation]);
+
+  // 클릭한 가맹점 위치로 지도 중심 이동
+  const setMapCenter = useCallback(({ x, y }: { x: number; y: number }) => {
+    NaverContextValue.map?.setOptions({ zoom: 18 });
+    NaverContextValue.map?.setCenter(new naver.maps.LatLng(y, x - window.innerWidth / 1600000));
+  }, []);
+
   // 지도에 마커 그리기
   const drawMerchantMarker = useCallback(() => {
+    // 지도에 있는 마커 초기화
+    NaverContextValue.markers.forEach(marker => marker.setMap(null));
     NaverContextValue.markers = [];
-    NaverContextValue.infoWindows = [];
 
-    merchantList.forEach((merchant: MerchantInfo_I) => {
-      const IMG_URL = MARKER_SRC[merchant.category_group_name];
-      const x = parseFloat(merchant.x);
-      const y = parseFloat(merchant.y);
+    if (merchantList.length !== 0) {
+      console.log('drawMarker');
+      merchantList.forEach((merchant: MerchantInfo_I) => {
+        const IMG_URL = MARKER_SRC[merchant.category_group_name];
+        const x = parseFloat(merchant.x);
+        const y = parseFloat(merchant.y);
 
-      const marker = new naver.maps.Marker({
-        title: merchant.place_name,
-        map: NaverContextValue.map,
-        position: new naver.maps.LatLng(y, x),
-        icon: { url: IMG_URL },
+        const marker = new naver.maps.Marker({
+          title: merchant.place_name,
+          map: NaverContextValue.map,
+          position: new naver.maps.LatLng(y, x),
+          icon: { url: IMG_URL[0] },
+        });
+
+        naver.maps.Event.addListener(marker, 'click', () => {
+          if (marker !== NaverContextValue.currentClickedMarker) {
+            marker.setIcon({ url: IMG_URL[1] });
+            changeSmallMarker();
+            setMarkerState({ showMarkerDetail: true, markerID: merchant.store_id });
+            setMapCenter({ x, y });
+          }
+
+          NaverContextValue.currentClickedMarker = marker;
+        });
+        NaverContextValue.markers.push(marker);
       });
+    }
+  }, [merchantList, changeSmallMarker, setMapCenter, setMarkerState]);
 
-      const content = ['<dialog class="infowindow">', `${merchant.place_name}`, '</dialog>'].join('');
-
-      const infoWindow = new naver.maps.InfoWindow({
-        content: content,
-        anchorSize: new naver.maps.Size(16, 12),
-        position: new naver.maps.LatLng(y + 0.001, x),
-      });
-
-      naver.maps.Event.addListener(marker, 'click', () => {
-        setMarkerState({ showMarkerDetail: true, markerID: merchant.store_id });
-        NaverContextValue.map?.setOptions({ zoom: 18 });
-        NaverContextValue.map?.setCenter(new naver.maps.LatLng(y, x - window.innerWidth / 1600000));
-
-        if (infoWindow.getMap()) infoWindow.close();
-        else NaverContextValue.map && infoWindow.open(NaverContextValue.map, marker);
-      });
-
-      NaverContextValue.infoWindows.push(infoWindow);
-      NaverContextValue.markers.push(marker);
-    });
-  }, [merchantList, setMarkerState]);
-
-  return { mapRendering, drawCircleMyRadius, drawMerchantMarker };
+  return { mapRendering, drawCircleMyRadius, setMapCenter, drawMerchantMarker };
 };
 
 export default useMap;

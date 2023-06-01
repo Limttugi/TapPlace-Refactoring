@@ -1,27 +1,15 @@
-import { useEffect } from 'react';
+import { Suspense, useEffect } from 'react';
 import { useRecoilState, useRecoilValue } from 'recoil';
 
 import s from './MerchantList.module.scss';
 
 import MerchantList from '@/components/_Atoms/List/Merchant/Merchant';
 import getUniquePayments from '@/utils/getUniquePayment';
-import { getMerchantList } from '@/api/merchant';
 import { merchantListAtom } from '@/recoil/atoms/merchant';
-import { searchLocationAtom } from '@/recoil/atoms/location';
 import { MerchantInfo_I } from '@/types/merchant';
 
 const MerchantListContainer = () => {
-  const searchLocation = useRecoilValue(searchLocationAtom);
-  const [merchantList, setMerchantList] = useRecoilState(merchantListAtom);
-
-  useEffect(() => {
-    const handleGetMerchantList = async () => {
-      const stores = await getMerchantList(searchLocation);
-      setMerchantList(stores);
-    };
-
-    handleGetMerchantList();
-  }, [searchLocation, setMerchantList]);
+  const merchantList = useRecoilValue(merchantListAtom);
 
   return (
     <ul className={s.container}>

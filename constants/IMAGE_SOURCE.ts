@@ -23,22 +23,22 @@ export const PAYMENT_SRC: IMAGE_SRC_I = {
 };
 
 interface MARKER_SRC_I {
-  [key: string]: string;
+  [key: string]: Array<string>;
 }
 
 export const MARKER_SRC: MARKER_SRC_I = {
-  음식점: '/img/Marker/restaurant.webp',
-  카페: '/img/Marker/cafe.webp',
-  편의점: '/img/Marker/convenienceStore.webp',
-  마트: '/img/Marker/mart.webp',
-  주유소: '/img/Marker/gasStation.webp',
-  주차장: '/img/Marker/parking.webp',
-  병원: '/img/Marker/hospital.webp',
-  약국: '/img/Marker/drugstore.webp',
-  숙박: '/img/Marker/accommodation.webp',
-  공공기관: '/img/Marker/institutions.webp',
-  기타: '/img/Marker/etc.webp',
-  '': '/img/Marker/etc.webp',
+  음식점: ['/img/Marker/restaurant.webp', '/img/Marker/restaurant_big.webp'],
+  카페: ['/img/Marker/cafe.webp', '/img/Marker/cafe_big.webp'],
+  편의점: ['/img/Marker/convenienceStore.webp', '/img/Marker/convenienceStore_big.webp'],
+  마트: ['/img/Marker/mart.webp', '/img/Marker/mart_big.webp'],
+  주유소: ['/img/Marker/gasStation.webp', '/img/Marker/gasStation_big.webp'],
+  주차장: ['/img/Marker/parking.webp', '/img/Marker/parking_big.webp'],
+  병원: ['/img/Marker/hospital.webp', '/img/Marker/hospital_big.webp'],
+  약국: ['/img/Marker/drugstore.webp', '/img/Marker/drugstore_big.webp'],
+  숙박: ['/img/Marker/accommodation.webp', '/img/Marker/accommodation_big.webp'],
+  공공기관: ['/img/Marker/institutions.webp', '/img/Marker/institutions_big.webp'],
+  기타: ['/img/Marker/etc.webp', '/img/Marker/etc_big.webp'],
+  '': ['/img/Marker/etc.webp', '/img/Marker/etc_big.webp'],
 };
 
 export const PAYMENT_FEEDBACK_SRC: IMAGE_SRC_I = {

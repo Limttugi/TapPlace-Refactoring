@@ -1,4 +1,4 @@
-import { useLayoutEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useRecoilValue } from 'recoil';
 
 import s from './useweb.module.scss';
@@ -16,35 +16,40 @@ import { markerStateAtom } from '@/recoil/atoms/marker';
 import MerchantDetailModal from '@/components/_Organisms/Modal/MarkerDetail/MerchantDetail';
 import { NaverContext, NaverContextValue } from '@/context/naver';
 import Map from '@/components/_Atoms/Naver/Map/Map';
+import useMerchant from '@/hooks/useMerchant';
 
 const UseWeb = () => {
   useResize();
-  const setCurrentLocationState = useLocation().setCurrentLocationState;
-  const bringMyLocation = useRecoilValue(bringMyLocationAtom);
+  const handleSetCurrentLocation = useLocation().handleSetCurrentLocation;
+  const handleGetMerchantList = useMerchant().handleGetMerchantList;
+  const isBringMyLocation = useRecoilValue(bringMyLocationAtom).isBringMyLocation;
   const showMarkerDetail = useRecoilValue(markerStateAtom).showMarkerDetail;
 
-  useLayoutEffect(() => {
-    setCurrentLocationState();
-  }, [setCurrentLocationState]);
+  // 현재 위치 가져오기
+  useEffect(() => {
+    handleSetCurrentLocation();
+  }, [handleSetCurrentLocation]);
+
+  // 가맹점 리스트 가져오기
+  useEffect(() => {
+    isBringMyLocation && handleGetMerchantList();
+  }, [isBringMyLocation, handleGetMerchantList]);
 
   return (
     <UseWebTemplate>
-      <>
-        {!bringMyLocation.isBringMyLocation ? (
-          <LoadingSpinner />
-        ) : (
-          <NaverContext.Provider value={NaverContextValue}>
-            <section className={s.sideMenuSection}>
-              <SearchMerchantInput />
-              <CurrentLocationAddressText />
-              <ShowFilterMenuButtonContainer />
-              <MerchantListContainer />
-            </section>
-            <Map />
-            {showMarkerDetail && <MerchantDetailModal />}
-          </NaverContext.Provider>
-        )}
-      </>
+      {!isBringMyLocation && <LoadingSpinner type='location' />}
+      {isBringMyLocation && (
+        <NaverContext.Provider value={NaverContextValue}>
+          <section className={s.sideMenuSection}>
+            <SearchMerchantInput />
+            <CurrentLocationAddressText />
+            <ShowFilterMenuButtonContainer />
+            <MerchantListContainer />
+          </section>
+          <Map />
+          {showMarkerDetail && <MerchantDetailModal />}
+        </NaverContext.Provider>
+      )}
     </UseWebTemplate>
   );
 };

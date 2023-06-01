@@ -1,15 +1,21 @@
 import s from './LoadingSpinner.module.scss';
 
-const LoadingSpinner = () => {
+const LoadingSpinner = ({ type }: { type: 'location' | 'default' }) => {
   return (
     <div className={s.container}>
       <div className={s.spinnerWrapper}>
         <div className={s.spinner}></div>
       </div>
       <p className={s.text}>
-        위치
-        <br />
-        로딩중
+        {type === 'default' ? (
+          <>로딩중</>
+        ) : (
+          <>
+            위치
+            <br />
+            로딩중
+          </>
+        )}
       </p>
     </div>
   );

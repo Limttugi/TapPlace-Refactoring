@@ -5,12 +5,15 @@ import s from './FeedbackModalClose.module.scss';
 import closeImg from '@/img/X.webp';
 import { markerStateAtom } from '@/recoil/atoms/marker';
 import { useSetRecoilState } from 'recoil';
+import useMarker from '@/hooks/useMarker';
 
 const FeedbackModalCloseButton = () => {
+  const changeSmallMarker = useMarker().changeSmallMarker;
   const setShowMarkerDetail = useSetRecoilState(markerStateAtom);
 
   const handleCloseModal = () => {
-    setShowMarkerDetail(prev => ({ ...prev, showMarkerDetail: false }));
+    setShowMarkerDetail({ markerID: '', showMarkerDetail: false });
+    changeSmallMarker();
   };
 
   return (

@@ -1,36 +1,38 @@
-import { useCallback } from 'react';
+import { useCallback, useEffect } from 'react';
 import { useRecoilState, useSetRecoilState } from 'recoil';
 
 import { bringMyLocationAtom, searchLocationAtom } from '@/recoil/atoms/location';
-import { getCurrentLocation } from '@/utils/getCurrentLocation';
 
 const useLocation = () => {
   const [bringMyLocationState, setBringMyLocationState] = useRecoilState(bringMyLocationAtom);
   const setSearchLocation = useSetRecoilState(searchLocationAtom);
 
-  // 처음 위치 관련 state 정하기 - 현재 좌표, 좌표를 가져왔는지
-  const setCurrentLocationState = useCallback(async () => {
-    try {
-      const position = await getCurrentLocation();
-      setBringMyLocationState(prev => ({
-        ...prev,
-        isBringMyLocation: true,
-        currentLocation: position,
-      }));
-      setSearchLocation(position);
-    } catch (err) {
-      console.error(err);
-      setBringMyLocationState(prev => ({
-        ...prev,
+  // 처음 위치 가져오기
+  const handleSetCurrentLocation = useCallback(() => {
+    if ('geolocation' in navigator) {
+      navigator.geolocation.getCurrentPosition(position => {
+        const latitude = position.coords.latitude;
+        const longitude = position.coords.longitude;
+
+        setBringMyLocationState({
+          isBringMyLocation: true,
+          currentLocation: { latitude, longitude },
+          currentAddress: '',
+        });
+        setSearchLocation({ latitude, longitude });
+      });
+    } else {
+      setBringMyLocationState({
         isBringMyLocation: true,
         currentLocation: {
           latitude: 37.3585704,
           longitude: 127.105399,
         },
-      }));
+        currentAddress: '',
+      });
       setSearchLocation({ latitude: 37.3585704, longitude: 127.105399 });
     }
-  }, [setBringMyLocationState, setSearchLocation]);
+  }, []);
 
   // 현재 좌표에 따른 주소 저장
   const setCurrentAddress = useCallback(() => {
@@ -55,9 +57,7 @@ const useLocation = () => {
     );
   }, [bringMyLocationState.currentLocation, setBringMyLocationState]);
 
-  // 가맹점 가져와야함
-
-  return { setCurrentLocationState, setCurrentAddress };
+  return { handleSetCurrentLocation, setCurrentAddress };
 };
 
 export default useLocation;

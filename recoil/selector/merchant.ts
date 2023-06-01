@@ -1,6 +1,6 @@
-import { selector } from 'recoil';
+import { selector, selectorFamily, waitForAll } from 'recoil';
 import { markerStateAtom } from '../atoms/marker';
-import { getMerchantFeedback, getMerchantInfo } from '@/api/merchant';
+import { getMerchantFeedback, getMerchantInfo, getMerchantList } from '@/api/merchant';
 import { MerchantInfo_I } from '@/types/merchant';
 import { PAYS } from '@/constants/PAYS';
 
