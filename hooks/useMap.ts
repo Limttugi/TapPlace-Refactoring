@@ -1,18 +1,18 @@
 import { useCallback } from 'react';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 
-import { bringMyLocationAtom, searchLocationAtom } from '@/recoil/atoms/location';
-import { MerchantInfo_I } from '@/types/merchant';
-import { MARKER_SRC } from '@/constants/IMAGE_SOURCE';
-import { merchantListAtom } from '@/recoil/atoms/merchant';
-import { markerStateAtom } from '@/recoil/atoms/marker';
-import { NaverContextValue } from '@/context/naver';
 import useMarker from './useMarker';
+import { NaverContextValue } from '@/context/naver';
+import { markerStateAtom } from '@/recoil/atoms/marker';
+import { bringMyLocationAtom, searchLocationAtom } from '@/recoil/atoms/location';
+import { merchantListSelector } from '@/recoil/selector/merchant';
+import { MARKER_SRC } from '@/constants/IMAGE_SOURCE';
+import { MerchantInfo_I } from '@/types/merchant';
 
 const useMap = () => {
   const changeSmallMarker = useMarker().changeSmallMarker;
   const { currentLocation } = useRecoilValue(bringMyLocationAtom);
-  const merchantList = useRecoilValue(merchantListAtom);
+  const merchantList = useRecoilValue(merchantListSelector);
   const searchLocation = useRecoilValue(searchLocationAtom);
   const setMarkerState = useSetRecoilState(markerStateAtom);
 
@@ -54,9 +54,9 @@ const useMap = () => {
     NaverContextValue.markers.forEach(marker => marker.setMap(null));
     NaverContextValue.markers = [];
 
-    if (merchantList.length !== 0) {
+    if (merchantList?.length !== 0) {
       console.log('drawMarker');
-      merchantList.forEach((merchant: MerchantInfo_I) => {
+      merchantList?.forEach((merchant: MerchantInfo_I) => {
         const IMG_URL = MARKER_SRC[merchant.category_group_name];
         const x = parseFloat(merchant.x);
         const y = parseFloat(merchant.y);

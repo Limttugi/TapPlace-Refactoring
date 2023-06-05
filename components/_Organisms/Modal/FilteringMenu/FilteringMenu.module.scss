@@ -1,0 +1,81 @@
+@import '@/styles/mixins.scss';
+
+@include mobile {
+}
+
+@include tablet {
+}
+
+@include desktop {
+  .container {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 6rem;
+    left: 0;
+    width: 47rem;
+    height: 102rem;
+    background-color: white;
+    .title {
+      height: 6rem;
+      line-height: 6rem;
+      text-align: center;
+      border-bottom: 0.1rem solid rgba(219, 222, 232, 0.6);
+      font-size: 2rem;
+      font-weight: 400;
+      color: $color-212121;
+    }
+    .filterCategory {
+      padding: 2rem 0;
+      margin: 0 2rem;
+      &:first-of-type {
+        border-bottom: 1px solid rgba(219, 222, 232, 0.6);
+      }
+      .filterType {
+        font-size: 1.8rem;
+        font-weight: 400;
+        color: $color-333333;
+        margin-bottom: 1.7rem;
+      }
+      .filterSubType {
+        font-size: 1.6rem;
+        font-weight: 400;
+        color: $color-707070;
+        margin: {
+          top: 2.4rem;
+          bottom: 1rem;
+        }
+      }
+      .filterListContainer {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.8rem;
+        .filterList {
+          border: 0.1rem solid $color-dbdee8;
+          border-radius: 100rem;
+          padding: 0.8rem 2rem;
+          font-size: 1.5rem;
+          font-weight: 400;
+          color: $color-9e9e9e;
+        }
+        .active {
+          color: $mainColor;
+          border: 0.1rem solid $mainColor;
+        }
+      }
+    }
+    .applyButton {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 5.6rem;
+      background-color: $mainColor;
+      color: white;
+      font-size: 1.7rem;
+      font-weight: 400;
+    }
+  }
+  .show {
+    display: flex;
+  }
+}

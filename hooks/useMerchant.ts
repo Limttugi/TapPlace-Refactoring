@@ -11,7 +11,7 @@ const useMerchant = () => {
   const handleGetMerchantList = useCallback(async () => {
     const stores = await getMerchantList(searchLocation);
     setMerchantList(stores);
-  }, [searchLocation]);
+  }, [searchLocation, setMerchantList]);
 
   return { handleGetMerchantList };
 };

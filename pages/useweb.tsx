@@ -17,6 +17,7 @@ import MerchantDetailModal from '@/components/_Organisms/Modal/MarkerDetail/Merc
 import { NaverContext, NaverContextValue } from '@/context/naver';
 import Map from '@/components/_Atoms/Naver/Map/Map';
 import useMerchant from '@/hooks/useMerchant';
+import FilteringMenuModal from '@/components/_Organisms/Modal/FilteringMenu/FilteringMenu';
 
 const UseWeb = () => {
   useResize();
@@ -45,6 +46,7 @@ const UseWeb = () => {
             <CurrentLocationAddressText />
             <ShowFilterMenuButtonContainer />
             <MerchantListContainer />
+            <FilteringMenuModal />
           </section>
           <Map />
           {showMarkerDetail && <MerchantDetailModal />}
