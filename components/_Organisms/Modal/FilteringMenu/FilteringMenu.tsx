@@ -1,7 +1,10 @@
+import { useCallback } from 'react';
+import Image from 'next/image';
 import { useRecoilState, useSetRecoilState } from 'recoil';
 
 import s from './FilteringMenu.module.scss';
 
+import xImage from '@/img/X.webp';
 import {
   FILTER_CATEGORY,
   FILTER_PAYMENT,
@@ -16,14 +19,18 @@ const FilteringMenuModal = () => {
   const setCategoryFilter = useSetRecoilState(categoryFilterAtom);
   const setPaymentFilter = useSetRecoilState(paymentFilterAtom);
 
-  const handleActiveFilter = (e: React.MouseEvent<HTMLUListElement> | any) => {
+  const handleCloseFilterModal = useCallback(() => {
+    setIsShowFilteringMenu(false);
+  }, [setIsShowFilteringMenu]);
+
+  const handleActiveFilter = useCallback((e: React.MouseEvent<HTMLUListElement> | any) => {
     const target = e.target as HTMLUListElement;
     target.className === `${s.filterList}`
       ? (target.className = `${s.filterList} ${s.active}`)
       : (target.className = `${s.filterList}`);
-  };
+  }, []);
 
-  const handleApplyFilter = () => {
+  const handleApplyFilter = useCallback(() => {
     const categoryFilterArray: Array<string> = [];
     const paymentFilterArray: Array<string> = [];
     const activeFilterArray = document.querySelectorAll(`.${s.active}`);
@@ -34,12 +41,12 @@ const FilteringMenuModal = () => {
 
     setCategoryFilter({ clickedCategoryFilter: categoryFilterArray.length !== 0, categoryFilter: categoryFilterArray });
     setPaymentFilter({ clickedPaymentFilter: paymentFilterArray.length !== 0, paymentFilter: paymentFilterArray });
-  };
+  }, [setCategoryFilter, setPaymentFilter]);
 
   return (
     <dialog className={isShowFilteringMenu ? `${s.container} ${s.show}` : s.container}>
       <h2 className={s.title}>필터</h2>
-      <button onClick={() => setIsShowFilteringMenu(false)}>x</button>
+      <Image className={s.closeButton} src={xImage} alt='closeButtonImage' onClick={handleCloseFilterModal} />
       <section className={s.filterCategory}>
         <h3 className={s.filterType}>매장선택</h3>
         <ul className={s.filterListContainer}>
