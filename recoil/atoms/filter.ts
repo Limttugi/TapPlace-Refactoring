@@ -10,6 +10,11 @@ interface paymentFilterAtom_I {
   paymentFilter: Array<string>;
 }
 
+interface searchFilterAtom_I {
+  isMerchantSearch: boolean;
+  searchWord: string;
+}
+
 export const isShowFilteringMenuAtom = atom({
   key: 'isShowFilteringMenuAtom',
   default: false,
@@ -28,5 +33,13 @@ export const paymentFilterAtom = atom<paymentFilterAtom_I>({
   default: {
     clickedPaymentFilter: false,
     paymentFilter: [],
+  },
+});
+
+export const searchFilterAtom = atom<searchFilterAtom_I>({
+  key: 'searchFilterAtom',
+  default: {
+    isMerchantSearch: false,
+    searchWord: '',
   },
 });

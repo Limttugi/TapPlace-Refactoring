@@ -32,7 +32,7 @@ const useLocation = () => {
       });
       setSearchLocation({ latitude: 37.3585704, longitude: 127.105399 });
     }
-  }, []);
+  }, [setBringMyLocationState, setSearchLocation]);
 
   // 현재 좌표에 따른 주소 저장
   const setCurrentAddress = useCallback(() => {

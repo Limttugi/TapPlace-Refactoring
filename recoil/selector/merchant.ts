@@ -3,7 +3,7 @@ import { markerStateAtom } from '../atoms/marker';
 import { getMerchantFeedback, getMerchantInfo, getMerchantList } from '@/api/merchant';
 import { MerchantInfo_I } from '@/types/merchant';
 import { PAYS } from '@/constants/PAYS';
-import { categoryFilterAtom, paymentFilterAtom } from '../atoms/filter';
+import { categoryFilterAtom, paymentFilterAtom, searchFilterAtom } from '../atoms/filter';
 import { merchantListAtom, merchantListAtom_T } from '../atoms/merchant';
 
 export const clickedMerchantInfoSelector = selector({
@@ -42,9 +42,10 @@ export const merchantListSelector = selector({
     const merchantList = get(merchantListAtom);
     const { clickedCategoryFilter, categoryFilter } = get(categoryFilterAtom);
     const { clickedPaymentFilter, paymentFilter } = get(paymentFilterAtom);
+    const { isMerchantSearch, searchWord } = get(searchFilterAtom);
 
     // 아무 필터도 선택 X
-    if (!clickedCategoryFilter && !clickedPaymentFilter) return merchantList;
+    if (!clickedCategoryFilter && !clickedPaymentFilter && !isMerchantSearch) return merchantList;
 
     const filteringCategory = () => {
       const _merchantList: merchantListAtom_T = [];
@@ -66,20 +67,32 @@ export const merchantListSelector = selector({
       return _merchantList;
     };
 
+    const filteringSearch = (list: merchantListAtom_T) => {
+      return list.filter(merchant => merchant.place_name.includes(searchWord));
+    };
+
     // 가맹점 카테고리, 결제수단 필터 선택
     if (clickedCategoryFilter && clickedPaymentFilter) {
       let filteredMerchants = filteringCategory();
       filteredMerchants = filteringPayment(filteredMerchants);
+
+      if (isMerchantSearch) filteredMerchants = filteringSearch(filteredMerchants);
       return filteredMerchants;
-    }
-    // 카테고리 필터만 선택
+    } // 카테고리 필터만 선택
     else if (clickedCategoryFilter) {
-      const filteredMerchants = filteringCategory();
+      let filteredMerchants = filteringCategory();
+
+      if (isMerchantSearch) return filteringSearch(filteredMerchants);
       return filteredMerchants;
-    }
-    // 결제수단 필터만 선택
+    } // 결제수단 필터만 선택
     else if (clickedPaymentFilter) {
-      const filteredMerchants = filteringPayment(merchantList);
+      let filteredMerchants = filteringPayment(merchantList);
+
+      if (isMerchantSearch) return filteringSearch(filteredMerchants);
+      return filteredMerchants;
+    } // 검색만
+    else if (isMerchantSearch) {
+      const filteredMerchants = filteringSearch(merchantList);
       return filteredMerchants;
     }
   },
