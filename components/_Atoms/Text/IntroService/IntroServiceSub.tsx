@@ -1,11 +1,10 @@
 import { useRecoilValue } from 'recoil';
+
 import s from './IntroServiceSub.module.scss';
 
-import { useAppSelector } from '@/redux/hooks';
 import { breakpointState } from '@/recoil/atoms/breakpoint';
 
 const IntroServiceSubText = () => {
-  // const viewType = useAppSelector(state => state.viewType.viewType);
   const BREAKPOINT = useRecoilValue(breakpointState);
 
   return (

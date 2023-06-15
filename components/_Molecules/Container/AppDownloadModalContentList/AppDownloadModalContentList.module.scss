@@ -1,0 +1,16 @@
+@import '@/styles/mixins.scss';
+
+@include mobile {
+}
+
+@include tablet {
+}
+
+@include desktop {
+  .container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 4.8rem;
+  }
+}
