@@ -18,11 +18,14 @@ import { NaverContext, NaverContextValue } from '@/context/naver';
 import Map from '@/components/_Atoms/Naver/Map/Map';
 import useMerchant from '@/hooks/useMerchant';
 import FilteringMenuModal from '@/components/_Organisms/Modal/FilteringMenu/FilteringMenu';
+import { showAppDownloadModalAtom } from '@/recoil/atoms/localstorage';
+import AppDownloadModal from '@/components/_Organisms/Modal/AppDownload/AppDownload';
 
 const UseWeb = () => {
   useResize();
   const handleSetCurrentLocation = useLocation().handleSetCurrentLocation;
   const handleGetMerchantList = useMerchant().handleGetMerchantList;
+  const showAppDownloadModal = useRecoilValue(showAppDownloadModalAtom);
   const isBringMyLocation = useRecoilValue(bringMyLocationAtom).isBringMyLocation;
   const showMarkerDetail = useRecoilValue(markerStateAtom).showMarkerDetail;
 
@@ -38,8 +41,9 @@ const UseWeb = () => {
 
   return (
     <UseWebTemplate>
-      {!isBringMyLocation && <LoadingSpinner type='location' />}
-      {isBringMyLocation && (
+      {!isBringMyLocation ? (
+        <LoadingSpinner type='location' />
+      ) : (
         <NaverContext.Provider value={NaverContextValue}>
           <section className={s.sideMenuSection}>
             <SearchMerchantInput />
@@ -50,6 +54,7 @@ const UseWeb = () => {
           </section>
           <Map />
           {showMarkerDetail && <MerchantDetailModal />}
+          {showAppDownloadModal && <AppDownloadModal />}
         </NaverContext.Provider>
       )}
     </UseWebTemplate>

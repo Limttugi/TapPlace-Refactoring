@@ -1,9 +1,8 @@
-import { useAppDispatch } from 'redux/hooks';
-import { SET_SHOW_VISIT_MODAL_FLAG } from '@/redux/slices/showMenu';
+import { showAppDownloadModalAtom } from '@/recoil/atoms/localstorage';
+import { useSetRecoilState } from 'recoil';
 
 const useLocalStorage = () => {
-  const dispatch = useAppDispatch();
-
+  const setShowAppDownloadModal = useSetRecoilState(showAppDownloadModalAtom);
   // localStorage에 저장
   const setItemWithExpireTime = (keyName: string, keyValue: string, tts: number) => {
     const obj = {
@@ -17,13 +16,14 @@ const useLocalStorage = () => {
   // localStorage 읽고 24시간 지났는지 체크
   const getItemWithExpireTime = (keyName: string) => {
     const objString = window.localStorage.getItem(keyName);
-    if (!objString) return dispatch(SET_SHOW_VISIT_MODAL_FLAG(true));
+    if (!objString) return setShowAppDownloadModal(true);
+
     const obj = JSON.parse(objString);
     if (Date.now() > obj.expire) {
       window.localStorage.removeItem(keyName);
-      return dispatch(SET_SHOW_VISIT_MODAL_FLAG(true));
+      return setShowAppDownloadModal(true);
     }
-    return dispatch(SET_SHOW_VISIT_MODAL_FLAG(false));
+    return setShowAppDownloadModal(false);
   };
 
   return { setItemWithExpireTime, getItemWithExpireTime };
