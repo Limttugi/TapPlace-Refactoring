@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useRecoilValue } from 'recoil';
+import Head from 'next/head';
 
 import s from './useweb.module.scss';
 
@@ -40,24 +41,30 @@ const UseWeb = () => {
   }, [isBringMyLocation, handleGetMerchantList]);
 
   return (
-    <UseWebTemplate>
-      {!isBringMyLocation ? (
-        <LoadingSpinner type='location' />
-      ) : (
-        <NaverContext.Provider value={NaverContextValue}>
-          <section className={s.sideMenuSection}>
-            <SearchMerchantInput />
-            <CurrentLocationAddressText />
-            <ShowFilterMenuButtonContainer />
-            <MerchantListContainer />
-            <FilteringMenuModal />
-          </section>
-          <Map />
-          {showMarkerDetail && <MerchantDetailModal />}
-          {showAppDownloadModal && <AppDownloadModal />}
-        </NaverContext.Provider>
-      )}
-    </UseWebTemplate>
+    <>
+      <Head>
+        <title>탭플레이스 - 서비스 이용하기</title>
+      </Head>
+
+      <UseWebTemplate>
+        {!isBringMyLocation ? (
+          <LoadingSpinner type='location' />
+        ) : (
+          <>
+            <section className={s.sideMenuSection}>
+              <SearchMerchantInput />
+              <CurrentLocationAddressText />
+              <ShowFilterMenuButtonContainer />
+              <MerchantListContainer />
+              <FilteringMenuModal />
+            </section>
+            <Map />
+            {showMarkerDetail && <MerchantDetailModal />}
+            {showAppDownloadModal && <AppDownloadModal />}
+          </>
+        )}
+      </UseWebTemplate>
+    </>
   );
 };
 

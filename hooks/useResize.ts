@@ -14,6 +14,8 @@ const useResize = () => {
       else SET_BREAKPOINT('DESKTOP');
     };
 
+    resizeWindow();
+
     window.addEventListener('resize', resizeWindow);
 
     return () => window.removeEventListener('resize', resizeWindow);

@@ -1,3 +1,5 @@
+import Head from 'next/head';
+
 import ServiceIntroductionTemplate from '@/components/_Templates/ServiceIntroduction/ServiceIntroduction';
 import IntroServiceSection from '@/components/_Organisms/Section/IntroService';
 import PaymentSlider from '@/components/_Organisms/Slider/Payment/Payment';
@@ -12,15 +14,21 @@ const Index = () => {
   useResize();
 
   return (
-    <ServiceIntroductionTemplate>
-      <IntroServiceSection />
-      <PaymentSlider />
-      <MerchantSearchSection />
-      <FeedbackPaymentSection />
-      <MerchantRegistrationSection />
-      <MemberSlider />
-      <DownloadAndCheckMerchantSection />
-    </ServiceIntroductionTemplate>
+    <>
+      <Head>
+        <title>탭플레이스</title>
+      </Head>
+
+      <ServiceIntroductionTemplate>
+        <IntroServiceSection />
+        <PaymentSlider />
+        <MerchantSearchSection />
+        <FeedbackPaymentSection />
+        <MerchantRegistrationSection />
+        <MemberSlider />
+        <DownloadAndCheckMerchantSection />
+      </ServiceIntroductionTemplate>
+    </>
   );
 };
 
