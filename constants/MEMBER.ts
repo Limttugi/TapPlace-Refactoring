@@ -1,5 +1,3 @@
-import { StaticImageData } from 'next/image';
-
 import Web_FE_Image from '@/img/Memoji/web_front.webp';
 import BE_Image from '@/img/Memoji/web_back.webp';
 import IOS_Image_1 from '@/img/Memoji/ios1.webp';

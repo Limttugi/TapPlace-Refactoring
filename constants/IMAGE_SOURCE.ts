@@ -31,6 +31,7 @@ export const MARKER_SRC: MARKER_SRC_I = {
   카페: ['/img/Marker/cafe.webp', '/img/Marker/cafe_big.webp'],
   편의점: ['/img/Marker/convenienceStore.webp', '/img/Marker/convenienceStore_big.webp'],
   마트: ['/img/Marker/mart.webp', '/img/Marker/mart_big.webp'],
+  대형마트: ['/img/Marker/mart.webp', '/img/Marker/mart_big.webp'],
   주유소: ['/img/Marker/gasStation.webp', '/img/Marker/gasStation_big.webp'],
   주차장: ['/img/Marker/parking.webp', '/img/Marker/parking_big.webp'],
   병원: ['/img/Marker/hospital.webp', '/img/Marker/hospital_big.webp'],
@@ -38,6 +39,8 @@ export const MARKER_SRC: MARKER_SRC_I = {
   숙박: ['/img/Marker/accommodation.webp', '/img/Marker/accommodation_big.webp'],
   공공기관: ['/img/Marker/institutions.webp', '/img/Marker/institutions_big.webp'],
   기타: ['/img/Marker/etc.webp', '/img/Marker/etc_big.webp'],
+  중개업소: ['/img/Marker/etc.webp', '/img/Marker/etc_big.webp'],
+  은행: ['/img/Marker/etc.webp', '/img/Marker/etc_big.webp'],
   '': ['/img/Marker/etc.webp', '/img/Marker/etc_big.webp'],
 };
 

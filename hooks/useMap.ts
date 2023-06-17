@@ -4,7 +4,7 @@ import { useRecoilValue, useSetRecoilState } from 'recoil';
 import useMarker from './useMarker';
 import { NaverContextValue } from '@/context/naver';
 import { markerStateAtom } from '@/recoil/atoms/marker';
-import { bringMyLocationAtom, searchLocationAtom } from '@/recoil/atoms/location';
+import { bringMyLocationAtom, searchLocationAtom, setSearchLocationFlagAtom } from '@/recoil/atoms/location';
 import { merchantListSelector } from '@/recoil/selector/merchant';
 import { MARKER_SRC } from '@/constants/IMAGE_SOURCE';
 import { MerchantInfo_I } from '@/types/merchant';
@@ -15,18 +15,22 @@ const useMap = () => {
   const merchantList = useRecoilValue(merchantListSelector);
   const searchLocation = useRecoilValue(searchLocationAtom);
   const setMarkerState = useSetRecoilState(markerStateAtom);
+  const setSearchLocationFlag = useSetRecoilState(setSearchLocationFlagAtom);
 
   // 지도 렌더링
   const mapRendering = useCallback(() => {
     if (!NaverContextValue.map) {
-      console.log('map');
-      NaverContextValue.map = new naver.maps.Map('map', {
+      const map = new naver.maps.Map('map', {
         center: new naver.maps.LatLng(currentLocation.latitude, currentLocation.longitude),
         zoom: 16,
         scaleControl: false,
       });
+      naver.maps.Event.addListener(map, 'dragend', () => {
+        setSearchLocationFlag(true);
+      });
+      NaverContextValue.map = map;
     }
-  }, [currentLocation]);
+  }, [currentLocation, setSearchLocationFlag]);
 
   // 반경을 나타내는 원 그리기
   const drawCircleMyRadius = useCallback(() => {
@@ -55,7 +59,6 @@ const useMap = () => {
     NaverContextValue.markers = [];
 
     if (merchantList?.length !== 0) {
-      console.log('drawMarker');
       merchantList?.forEach((merchant: MerchantInfo_I) => {
         const IMG_URL = MARKER_SRC[merchant.category_group_name];
         const x = parseFloat(merchant.x);

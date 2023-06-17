@@ -20,3 +20,8 @@ export const searchLocationAtom = atom<Location_I>({
   key: 'searchLocationAtom',
   default: { latitude: 0, longitude: 0 },
 });
+
+export const setSearchLocationFlagAtom = atom({
+  key: 'setSearchLocationFlagAtom',
+  default: false,
+});

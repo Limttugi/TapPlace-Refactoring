@@ -1,11 +1,14 @@
-import { useCallback, useEffect } from 'react';
+import { useCallback } from 'react';
 import { useRecoilState, useSetRecoilState } from 'recoil';
 
-import { bringMyLocationAtom, searchLocationAtom } from '@/recoil/atoms/location';
+import { bringMyLocationAtom, searchLocationAtom, setSearchLocationFlagAtom } from '@/recoil/atoms/location';
+import { NaverContextValue } from '@/context/naver';
 
 const useLocation = () => {
+  const map = NaverContextValue.map;
   const [bringMyLocationState, setBringMyLocationState] = useRecoilState(bringMyLocationAtom);
   const setSearchLocation = useSetRecoilState(searchLocationAtom);
+  const setSearchLocationFlag = useSetRecoilState(setSearchLocationFlagAtom);
 
   // 처음 위치 가져오기
   const handleSetCurrentLocation = useCallback(() => {
@@ -57,7 +60,15 @@ const useLocation = () => {
     );
   }, [bringMyLocationState.currentLocation, setBringMyLocationState]);
 
-  return { handleSetCurrentLocation, setCurrentAddress };
+  const handleSetSearchLocation = useCallback(() => {
+    if (map) {
+      const { x, y } = map.getCenter();
+      setSearchLocation({ latitude: y, longitude: x });
+      setSearchLocationFlag(false);
+    }
+  }, [map, setSearchLocation, setSearchLocationFlag]);
+
+  return { handleSetCurrentLocation, setCurrentAddress, handleSetSearchLocation };
 };
 
 export default useLocation;
