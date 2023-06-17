@@ -8,6 +8,15 @@ import naverImageSrc from '@/img/Logo/Payment/Rectangle/naver.webp';
 import paycoImageSrc from '@/img/Logo/Payment/Rectangle/payco.webp';
 import zeroImageSrc from '@/img/Logo/Payment/Rectangle/zero.webp';
 
+import visaSliderImageSrc from '@/img/Logo/Payment/visa.webp';
+import paycoSliderImageSrc from '@/img/Logo/Payment/payco.webp';
+import appleSliderImageSrc from '@/img/Logo/Payment/apple.webp';
+import zeroSliderImageSrc from '@/img/Logo/Payment/zero.webp';
+import googleSliderImageSrc from '@/img/Logo/Payment/google.webp';
+import kakaoSliderImageSrc from '@/img/Logo/Payment/kakao.webp';
+import naverSliderImageSrc from '@/img/Logo/Payment/naver.webp';
+import masterSliderImageSrc from '@/img/Logo/Payment/master.webp';
+
 interface IMAGE_SRC_I {
   [key: string]: StaticImageData;
 }
@@ -63,3 +72,29 @@ export const PAYMENT_FEEDBACK_SRC: IMAGE_SRC_I = {
   conless_jcb: contactlessImageSrc,
   conless_amex: contactlessImageSrc,
 };
+
+interface PAYMENT_SLIDER_IMAGE_SRC_I {
+  [key: string]: StaticImageData;
+}
+
+export const PAYMENT_SLIDER_IMAGE_SRC: PAYMENT_SLIDER_IMAGE_SRC_I = {
+  비자카드: visaSliderImageSrc,
+  페이코: paycoSliderImageSrc,
+  애플페이: appleSliderImageSrc,
+  제로페이: zeroSliderImageSrc,
+  구글페이: googleSliderImageSrc,
+  카카오페이: kakaoSliderImageSrc,
+  네이버페이: naverSliderImageSrc,
+  마스터카드: masterSliderImageSrc,
+};
+
+export const PAYMENT_SLIDER = [
+  '비자카드',
+  '페이코',
+  '애플페이',
+  '제로페이',
+  '구글페이',
+  '카카오페이',
+  '네이버페이',
+  '마스터카드',
+];
