@@ -1,0 +1,10 @@
+@import '@/styles/mixins.scss';
+
+.error {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-40%, -50%);
+  color: $mainColor;
+  font-size: 3rem;
+}
