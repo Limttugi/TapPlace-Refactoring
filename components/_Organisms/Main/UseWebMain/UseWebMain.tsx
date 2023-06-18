@@ -1,22 +1,20 @@
-import { useState } from 'react';
 import { useRecoilState, useRecoilValue } from 'recoil';
 
 import s from './UseWebMain.module.scss';
 
+import Map from '@/components/_Atoms/Naver/Map/Map';
 import SearchMerchantInput from '@/components/_Atoms/Input/SearchMerchant/SearchMerchant';
 import CurrentLocationAddressText from '@/components/_Atoms/Text/CurrentLocationAddress/CurrentLocationAddress';
+import ShowMapOrMerchantListButton from '@/components/_Atoms/Button/ShowMapOrMerchantList/ShowMapOrMerchantList';
 import ShowFilterMenuButtonContainer from '@/components/_Molecules/Container/ShowFilterMenuButton/ShowFilterMenuButton';
+import MerchantListContainer from '@/components/_Molecules/Container/MerchantList/MerchantList';
 import MerchantDetailModal from '../../Modal/MarkerDetail/MerchantDetail';
 import AppDownloadModal from '../../Modal/AppDownload/AppDownload';
-import Map from '@/components/_Atoms/Naver/Map/Map';
+import FilteringMenuModal from '../../Modal/FilteringMenu/FilteringMenu';
 import { showAppDownloadModalAtom } from '@/recoil/atoms/localstorage';
 import { markerStateAtom } from '@/recoil/atoms/marker';
 import { breakpointState } from '@/recoil/atoms/breakpoint';
-import ShowMapOrMerchantListButton from '@/components/_Atoms/Button/ShowMapOrMerchantList/ShowMapOrMerchantList';
-import MerchantListContainer from '@/components/_Molecules/Container/MerchantList/MerchantList';
-import FilteringMenuModal from '../../Modal/FilteringMenu/FilteringMenu';
 import { showMapOrMerchantListAtom } from '@/recoil/atoms/showMapOrList';
-import { isShowFilteringMenuAtom } from '@/recoil/atoms/filter';
 
 const UseWebMain = () => {
   const BREAKPOINT = useRecoilValue(breakpointState);
