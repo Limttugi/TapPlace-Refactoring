@@ -12,14 +12,16 @@ const MerchantRegistrationSection = () => {
     <section className={s.container}>
       <div>
         <SubSectionTitle imgSrc={MerchantRegistration_Title_Image} text='가맹점 등록' alignItems='baseLine' />
-        <SubSectionFirstLineText text={['새로운 가맹점을 발견하면', <br key='br' />, '검색하여 등록해보세요']} />
-        <SubSectionSecondLineText
-          text={[
-            '언제 어디서든, 새로운 가맹점을 발견하면',
-            <br key='br' />,
-            '검색 한번으로 간편하게 등록할 수 있어요.',
-          ]}
-        />
+        <SubSectionFirstLineText>
+          새로운 가맹점을 발견하면
+          <br />
+          검색하여 등록해보세요.
+        </SubSectionFirstLineText>
+        <SubSectionSecondLineText>
+          언제 어디서든, 새로운 가맹점을 발견하면
+          <br />
+          검색 한번으로 간편하게 등록할 수 있어요.
+        </SubSectionSecondLineText>
       </div>
       <MerchantRegisteringOrderContainer />
       <MerchantRegistrationImage />

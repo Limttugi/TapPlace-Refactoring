@@ -1,11 +1,13 @@
+import { ReactNode } from 'react';
+
 import s from './SubSectionFirstLine.module.scss';
 
 interface SubSectionFirstLineText_I {
-  text: Array<string | JSX.Element> | string;
+  children: ReactNode;
 }
 
-const SubSectionFirstLineText = ({ text }: SubSectionFirstLineText_I) => {
-  return <div className={s.text}>{text}</div>;
+const SubSectionFirstLineText = ({ children }: SubSectionFirstLineText_I) => {
+  return <div className={s.text}>{children}</div>;
 };
 
 export default SubSectionFirstLineText;

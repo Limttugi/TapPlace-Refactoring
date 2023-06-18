@@ -1,11 +1,13 @@
+import { ReactNode } from 'react';
+
 import s from './SubSectionSecondLine.module.scss';
 
 interface SubSectionSecondLineText_I {
-  text: Array<string | JSX.Element> | string;
+  children: ReactNode;
 }
 
-const SubSectionSecondLineText = ({ text }: SubSectionSecondLineText_I) => {
-  return <p className={s.text}>{text}</p>;
+const SubSectionSecondLineText = ({ children }: SubSectionSecondLineText_I) => {
+  return <p className={s.text}>{children}</p>;
 };
 
 export default SubSectionSecondLineText;

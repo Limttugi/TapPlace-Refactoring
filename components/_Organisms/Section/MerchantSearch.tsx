@@ -12,10 +12,16 @@ const MerchantSearchSection = () => {
     <section className={s.container}>
       <div>
         <SubSectionTitle imgSrc={MerchantSearch_Title_Image} text='가맹점 조회' alignItems='center' />
-        <SubSectionFirstLineText text={['내 주변 간편결제 가맹점을', <br key='br' />, '한눈에 확인하세요']} />
-        <SubSectionSecondLineText
-          text={['이제 간편결제 안될까봐 걱정하지 마세요.', <br key='br' />, '결제 가능여부를 미리 알려드릴게요.']}
-        />
+        <SubSectionFirstLineText>
+          내 주변 간편결제 가맹점을
+          <br />
+          한눈에확인하세요
+        </SubSectionFirstLineText>
+        <SubSectionSecondLineText>
+          이제 간편결제 안될까봐 걱정하지 마세요.
+          <br />
+          결제 가능여부를 미리 알려드릴게요.
+        </SubSectionSecondLineText>
       </div>
       <MerchantSearchImage />
       <MerchantSearchSubMockUpContainer />
