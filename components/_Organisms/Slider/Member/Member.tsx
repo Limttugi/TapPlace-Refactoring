@@ -1,5 +1,3 @@
-import Image from 'next/image';
-
 import s from './Member.module.scss';
 
 import MemberSliderText from '@/components/_Atoms/Text/MemberSlider/MemberSlider';
