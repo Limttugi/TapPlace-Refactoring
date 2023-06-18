@@ -1,0 +1,27 @@
+@import '@/styles/mixins.scss';
+
+@include mobile {
+  .sideMenuSection {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    background-color: white;
+  }
+}
+
+@include tablet {
+  .sideMenuSection {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    background-color: white;
+  }
+}
+
+@include desktop {
+  .sideMenuSection {
+    @include flex-column();
+    width: 47rem;
+    height: calc(100vh - 6rem);
+  }
+}

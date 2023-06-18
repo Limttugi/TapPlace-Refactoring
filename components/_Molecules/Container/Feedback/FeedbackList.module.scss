@@ -1,0 +1,37 @@
+@import '@/styles/mixins.scss';
+
+.container {
+  .title {
+    font-weight: 400;
+    line-height: 2.4rem;
+    color: $color-333333;
+    margin-bottom: 0.8rem;
+  }
+}
+
+@include mobile {
+  .container {
+    padding: 2rem 2.4rem 0 2.4rem;
+    .title {
+      font-size: 1.7rem;
+    }
+  }
+}
+
+@include tablet {
+  .container {
+    padding: 2rem 2.4rem 0 2.4rem;
+    .title {
+      font-size: 2rem;
+    }
+  }
+}
+
+@include desktop {
+  .container {
+    padding: 2rem 2rem 0 2rem;
+    .title {
+      font-size: 1.8rem;
+    }
+  }
+}

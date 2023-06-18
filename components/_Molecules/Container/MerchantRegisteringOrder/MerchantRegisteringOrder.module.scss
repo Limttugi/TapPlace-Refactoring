@@ -1,0 +1,91 @@
+@import '@/styles/mixins.scss';
+
+.container {
+  @include flex-column-pos(center, center);
+  .orderNumber {
+    @include flex-row-pos(space-between, center);
+    width: 100%;
+    list-style: none;
+    .number {
+      position: relative;
+      border: 2px solid $mainColor;
+      border-radius: 50%;
+      @include width-height(3.2rem, 3.2rem);
+      line-height: 3.2rem;
+      font-size: 2rem;
+      color: $mainColor;
+      text-align: center;
+      &:not(:nth-child(3))::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 3rem;
+        background: $mainColor;
+        width: 15rem;
+        height: 2px;
+      }
+    }
+  }
+  .orderText {
+    @include flex-row-pos(space-between, center);
+    list-style: none;
+    width: 100%;
+    margin-top: 1.2rem;
+    .text {
+      color: $sub_black;
+    }
+  }
+}
+
+@include mobile {
+  .container {
+    width: 100%;
+    margin: 4rem 0 5.3rem 0;
+    .orderNumber {
+      padding: 0 1rem 0 1.6rem;
+      .number:not(:nth-child(3)):after {
+        width: 10.4rem;
+      }
+    }
+    .orderText {
+      .text {
+        font-size: 1.5rem;
+      }
+    }
+  }
+}
+
+@include tablet {
+  .container {
+    width: 42rem;
+    margin: 4.4rem 0 6.8rem 0;
+    .orderNumber {
+      padding: 0 1rem 0 1.6rem;
+      .number:not(:nth-child(3))::after {
+        width: 15rem;
+      }
+    }
+    .orderText {
+      .text {
+        font-size: 1.5rem;
+      }
+    }
+  }
+}
+
+@include desktop {
+  .container {
+    width: 42rem;
+    .orderNumber {
+      padding: 0 2rem 0 3rem;
+      .number:not(:nth-child(3))::after {
+        width: 13.8rem;
+      }
+    }
+    .orderText {
+      .text {
+        font-size: 2rem;
+      }
+    }
+  }
+}

@@ -1,21 +1,33 @@
-import CheckAfterDownlaod from '@/components/MainPage/Section/CheckAfterDownload/CheckAfterDownload';
-import DisplayPayment from '@/components/MainPage/Section/DisplayPayment/DisplayPayment';
-import MainDescription from '@/components/MainPage/Section/MainDescription/MainDescription';
-import MemberIntroduction from '@/components/MainPage/Section/MemberIntroduction/MemberIntroduction';
-import PaymentFeedback from '@/components/MainPage/Section/PaymentFeedback/PaymentFeedback';
-import StoreInquiry from '@/components/MainPage/Section/StoreInquiry/StoreInquiry';
-import StoreRegistering from '@/components/MainPage/Section/StoreRegistering/StoreRegistering';
+import Head from 'next/head';
+
+import ServiceIntroductionTemplate from '@/components/_Templates/ServiceIntroduction/ServiceIntroduction';
+import IntroServiceSection from '@/components/_Organisms/Section/IntroService';
+import PaymentSlider from '@/components/_Organisms/Slider/Payment/Payment';
+import MerchantSearchSection from '@/components/_Organisms/Section/MerchantSearch';
+import FeedbackPaymentSection from '@/components/_Organisms/Section/FeedbackPayment';
+import MerchantRegistrationSection from '@/components/_Organisms/Section/MerchantRegistration';
+import MemberSlider from '@/components/_Organisms/Slider/Member/Member';
+import DownloadAndCheckMerchantSection from '@/components/_Organisms/Section/DownloadAndCheckMerchant';
+import useResize from '@/hooks/useResize';
 
 const Index = () => {
+  useResize();
+
   return (
     <>
-      <MainDescription />
-      <DisplayPayment />
-      <StoreInquiry />
-      <PaymentFeedback />
-      <StoreRegistering />
-      <MemberIntroduction />
-      <CheckAfterDownlaod />
+      <Head>
+        <title>탭플레이스</title>
+      </Head>
+
+      <ServiceIntroductionTemplate>
+        <IntroServiceSection />
+        <PaymentSlider />
+        <MerchantSearchSection />
+        <FeedbackPaymentSection />
+        <MerchantRegistrationSection />
+        <MemberSlider />
+        <DownloadAndCheckMerchantSection />
+      </ServiceIntroductionTemplate>
     </>
   );
 };

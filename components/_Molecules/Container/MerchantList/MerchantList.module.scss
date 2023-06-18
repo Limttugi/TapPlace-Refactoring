@@ -1,0 +1,30 @@
+@import '@/styles/mixins.scss';
+
+.container {
+  flex: 1;
+  overflow-y: scroll;
+  &::-webkit-scrollbar {
+    width: 0.8rem;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: $mainColor;
+  }
+  &::-webkit-scrollbar-track {
+    background: rgba(219, 222, 232, 0.4);
+  }
+}
+
+@include mobile {
+  .container {
+    height: calc(100vh - 16rem);
+  }
+}
+
+@include tablet {
+  .container {
+    height: calc(100vh - 18.4rem);
+  }
+}
+
+@include desktop {
+}

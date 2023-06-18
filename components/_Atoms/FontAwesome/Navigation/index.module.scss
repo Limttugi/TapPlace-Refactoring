@@ -1,0 +1,6 @@
+@import '@/styles/mixins.scss';
+
+.button {
+  @include width-height(1.8rem, 1.8rem);
+  color: #b8bdcc;
+}

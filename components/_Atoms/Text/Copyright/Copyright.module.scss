@@ -1,0 +1,27 @@
+@import '@/styles/mixins.scss';
+
+.copyright {
+  font-weight: 400;
+  color: $color-6e717d;
+}
+
+@include mobile {
+  .copyright {
+    font-size: 1.4rem;
+    line-height: 1.8rem;
+  }
+}
+
+@include tablet {
+  .copyright {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+}
+
+@include desktop {
+  .copyright {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+}

@@ -1,0 +1,49 @@
+@import '@/styles/mixins.scss';
+
+.memberContainer {
+  @include flex-column-pos(center, center);
+  .memberName {
+    font-weight: 400;
+    color: $color-23252d;
+  }
+  .memberPosition {
+    font-weight: 400;
+    color: $color-a1a6b0;
+  }
+}
+
+@include mobile {
+  .memberName {
+    font-size: 2.5rem;
+    line-height: 3.5rem;
+    margin: 1.6rem 0 0.4rem 0;
+  }
+  .memberPosition {
+    font-size: 2rem;
+    line-height: 2.6rem;
+  }
+}
+
+@include tablet {
+  .memberName {
+    font-size: 2.5rem;
+    line-height: 3.5rem;
+    margin: 1.6rem 0 0.4rem 0;
+  }
+  .memberPosition {
+    font-size: 2rem;
+    line-height: 2.6rem;
+  }
+}
+
+@include desktop {
+  .memberName {
+    font-size: 3rem;
+    line-height: 4.2rem;
+    margin: 2rem 0 0.4rem 0;
+  }
+  .memberPosition {
+    font-size: 2.5rem;
+    line-height: 3.3rem;
+  }
+}

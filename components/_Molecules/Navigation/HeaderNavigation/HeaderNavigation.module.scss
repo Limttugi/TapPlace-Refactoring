@@ -1,0 +1,23 @@
+@import '@/styles/mixins.scss';
+
+// Mobile //
+.navigationContainer_mobile {
+  position: absolute;
+  left: 0;
+  top: 6rem;
+  width: 100%;
+  background-color: $white;
+  padding: 0 2.4rem;
+}
+// !Mobile //
+
+// None Mobile //
+.navigationContainer {
+  height: 100%;
+  > ul {
+    display: flex;
+    gap: 4.8rem;
+    height: 100%;
+  }
+}
+// !None Mobile //

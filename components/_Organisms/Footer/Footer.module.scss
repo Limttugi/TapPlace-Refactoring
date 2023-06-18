@@ -1,0 +1,46 @@
+@import '@/styles/mixins.scss';
+
+.container {
+  background-color: $color-3f4353;
+}
+
+@include mobile {
+  .container {
+    @include flex-column;
+    padding: 6.4rem 2.4rem;
+  }
+}
+
+@include tablet {
+  .container {
+    padding: 6rem 2.4rem;
+    .tapplaceInfoContainer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+  .dividingLine {
+    border: none;
+    height: 0.1rem;
+    margin: 2rem 0;
+    background: rgba(120, 123, 134, 0.5);
+  }
+}
+
+@include desktop {
+  .container {
+    padding: 6.4rem 36rem;
+    .tapplaceInfoContainer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+  .dividingLine {
+    border: none;
+    height: 0.1rem;
+    margin: 2rem 0;
+    background: rgba(120, 123, 134, 0.5);
+  }
+}

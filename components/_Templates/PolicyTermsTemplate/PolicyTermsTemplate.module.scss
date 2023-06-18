@@ -1,0 +1,14 @@
+@import '@/styles/mixins.scss';
+
+@include mobile {
+}
+
+@include tablet {
+}
+
+@include desktop {
+  .mainContainer {
+    display: flex;
+    padding-top: 6rem;
+  }
+}

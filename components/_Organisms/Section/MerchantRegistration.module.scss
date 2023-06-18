@@ -1,0 +1,27 @@
+@import '@/styles/mixins.scss';
+
+@include mobile {
+  .container {
+    @include flex-column;
+    padding: 12rem 2.4rem;
+  }
+}
+
+@include tablet {
+  .container {
+    display: flex;
+    flex-direction: column;
+    padding: 15rem 7.2rem;
+  }
+}
+
+@include desktop {
+  .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    align-items: center;
+    justify-items: center;
+    padding: 20rem 36rem;
+  }
+}

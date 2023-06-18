@@ -1,0 +1,63 @@
+@import '@/styles/mixins.scss';
+
+@mixin mapContainer_CS {
+  position: relative;
+  flex: 1;
+  .map {
+    height: 100%;
+  }
+  > img {
+    position: absolute;
+    top: calc(50% - 5.9rem);
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 7.6rem;
+    height: 5.9rem;
+  }
+  > button {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 1rem 1.7rem;
+    background-color: white;
+    box-shadow: 0px 0.2rem 0.4rem rgba(0, 0, 0, 0.2);
+    border-radius: 10rem;
+    color: $mainColor;
+    font-weight: 400;
+  }
+}
+
+@include mobile {
+  .mapContainer {
+    @include mapContainer_CS;
+    height: calc(100vh - 16rem);
+    margin-top: 10rem;
+    > button {
+      bottom: 8rem;
+      font-size: 1.4rem;
+    }
+  }
+}
+
+@include tablet {
+  .mapContainer {
+    @include mapContainer_CS;
+    height: calc(100vh - 18.4rem);
+    margin-top: 12rem;
+    > button {
+      bottom: 8rem;
+      font-size: 1.6rem;
+    }
+  }
+}
+
+@include desktop {
+  .mapContainer {
+    @include mapContainer_CS;
+    height: calc(100vh - 6rem);
+    > button {
+      bottom: 4rem;
+      font-size: 1.6rem;
+    }
+  }
+}
