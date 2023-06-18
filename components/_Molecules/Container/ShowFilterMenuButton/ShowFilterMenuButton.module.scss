@@ -5,9 +5,21 @@
 }
 
 @include mobile {
+  .container {
+    position: absolute;
+    top: 6.4rem;
+    right: 2.4rem;
+    gap: 0.6rem;
+  }
 }
 
 @include tablet {
+  .container {
+    position: absolute;
+    top: 7.2rem;
+    right: 2.4rem;
+    gap: 0.6rem;
+  }
 }
 
 @include desktop {

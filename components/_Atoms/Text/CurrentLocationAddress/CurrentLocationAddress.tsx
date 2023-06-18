@@ -1,9 +1,9 @@
+import { useEffect } from 'react';
 import { useRecoilValue } from 'recoil';
 
 import s from './CurrentLocationAddress.module.scss';
 
 import { bringMyLocationAtom } from '@/recoil/atoms/location';
-import { useEffect } from 'react';
 import useLocation from '@/hooks/useLocation';
 
 const CurrentLocationAddressText = () => {

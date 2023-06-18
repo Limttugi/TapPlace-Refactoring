@@ -17,7 +17,7 @@ const PaymentFeedbackList = ({ feedback }: { feedback: FeedbackInfo_I }) => {
   return (
     <li className={s.container}>
       <div className={s.paymentWrapper}>
-        <Image className={s.paymentImage} src={PAYMENT_FEEDBACK_SRC[pay]} alt='paymentImage' />
+        <Image className={s.paymentImage} src={PAYMENT_FEEDBACK_SRC[pay]} alt='결제 이미지' />
         <h5 className={s.paymentName}>{FEEDBACK_PAY_NAME[pay]}</h5>
       </div>
       <div className={s.currentFeedbackWrapper}>

@@ -1,10 +1,10 @@
 import Image from 'next/image';
+import { useSetRecoilState } from 'recoil';
 
 import s from './FeedbackModalClose.module.scss';
 
 import closeImg from '@/img/X.webp';
 import { markerStateAtom } from '@/recoil/atoms/marker';
-import { useSetRecoilState } from 'recoil';
 import useMarker from '@/hooks/useMarker';
 
 const FeedbackModalCloseButton = () => {

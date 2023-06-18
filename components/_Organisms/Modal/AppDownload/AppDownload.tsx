@@ -17,7 +17,7 @@ const AppDownloadModal = () => {
   // localStorage 확인
   useEffect(() => {
     getItemWithExpireTime('noShowToday');
-  });
+  }, [getItemWithExpireTime]);
 
   const handleContinueWeb = () => {
     setShowAppDownloadModal(false);

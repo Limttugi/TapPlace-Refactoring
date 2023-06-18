@@ -1,9 +1,15 @@
 @import '@/styles/mixins.scss';
 
 @include mobile {
+  .mainContainer {
+    padding-top: 6rem;
+  }
 }
 
 @include tablet {
+  .mainContainer {
+    padding-top: 6rem;
+  }
 }
 
 @include desktop {

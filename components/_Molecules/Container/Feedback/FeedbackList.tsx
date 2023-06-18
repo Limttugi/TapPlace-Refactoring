@@ -1,9 +1,10 @@
+import { useRecoilValueLoadable } from 'recoil';
+
 import s from './FeedbackList.module.scss';
 
 import { FeedbackInfo_I } from '@/types/merchant';
 import PaymentFeedbackList from '@/components/_Atoms/List/PaymentFeedback/PaymentFeedback';
 import { clickedMerchantFeedbackSelector } from '@/recoil/selector/merchant';
-import { useRecoilValueLoadable } from 'recoil';
 import LoadingSpinner from '@/components/_Atoms/LoadingSpinner/LoadingSpinner';
 
 const FeedbackListContainer = () => {

@@ -1,13 +1,15 @@
+import { useSetRecoilState } from 'recoil';
+
 import s from './Merchant.module.scss';
 
 import PaymentImage from '../../Image/Payment/Payment';
 import { MerchantInfo_I } from '@/types/merchant';
 import { NaverContextValue } from '@/context/naver';
-import { useSetRecoilState } from 'recoil';
 import { markerStateAtom } from '@/recoil/atoms/marker';
 import { MARKER_SRC } from '@/constants/IMAGE_SOURCE';
 import useMap from '@/hooks/useMap';
 import useMarker from '@/hooks/useMarker';
+import { showMapOrMerchantListAtom } from '@/recoil/atoms/showMapOrList';
 
 const MerchantList = (info: MerchantInfo_I) => {
   const { num, place_name, road_address_name, address_name, category_group_name, distance, pays, store_id, x, y } =
@@ -15,6 +17,7 @@ const MerchantList = (info: MerchantInfo_I) => {
   const { setMapCenter } = useMap();
   const changeSmallMarker = useMarker().changeSmallMarker;
   const setMarkerState = useSetRecoilState(markerStateAtom);
+  const setShowMapOrMerchantList = useSetRecoilState(showMapOrMerchantListAtom);
 
   const findMarkerOfClickedMerchantList = () => {
     for (let i = 0; i < NaverContextValue.markers.length; i++) {
@@ -25,6 +28,7 @@ const MerchantList = (info: MerchantInfo_I) => {
   };
 
   const handleShowMerchantDetailInfo = () => {
+    setShowMapOrMerchantList('map');
     const marker = findMarkerOfClickedMerchantList();
     const IMG_URL = MARKER_SRC[category_group_name];
 

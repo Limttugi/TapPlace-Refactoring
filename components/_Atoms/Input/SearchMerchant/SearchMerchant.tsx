@@ -31,7 +31,7 @@ const SearchMerchantInput = () => {
 
   return (
     <div className={s.container}>
-      <Image src={searchImageSrc} alt='magnifier image' />
+      <Image src={searchImageSrc} alt='가맹점 검색 버튼 이미지' />
       <input
         type='text'
         placeholder='가맹점을 찾아보세요'
@@ -44,7 +44,7 @@ const SearchMerchantInput = () => {
           <Image
             className={s.closeButton}
             src={searchCloseImageSrc}
-            alt='search close image'
+            alt='가맹점 검색 취소 버튼 이미지'
             onClick={handleResetSearch}
           />
         </button>

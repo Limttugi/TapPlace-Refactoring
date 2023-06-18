@@ -8,6 +8,7 @@ import { categoryFilterAtom, paymentFilterAtom } from '@/recoil/atoms/filter';
 const ShowFilterMenuButtonContainer = () => {
   const categoryFilterState = useRecoilValue(categoryFilterAtom);
   const paymentFilterState = useRecoilValue(paymentFilterAtom);
+
   return (
     <div className={s.container}>
       <ShowFilterMenuButton

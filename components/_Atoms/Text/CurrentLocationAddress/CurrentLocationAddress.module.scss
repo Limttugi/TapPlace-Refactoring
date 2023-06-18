@@ -6,9 +6,22 @@
 }
 
 @include mobile {
+  .text {
+    padding: 0 2.4rem;
+    height: 4rem;
+    line-height: 3.8rem;
+    font-size: 1.3rem;
+  }
 }
 
 @include tablet {
+  .text {
+    display: flex;
+    align-items: center;
+    padding: 0 2.4rem;
+    height: 6.4rem;
+    font-size: 1.6rem;
+  }
 }
 
 @include desktop {

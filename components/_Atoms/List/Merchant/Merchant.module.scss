@@ -29,9 +29,61 @@
 }
 
 @include mobile {
+  .container {
+    border-bottom: 0.1rem solid lightgray;
+    padding: 1.6rem 2.4rem;
+    .merchantInfoWrapper {
+      &:nth-child(2) {
+        margin: 0.6rem 0 1.6rem 0;
+      }
+      .merchantName {
+        font-size: 1.6rem;
+        line-height: 2.1rem;
+      }
+      .merchantCategory {
+        font-size: 1.3rem;
+        line-height: 1.7rem;
+        margin-left: 0.6rem;
+      }
+      .merchantDistance,
+      .merchantAddress {
+        font-size: 1.2rem;
+        line-height: 1.6rem;
+      }
+    }
+    .paymentImageListContainer {
+      gap: 0.5rem;
+    }
+  }
 }
 
 @include tablet {
+  .container {
+    border-bottom: 0.1rem solid lightgray;
+    padding: 2.4rem;
+    .merchantInfoWrapper {
+      &:nth-child(2) {
+        margin: 0.6rem 0 1.6rem 0;
+      }
+      .merchantName {
+        font-size: 1.8rem;
+        line-height: 2.5rem;
+      }
+      .merchantCategory {
+        font-size: 1.5rem;
+        line-height: 2rem;
+        margin-left: 0.6rem;
+      }
+      .merchantDistance,
+      .merchantAddress {
+        font-size: 1.4rem;
+        line-height: 1.8rem;
+      }
+    }
+    .paymentImageListContainer {
+      gap: 0.6rem;
+    }
+  }
 }
 
 @include desktop {
@@ -39,7 +91,6 @@
     border-bottom: 0.1rem solid lightgray;
     padding: 2.4rem 4rem;
     .merchantInfoWrapper {
-      display: flex;
       &:nth-child(2) {
         margin: 0.6rem 0 1.6rem 0;
       }
