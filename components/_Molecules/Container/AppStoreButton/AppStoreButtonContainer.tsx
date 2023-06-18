@@ -4,20 +4,21 @@ import s from './AppStoreButtonContainer.module.scss';
 
 import appleImageSrc from '@/img/StoreButton/store_apple.webp';
 import galaxyImageSrc from '@/img/StoreButton/store_google.webp';
+import { handleOpenAppStore } from '@/utils/handleOpenAppStore';
 
 const AppStoreButtonContainer = () => {
   return (
     <div className={s.container}>
-      <button
-        type='button'
-        onClick={() => {
-          window.open('https://apps.apple.com/app/%ED%83%AD%ED%94%8C%EB%A0%88%EC%9D%B4%EC%8A%A4/id1643830783');
-        }}
-      >
+      <button type='button' onClick={handleOpenAppStore}>
         <Image src={appleImageSrc} alt='앱스토어로 가는 버튼' />
         App Store
       </button>
-      <button type='button' onClick={() => {}}>
+      <button
+        type='button'
+        onClick={() => {
+          alert('서비스 준비중입니다.');
+        }}
+      >
         <Image src={galaxyImageSrc} alt='구글플레이스토어로 가는 버튼' />
         Google Play
       </button>
